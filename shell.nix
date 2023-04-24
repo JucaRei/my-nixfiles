@@ -24,6 +24,8 @@ pkgs.mkShell {
     home-manager
     neovim
     nano
+    rnix-lsp
+    nixpkgs-fmt
   ];
 
   shellHook = ''
