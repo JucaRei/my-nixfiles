@@ -19,6 +19,7 @@ pkgs.mkShell {
     git
     # git-crypt
     nix-direnv
+    direnv
     nil
     nixFlakes
     home-manager
