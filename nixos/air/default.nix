@@ -1,5 +1,5 @@
 # Intel Skull Canyon NUC6i7KYK
-{ inputs, lib, pkgs, ... }:
+{ inputs, lib, pkgs, config, ... }:
 {
   imports = [
     inputs.nixos-hardware.nixosModules.common-cpu-intel
@@ -135,6 +135,7 @@
   }];
 
   boot = {
+    extraModulePackages = with config.boot.kernelPackages; [ broadcom_sta ];
     initrd.availableKernelModules = [ "uhci_hcd" "ehci_pci" "ahci" "usbhid" "sd_mod" ];
     kernelModules = [
       # "i915" 
