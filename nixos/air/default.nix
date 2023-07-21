@@ -1,5 +1,5 @@
 # Intel Skull Canyon NUC6i7KYK
-{ inputs, lib, pkgs, config, ... }:
+{ inputs, lib, pkgs, config, modulesPath, ... }:
 {
   imports = [
     inputs.nixos-hardware.nixosModules.common-cpu-intel
@@ -9,6 +9,7 @@
     inputs.nixos-hardware.nixosModules.apple-macbook-air-4
     inputs.nixos-hardware.nixosModules.common-cpu-intel-sandy-bridge
     # (import ./disks.nix { })
+    (modulesPath + "/installer/scan/not-detected.nix")
     ../_mixins/hardware/boot/efi.nix
     ../_mixins/services/bluetooth.nix
     ../_mixins/services/zerotier.nix
@@ -165,7 +166,7 @@
     initrd = {
       #systemd.enable = true; # This is needed to show the plymouth login screen to unlock luks
       availableKernelModules =
-        [ "uhci_hcd" "ehci_pci" "ahci" "usbhid" "sd_mod" ];
+        [ "uhci_hcd" "ehci_pci" "ahci" "usbhid" "usb_storage" "sd_mod" ];
       verbose = false;
       compressor = "zstd";
       supportedFilesystems = [ "vfat" "btrfs" "ntfs" ];
