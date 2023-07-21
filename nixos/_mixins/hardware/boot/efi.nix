@@ -10,7 +10,7 @@
         #efiSysMountPoint = "/boot/efi";
       };
       grub = {
-        enable = true;
+        enable = lib.mkForce true;
         devices = [ "nodev" ]; # "nodev" for efi only
         efiSupport = lib.mkDefault true;
         efiInstallAsRemovable = false;
