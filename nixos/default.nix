@@ -10,7 +10,7 @@
     #./_mixins/services/smartmon.nix
     ./_mixins/users/root
     ./_mixins/users/${username}
-    ./_mixins/shared
+    #./_mixins/shared
   ] ++ lib.optional (builtins.isString desktop) ./_mixins/desktop;
 
   boot = {

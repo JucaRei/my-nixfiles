@@ -22,7 +22,7 @@
     #nix-index-database.inputs.nixpkgs.follows = "nixpkgs";
 
     darwin.url = "github:lnl7/nix-darwin/master"; # MacOS Package Management
-    darwin.nixpkgs.follows = "nixpkgs";
+    darwin.inputs.nixpkgs.follows = "nixpkgs";
 
     #nur.url = "github:nix-community/NUR"; # Add "nur.nixosModules.nur" to the host modules
 
