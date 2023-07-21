@@ -9,7 +9,7 @@
     inputs.nixos-hardware.nixosModules.apple-macbook-air-4
     inputs.nixos-hardware.nixosModules.common-cpu-intel-sandy-bridge
     # (import ./disks.nix { })
-    ../_mixins/hardware/systemd-boot.nix
+    ../_mixins/hardware/efi.nix
     ../_mixins/services/bluetooth.nix
     ../_mixins/services/zerotier.nix
     ../_mixins/virt
@@ -117,7 +117,7 @@
   #  ]; # Note these options effect the entire BTRFS filesystem and not just this volume, with the exception of `"subvol=swap"`, the other options are repeated in my other `fileSystem` mounts
   #};
 
-  fileSystems."/boot" = {
+  fileSystems."/boot/efi" = {
     device = "/dev/disk/by-partlabel/EFI";
     fsType = "vfat";
     options = [ "defaults" "noatime" "nodiratime" ];
