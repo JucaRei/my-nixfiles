@@ -1,11 +1,13 @@
-{pkgs, ...}: {
-  imports = [./avahi.nix];
+{ pkgs, ... }: {
+  imports = [
+    ../network/avahi.nix
+  ];
   services = {
     printing = {
       enable = false; # enable if needed
       drivers = with pkgs;
-      #[ gutenprint hplipWithPlugin ];
-        [gutenprint];
+        #[ gutenprint hplipWithPlugin ];
+        [ gutenprint ];
       cups-pdf = {
         enable = false;
       };
