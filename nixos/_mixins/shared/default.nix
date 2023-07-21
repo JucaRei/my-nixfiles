@@ -79,7 +79,7 @@
   #######################
 
   i18n = {
-    defaultLocale = "en_US.utf8";
+    defaultLocale = lib.mkForce "en_US.utf8";
     extraLocaleSettings = {
       #LC_CTYPE = lib.mkDefault "pt_BR.UTF-8"; # Fix ç in us-intl.
       LC_ADDRESS = "pt_BR.utf8";
