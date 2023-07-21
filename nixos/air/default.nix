@@ -147,7 +147,10 @@
     #};
 
     loader = {
-      efi = { canTouchEfiVariables = lib.mkDefault true; };
+      efi = {
+        #canTouchEfiVariables = lib.mkDefault true; 
+        efiSysMountPoint = "/boot/efi";
+      };
       grub = {
         #gfxmodeEfi = lib.mkForce "1366x788";
         efiInstallAsRemovable = lib.mkForce true;

@@ -1,4 +1,4 @@
-_: {
+{ lib, ... }: {
   boot = {
     #tmp = {
     #useTmpfs = true;
@@ -7,12 +7,12 @@ _: {
     loader = {
       efi = {
         #canTouchEfiVariables = true;
-        efiSysMountPoint = "/boot/efi";
+        #efiSysMountPoint = "/boot/efi";
       };
       grub = {
         enable = true;
-        device = "nodev"; # "nodev" for efi only
-        efiSupport = true;
+        devices = [ "nodev" ]; # "nodev" for efi only
+        efiSupport = lib.mkDefault true;
         efiInstallAsRemovable = false;
         configurationLimit = 4;
         forceInstall = true;
