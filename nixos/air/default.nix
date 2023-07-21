@@ -136,7 +136,12 @@
 
   boot = {
     extraModulePackages = with config.boot.kernelPackages; [ broadcom_sta ];
-    initrd.availableKernelModules = [ "uhci_hcd" "ehci_pci" "ahci" "usbhid" "sd_mod" ];
+    initrd = {
+      availableKernelModules = [ "uhci_hcd" "ehci_pci" "ahci" "usbhid" "sd_mod" ];
+      verbose = false;
+      compressor = "zstd";
+      supportedFilesystems = [ "vfat" "btrfs" "ntfs" ];
+    };
     kernelModules = [
       # "i915" 
       "kvm-intel"
@@ -174,6 +179,31 @@
   hardware.acpilight.enable = true;
   hardware.opengl.driSupport = true;
 
+  services = { };
+  #############
+  ### Btrfs ###
+  #############
+
+  btrfs = {
+    autoScrub = {
+      enable = true;
+      interval = "weekly";
+    };
+  };
+
+  ################################
+  ### Device specific services ###
+  ################################
+  mbpfan = {
+    enable = true;
+    aggressive = true;
+  };
+
+  virtualisation.docker = { storageDriver = lib.mkForce "btrfs"; };
+
 
   nixpkgs.hostPlatform = lib.mkDefault "x86_64-linux";
+
+  hardware.cpu.intel.updateMicrocode =
+    lib.mkDefault config.hardware.enableRedistributableFirmware;
 }
