@@ -8,7 +8,7 @@ export ROOT_PARTITION="${DRIVE}3"
 umount -R /mnt
 sgdisk -Z /dev/$DRIVE
 sgdisk -n 0:0:512MB /dev/$DRIVE
-sgdisk -n 0:0:5G /dev/$DRIVE
+sgdisk -n 0:0:4GiB /dev/$DRIVE
 sgdisk -n 0:0:0 /dev/$DRIVE
 sgdisk -t 1:ef00 /dev/$DRIVE
 sgdisk -t 2:8200 /dev/$DRIVE

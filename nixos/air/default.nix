@@ -9,13 +9,17 @@
     inputs.nixos-hardware.nixosModules.apple-macbook-air-4
     inputs.nixos-hardware.nixosModules.common-cpu-intel-sandy-bridge
     # (import ./disks.nix { })
-    ../_mixins/hardware/efi.nix
+    ../_mixins/hardware/boot/efi.nix
     ../_mixins/services/bluetooth.nix
     ../_mixins/services/zerotier.nix
     ../_mixins/virt
   ];
 
   # disko does manage mounting of / /boot /home, but I want to mount by-partlabel
+  ###################
+  ### Hard drives ###
+  ###################
+
   fileSystems."/" = {
     device = "/dev/disk/by-partlabel/NIXOS";
     fsType = "btrfs";
@@ -135,20 +139,44 @@
   }];
 
   boot = {
+    #isContainer = false;
+
+    #plymouth = {
+    #  enable = lib.mkForce true;
+    #  theme = "breeze";
+    #};
+
+    loader = {
+      efi = { canTouchEfiVariables = lib.mkDefault true; };
+      grub = {
+        #gfxmodeEfi = lib.mkForce "1366x788";
+        efiInstallAsRemovable = lib.mkForce false;
+      };
+    };
+    #blacklistedKernelModules = lib.mkForce [ "nvidia" ];
     extraModulePackages = with config.boot.kernelPackages; [ broadcom_sta ];
+    #extraModprobeConfig = ''
+    #  options i915 enable_guc=2 enable_dc=4 enable_hangcheck=0 error_capture=0 enable_dp_mst=0 fastboot=1 #parameters may differ
+    #'';
+
     initrd = {
-      availableKernelModules = [ "uhci_hcd" "ehci_pci" "ahci" "usbhid" "sd_mod" ];
+      #systemd.enable = true; # This is needed to show the plymouth login screen to unlock luks
+      availableKernelModules =
+        [ "uhci_hcd" "ehci_pci" "ahci" "usbhid" "sd_mod" ];
       verbose = false;
       compressor = "zstd";
       supportedFilesystems = [ "vfat" "btrfs" "ntfs" ];
     };
+
     kernelModules = [
-      # "i915" 
+      #"i965"
+      "i915"
       "kvm-intel"
       "wl"
+      "z3fold"
+      #"hdapsd"
       "crc32c-intel"
       "lz4hc"
-      "z3fold"
       "lz4hc_compress"
     ];
     kernelParams = [
@@ -166,16 +194,15 @@
     kernel.sysctl = {
       #"kernel.sysrq" = 1;
       #"kernel.printk" = "3 3 3 3";
-      "vm.vfs_cache_pressure" = 400;
-      "vm.swappiness" = 20;
+      "vm.vfs_cache_pressure" = 300;
+      "vm.swappiness" = 25;
       "vm.dirty_background_ratio" = 1;
       "vm.dirty_ratio" = 50;
     };
+    kernelPackages = pkgs.linuxPackages_latest;
     #kernelPackages = pkgs.linuxPackages_zen;
-    supportedFilesystems = [ "btrfs" ]; # f
-    kernelPackages = pkgs.linuxPackages_xanmod_latest;
+    supportedFilesystems = [ "btrfs" ]; # fat 32 and btrfs
   };
-
   hardware.acpilight.enable = true;
   hardware.opengl.driSupport = true;
 
