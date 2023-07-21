@@ -1,6 +1,10 @@
 { lib, pkgs, ... }: {
 
-  imports = [ ./fwupd.nix ];
+  imports = [
+    ./fwupd.nix
+    ./journald.nix
+    ./qt-style.nix
+  ];
 
   ######################################
   ### Default Services for all hosts ###
