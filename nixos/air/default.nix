@@ -150,7 +150,7 @@
       efi = { canTouchEfiVariables = lib.mkDefault true; };
       grub = {
         #gfxmodeEfi = lib.mkForce "1366x788";
-        efiInstallAsRemovable = lib.mkForce false;
+        efiInstallAsRemovable = lib.mkForce true;
       };
     };
     #blacklistedKernelModules = lib.mkForce [ "nvidia" ];
