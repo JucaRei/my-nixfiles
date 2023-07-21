@@ -136,7 +136,15 @@
 
   boot = {
     initrd.availableKernelModules = [ "uhci_hcd" "ehci_pci" "ahci" "usbhid" "sd_mod" ];
-    kernelModules = [ "i915" "kvm-intel" "wl" "crc32c-intel" "lz4hc" "z3fold" "lz4hc_compress" ];
+    kernelModules = [
+      # "i915" 
+      "kvm-intel"
+      "wl"
+      "crc32c-intel"
+      "lz4hc"
+      "z3fold"
+      "lz4hc_compress"
+    ];
     kernelParams = [
       "hid_apple.swap_opt_cmd=1" # This will switch the left Alt and Cmd key as well as the right Alt/AltGr and Cmd key.
       "i915.force_probe=0116" # Force enable my intel graphics
@@ -162,6 +170,8 @@
     kernelPackages = pkgs.linuxPackages_xanmod_latest;
   };
 
+  hardware.acpilight.enable = true;
+  hardware.opengl.driSupport = true;
 
 
   nixpkgs.hostPlatform = lib.mkDefault "x86_64-linux";
