@@ -7,7 +7,7 @@
     ./_mixins/services/fwupd.nix
     ./_mixins/services/kmscon.nix
     ./_mixins/services/openssh.nix
-    ./_mixins/services/smartmon.nix
+    #./_mixins/services/smartmon.nix
     ./_mixins/users/root
     ./_mixins/users/${username}
   ] ++ lib.optional (builtins.isString desktop) ./_mixins/desktop;
@@ -266,10 +266,15 @@
     "d /mnt/snapshot/${username} 0755 ${username} users"
   ];
 
-  system.activationScripts.diff = {
-    supportsDryActivation = true;
-    text = ''
-      ${pkgs.nvd}/bin/nvd --nix-bin-dir=${pkgs.nix}/bin diff /run/current-system "$systemConfig"
+  system.activationScripts = {
+    diff = {
+      supportsDryActivation = true;
+      text = ''
+        ${pkgs.nvd}/bin/nvd --nix-bin-dir=${pkgs.nix}/bin diff /run/current-system "$systemConfig"
+      '';
+    };
+    fixboot.text = ''
+      ln -sfn "$(readlink -f "$systemConfig")" /run/current-system
     '';
   };
   system.stateVersion = stateVersion;
