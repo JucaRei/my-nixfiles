@@ -179,24 +179,25 @@
   hardware.acpilight.enable = true;
   hardware.opengl.driSupport = true;
 
-  services = { };
-  #############
-  ### Btrfs ###
-  #############
+  services = {
+    #############
+    ### Btrfs ###
+    #############
 
-  btrfs = {
-    autoScrub = {
-      enable = true;
-      interval = "weekly";
+    btrfs = {
+      autoScrub = {
+        enable = true;
+        interval = "weekly";
+      };
     };
-  };
 
-  ################################
-  ### Device specific services ###
-  ################################
-  mbpfan = {
-    enable = true;
-    aggressive = true;
+    ################################
+    ### Device specific services ###
+    ################################
+    mbpfan = {
+      enable = true;
+      aggressive = true;
+    };
   };
 
   virtualisation.docker = { storageDriver = lib.mkForce "btrfs"; };
