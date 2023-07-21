@@ -19,7 +19,6 @@
     xserver = {
       enable = true;
 
-      layout = "br"; # Keyboard layout & €-sign
       # xkbOptions = "eurosign:e";
       libinput.enable = true;
       # modules = [ pkgs.xf86_input_wacom ]; # Both needed for wacom tablet usage
@@ -56,12 +55,14 @@
       geary
       gnome-characters
       tali
+      totem # video player
       iagno
       hitori
       atomix
       yelp
       gnome-contacts
       gnome-initial-setup
+      #gnome-terminal # remove default terminal
     ]);
   };
 }

@@ -5,6 +5,7 @@
 { config, lib, pkgs, ... }:
 
 {
+
   programs = {
     zsh.enable = true;
     dconf.enable = true;
@@ -19,9 +20,14 @@
     xserver = {
       enable = true;
 
-      layout = "br"; # Keyboard layout & €-sign
-      # xkbOptions = "eurosign:e";
-      libinput.enable = true;
+      libinput = {
+        enable = true;
+        touchpad = {
+          tapping = true;
+          scrollMethod = "twofinger";
+        };
+        disableWhileTyping = true;
+      };
       # modules = [ pkgs.xf86_input_wacom ]; # Both needed for wacom tablet usage
       # wacom.enable = true;
 
@@ -31,12 +37,7 @@
       };
       desktopManager.plasma5 = {
         enable = true; # Desktop Manager
-        # excludePackages = with pkgs.libsForQt5; [
-        #   elisa
-        #   khelpcenter
-        #   konsole
-        #   oxygen
-        # ];
+        runUsingSystemd = true;
       };
     };
   };

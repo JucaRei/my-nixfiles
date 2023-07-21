@@ -9,7 +9,70 @@
     ../hardware/power/powertop-save.nix
     ../hardware/harddrive/ssd.nix
     ../editors
+    ./fonts.nix
+    ./console.nix
+    ./shells.nix
   ];
+
+  ############################
+  ### Default Boot Options ###
+  ############################
+  boot = {
+    initrd = { verbose = false; };
+    consoleLogLevel = 0;
+    kernelModules = [ "vhost_vsock" "kvm-intel" "tcp_bbr" ];
+    kernelParams = [
+      # The 'splash' arg is included by the plymouth option
+      "quiet"
+      "boot.shell_on_fail"
+      "loglevel=3"
+      "rd.systemd.show_status=false"
+      "rd.udev.log_level=3"
+      "udev.log_priority=3"
+      "net.ifnames=0"
+    ];
+    kernel = {
+      sysctl = {
+        "net.ipv4.ip_forward" = 1;
+        "net.ipv6.conf.all.forwarding" = 1;
+
+        ### Improve networking
+        # https://www.kernel.org/doc/html/latest/admin-guide/sysrq.html
+        "kernel.sysrq" = 1;
+        "net.ipv4.tcp_congestion_control" = "bbr";
+        "net.core.default_qdisc" = "cake";
+        #"net.core.default_qdisc" = "fq";
+
+        # Bypass hotspot restrictions for certain ISPs
+        "net.ipv4.ip_default_ttl" = 65;
+      };
+    };
+  };
+
+  ################
+  ### Defaults ###
+  ################
+
+  environment = {
+    # Eject nano and perl from the system
+    defaultPackages = with pkgs; lib.mkForce [
+      gitMinimal
+      home-manager
+      micro
+      rsync
+    ];
+    systemPackages = with pkgs; [
+      pciutils
+      psmisc
+      unzip
+      usbutils
+    ];
+    variables = {
+      EDITOR = "micro";
+      SYSTEMD_EDITOR = "micro";
+      VISUAL = "micro";
+    };
+  };
 
   #######################
   ### Default Locales ###
@@ -34,64 +97,15 @@
     supportedLocales = [ "en_US.UTF-8/UTF-8" "pt_BR.UTF-8/UTF-8" ];
   };
 
-  ###################
-  ### Console tty ###
-  ###################
+  ########################
+  ### Default Timezone ###
+  ########################
 
-  console = {
-    keyMap = if (builtins.isString == "nitro") then "br-abnt2" else "us";
-    earlySetup = true;
-    font = "${pkgs.tamzen}/share/consolefonts/TamzenForPowerline10x20.psf";
-    colors = [
-      "1b161f"
-      "ff5555"
-      "54c6b5"
-      "d5aa2a"
-      "bd93f9"
-      "ff79c6"
-      "8be9fd"
-      "bfbfbf"
+  services.xserver.layout = if (builtins.isString == "nitro") then "br" else "us";
+  time.timeZone = lib.mkDefault "America/Sao_Paulo";
+  #location = {
+  #  latitude = -23.539380;
+  #  longitude = -46.652530;
+  #};
 
-      "1b161f"
-      "ff6e67"
-      "5af78e"
-      "ffce50"
-      "caa9fa"
-      "ff92d0"
-      "9aedfe"
-      "e6e6e6"
-    ];
-    packages = with pkgs; [ tamzen ];
-  };
-
-  services.getty.greetingLine = lib.mkForce "\\l";
-  services.getty.helpLine = lib.mkForce ''
-    Type `i' to print system information.
-
-    .     .       .  .   . .   .   . .    +  .
-      .     .  :     .    .. :. .___---------___.
-           .  .   .    .  :.:. _".^ .^ ^.  '.. :"-_. .
-        .  :       .  .  .:../:            . .^  :.:\.
-            .   . :: +. :.:/: .   .    .        . . .:\
-     .  :    .     . _ :::/:               .  ^ .  . .:\
-      .. . .   . - : :.:./.                        .  .:\
-      .      .     . :..|:                    .  .  ^. .:|
-        .       . : : ..||        .                . . !:|
-      .     . . . ::. ::\(                           . :)/
-     .   .     : . : .:.|. ######              .#######::|
-      :.. .  :-  : .:  ::|.#######           ..########:|
-     .  .  .  ..  .  .. :\ ########          :######## :/
-      .        .+ :: : -.:\ ########       . ########.:/
-        .  .+   . . . . :.:\. #######       #######..:/
-          :: . . . . ::.:..:.\           .   .   ..:/
-       .   .   .  .. :  -::::.\.       | |     . .:/
-          .  :  .  .  .-:.":.::.\             ..:/
-     .      -.   . . . .: .:::.:.\.           .:/
-    .   .   .  :      : ....::_:..:\   ___.  :/
-       .   .  .   .:. .. .  .: :.:.:\       :/
-         +   .   .   : . ::. :.:. .:.|\  .:/|
-         .         +   .  .  ...:: ..|  --.:|
-    .      . . .   .  .  . ... :..:.."(  ..)"
-     .   .       .      :  .   .: ::/  .  .::\
-  '';
 }

@@ -198,6 +198,7 @@
     kernel.sysctl = {
       #"kernel.sysrq" = 1;
       #"kernel.printk" = "3 3 3 3";
+      "dev.i915.perf_stream_paranoid" = 0;
       "vm.vfs_cache_pressure" = 300;
       "vm.swappiness" = 25;
       "vm.dirty_background_ratio" = 1;
