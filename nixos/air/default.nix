@@ -117,7 +117,7 @@
   #  ]; # Note these options effect the entire BTRFS filesystem and not just this volume, with the exception of `"subvol=swap"`, the other options are repeated in my other `fileSystem` mounts
   #};
 
-  fileSystems."/boot/efi" = {
+  fileSystems."/boot" = {
     device = "/dev/disk/by-partlabel/EFI";
     fsType = "vfat";
     options = [ "defaults" "noatime" "nodiratime" ];
