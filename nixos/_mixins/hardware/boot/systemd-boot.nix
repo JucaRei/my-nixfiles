@@ -1,11 +1,18 @@
 _: {
   boot = {
     loader = {
-      efi.canTouchEfiVariables = true;
-      systemd-boot.configurationLimit = 10;
-      systemd-boot.enable = true;
-      systemd-boot.memtest86.enable = true;
-      timeout = 10;
+      efi = {
+        #canTouchEfiVariables = true;
+        efiSysMountPoint = "/boot";
+      };
+      systemd-boot = {
+        enable = true;
+        editor = true;
+        configurationLimit = 4;
+        #consoleMode = "max";
+        memtest86.enable = true;
+      };
+      timeout = 5;
     };
   };
 }

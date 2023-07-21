@@ -1,10 +1,11 @@
 {
-  description = "Wimpy's NixOS and Home Manager Configuration";
+  description = "My NixOS and Home Manager Configuration";
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-23.05";
     # You can access packages and modules from different nixpkgs revs at the
     # same time. See 'unstable-packages' overlay in 'overlays/default.nix'.
     nixpkgs-unstable.url = "github:nixos/nixpkgs/nixos-unstable";
+    #nixpkgs-prev.url = "github:NixOS/nixpkgs/nixos-22.11";
 
     disko.url = "github:nix-community/disko";
     disko.inputs.nixpkgs.follows = "nixpkgs";
@@ -16,6 +17,48 @@
     nix-formatter-pack.inputs.nixpkgs.follows = "nixpkgs";
 
     nixos-hardware.url = "github:NixOS/nixos-hardware/master";
+
+    #nix-index-database.url = "github:Mic92/nix-index-database";
+    #nix-index-database.inputs.nixpkgs.follows = "nixpkgs";
+
+    darwin.url = "github:lnl7/nix-darwin/master"; # MacOS Package Management
+    darwin.nixpkgs.follows = "nixpkgs";
+
+    #nur.url = "github:nix-community/NUR"; # Add "nur.nixosModules.nur" to the host modules
+
+    #spicetify-nix.url = "github:the-argus/spicetify-nix";
+    #nixpkgs-f2k.url = "github:fortuneteller2k/nixpkgs-f2k";
+
+    #nixgl.url = "github:guibou/nixGL";
+    #nixgl.inputs.nixpkgs.follows = "nixpkgs";
+
+    nixos-generators.url = "github:NixOS/nixos-hardware/master";
+
+    #emacs-overlay = {
+    #  # Emacs Overlays
+    #  url = "github:nix-community/emacs-overlay";
+    #  flake = false;
+    #};
+
+    #doom-emacs = {
+    #  # Nix-community Doom Emacs
+    #  url = "github:nix-community/nix-doom-emacs";
+    #  inputs.nixpkgs.follows = "nixpkgs";
+    #  inputs.emacs-overlay.follows = "emacs-overlay";
+    #};
+
+    #hyprland = {
+    #  # Official Hyprland flake
+    #  url = "github:vaxerski/Hyprland"; # Add "hyprland.nixosModules.default" to the host modules
+    #  inputs.nixpkgs.follows = "nixpkgs";
+    #};
+
+    #plasma-manager = {
+    #  # KDE Plasma user settings
+    #  url = "github:pjones/plasma-manager"; # Add "inputs.plasma-manager.homeManagerModules.plasma-manager" to the home-manager.users.${user}.imports
+    #  inputs.nixpkgs.follows = "nixpkgs";
+    #  inputs.home-manager.follows = "nixpkgs";
+    #};
   };
   outputs =
     { self
