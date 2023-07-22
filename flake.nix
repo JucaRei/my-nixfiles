@@ -77,17 +77,17 @@
       # nix build .#homeConfigurations."juca@rocinante".activationPackage
       homeConfigurations = {
         # .iso images
-        "juca@iso-console" = libx.mkHome { hostname = "iso-console"; username = "nixos"; };
-        "juca@iso-desktop" = libx.mkHome { hostname = "iso-desktop"; username = "nixos"; desktop = "pantheon"; };
+        #"juca@iso-console" = libx.mkHome { hostname = "iso-console"; username = "nixos"; };
+        #"juca@iso-desktop" = libx.mkHome { hostname = "iso-desktop"; username = "nixos"; desktop = "pantheon"; };
         # Workstations
         "juca@air" = libx.mkHome { hostname = "air"; username = "juca"; desktop = "pantheon"; };
-        "juca@rocinante" = libx.mkHome { hostname = "rocinante"; username = "juca"; desktop = "pantheon"; };
-        "juca@nitro" = libx.mkHome { hostname = "nitro"; username = "juca"; desktop = "pantheon"; };
-        "juca@vm" = libx.mkHome { hostname = "vm"; username = "juca"; desktop = "pantheon"; };
-        "juca@pi" = libx.mkHome { hostname = "pi"; username = "juca"; desktop = "pantheon"; };
+        #"juca@rocinante" = libx.mkHome { hostname = "rocinante"; username = "juca"; desktop = "pantheon"; };
+        #"juca@nitro" = libx.mkHome { hostname = "nitro"; username = "juca"; desktop = "pantheon"; };
+        #"juca@vm" = libx.mkHome { hostname = "vm"; username = "juca"; desktop = "pantheon"; };
+        #"juca@pi" = libx.mkHome { hostname = "pi"; username = "juca"; desktop = "pantheon"; };
         # Servers
-        "juca@vm-mini" = libx.mkHome { hostname = "vm-mini"; username = "juca"; };
-        "juca@pi-mini" = libx.mkHome { hostname = "pi-mini"; username = "juca"; };
+        #"juca@vm-mini" = libx.mkHome { hostname = "vm-mini"; username = "juca"; };
+        #"juca@pi-mini" = libx.mkHome { hostname = "pi-mini"; username = "juca"; };
       };
       nixosConfigurations = {
         # .iso images
@@ -98,13 +98,13 @@
         #  - sudo nixos-rebuild switch --flake $HOME/Zero/nix-config
         #  - nix build .#nixosConfigurations.rocinante.config.system.build.toplevel
         air = libx.mkHost { hostname = "air"; username = "juca"; desktop = "pantheon"; };
-        rocinante = libx.mkHost { hostname = "rocinante"; username = "juca"; desktop = "pantheon"; };
-        nitro = libx.mkHost { hostname = "nitro"; username = "juca"; desktop = "pantheon"; };
-        vm = libx.mkHost { hostname = "vm"; username = "juca"; desktop = "pantheon"; };
+        #rocinante = libx.mkHost { hostname = "rocinante"; username = "juca"; desktop = "pantheon"; };
+        #nitro = libx.mkHost { hostname = "nitro"; username = "juca"; desktop = "pantheon"; };
+        #vm = libx.mkHost { hostname = "vm"; username = "juca"; desktop = "pantheon"; };
         # Servers
-        pi = libx.mkHost { hostname = "pi"; username = "juca"; };
-        pi-mini = libx.mkHost { hostname = "pi-mini"; username = "juca"; };
-        vm-mini = libx.mkHost { hostname = "vm-mini"; username = "juca"; };
+        #pi = libx.mkHost { hostname = "pi"; username = "juca"; };
+        #pi-mini = libx.mkHost { hostname = "pi-mini"; username = "juca"; };
+        #vm-mini = libx.mkHost { hostname = "vm-mini"; username = "juca"; };
       };
 
       # Devshell for bootstrapping; acessible via 'nix develop' or 'nix-shell' (legacy)
