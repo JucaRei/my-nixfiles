@@ -5,7 +5,6 @@ in
 {
   imports = [
     #inputs.budgie.nixosModules.default
-    inputs.budgie.nixosModules
   ];
 
   environment.budgie.excludePackages = with pkgs; [ mate.mate-terminal ];

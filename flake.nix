@@ -61,10 +61,10 @@
     #  inputs.home-manager.follows = "nixpkgs";
     #};
 
-    budgie = {
-      url = "github:FedericoSchonborn/budgie-nix";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
+    #budgie = {
+    #  url = "github:FedericoSchonborn/budgie-nix";
+    #  inputs.nixpkgs.follows = "nixpkgs";
+    #};
   };
   outputs =
     { self
