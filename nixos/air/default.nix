@@ -234,7 +234,7 @@
     };
   };
 
-  security.enable = lib.mkDefault false;
+  security.sudo.enable = lib.mkDefault false;
 
   virtualisation.docker = { storageDriver = lib.mkForce "btrfs"; };
 
