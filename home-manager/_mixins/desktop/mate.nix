@@ -10,8 +10,8 @@ with lib.hm.gvariant;
       cursor-theme = "Yaru";
       document-font-name = "Work Sans 12";
       font-name = "Work Sans 12";
-      gtk-theme = "Yaru-magenta-dark";
-      icon-theme = "Yaru-magenta-dark";
+      gtk-theme = lib.mkDefault "Yaru-magenta-dark";
+      icon-theme = lib.mkDefault "Yaru-magenta-dark";
       monospace-font-name = "FiraCode Nerd Font Medium 13";
     };
 
@@ -96,9 +96,9 @@ with lib.hm.gvariant;
       document-font-name = "Work Sans 12";
       font-name = "Work Sans 12";
       gtk-decoration-layout = ":minimize,maximize,close";
-      gtk-theme = "Yaru-magenta-dark";
+      gtk-theme = lib.mkDefault "Yaru-magenta-dark";
       gtk-color-scheme = "tooltip_fg_color:#ffffff\ntooltip_bg_color:#343434";
-      icon-theme = "Yaru-magenta-dark";
+      icon-theme = lib.mkDefault "Yaru-magenta-dark";
       monospace-font-name = "FiraCode Nerd Font Medium 13";
     };
 
