@@ -12,7 +12,7 @@
     ../hardware/bluetooth
     ../hardware/power/powertop-save.nix
     ../hardware/harddrive/ssd.nix
-    ../editors
+    #../editors
     ./fonts.nix
     ./console.nix
     ./shells.nix
