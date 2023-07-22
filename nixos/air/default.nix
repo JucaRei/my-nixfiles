@@ -13,6 +13,7 @@
     ../_mixins/hardware/boot/efi.nix
     ../_mixins/hardware/bluetooth
     #../_mixins/services/zerotier.nix
+    ../_mixins/services/security/doas.nix
     ../_mixins/virt/docker.nix
     ../_mixins/virt
   ];
@@ -232,6 +233,8 @@
       aggressive = true;
     };
   };
+
+  security.enable = lib.mkDefault false;
 
   virtualisation.docker = { storageDriver = lib.mkForce "btrfs"; };
 
