@@ -3,13 +3,14 @@ let
   system = "x86_64-linux";
 in
 {
-  imports = [ ];
+  imports = [
+    inputs.budgie.nixosModules.default
+  ];
 
   environment.budgie.excludePackages = with pkgs; [ mate.mate-terminal ];
 
   environment.systemPackages = [
     inputs.nix-software-center.packages.${system}.nix-software-center
-    inputs.budgie.nixosModules.default.${system}.budgie
   ];
 
   # Enable some programs to provide a complete desktop
@@ -45,11 +46,11 @@ in
 
       desktopManager = {
         budgie = {
-          enable = lib.mkForce true;
+          #enable = lib.mkForce true;
           sessionPath = [ ];
-          extraGSettingsOverrides = ''
-            [com.solus-project.icon-tasklist:Budgie]
-            pinned-launchers=["firefox.desktop", "nixos-manual.desktop", "mate-terminal.desktop", "nemo.desktop", "gparted.desktop", "io.calamares.calamares.desktop"] '';
+          #extraGSettingsOverrides = ''
+          #  [com.solus-project.icon-tasklist:Budgie]
+          #  pinned-launchers=["firefox.desktop", "nixos-manual.desktop", "mate-terminal.desktop", "nemo.desktop", "gparted.desktop", "io.calamares.calamares.desktop"] '';
           extraGSettingsOverridePackages = [ ];
           extraPlugins = with pkgs; [ budgiePlugins.budgie-analogue-clock-applet ];
         };
