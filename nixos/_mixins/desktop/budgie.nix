@@ -1,10 +1,14 @@
-{ pkgs, lib, inputs, forAllSystems, ... }: {
+{ pkgs, lib, inputs, ... }:
+let
+  system = "x86_64-linux";
+in
+{
   imports = [ ];
 
   environment.budgie.excludePackages = with pkgs; [ mate.mate-terminal ];
 
   environment.systemPackages = [
-    inputs.nix-software-center.packages.${forAllSystems}.nix-software-center
+    inputs.nix-software-center.packages.${system}.nix-software-center
   ];
 
   # Enable some programs to provide a complete desktop
