@@ -2,8 +2,8 @@
 # For actuall installs pantheon-apps.nix is also included
 { pkgs, ... }: {
   imports = [
-    ./qt-style.nix
-    ../services/networkmanager.nix
+    #./qt-style.nix
+    #../services/networkmanager.nix
   ];
 
   # Exclude the elementary apps I don't use

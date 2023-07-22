@@ -1,7 +1,7 @@
 { pkgs, ... }: {
   imports = [
-    ./qt-style.nix
-    ../services/networkmanager.nix
+    #./qt-style.nix
+    #../services/networkmanager.nix
   ];
 
   # Exclude MATE themes. Yaru will be used instead.
@@ -82,5 +82,5 @@
       };
     };
   };
-  xdg.portal.extraPortals = [ xdg-desktop-portal-gtk ];
+  xdg.portal.extraPortals = with pkgs; [ xdg-desktop-portal-gtk ];
 }

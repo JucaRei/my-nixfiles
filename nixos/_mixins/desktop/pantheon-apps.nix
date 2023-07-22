@@ -1,7 +1,7 @@
 { pkgs, ... }: {
   imports = [
-    ../services/flatpak.nix
-    ../services/sane.nix
+    #../services/flatpak.nix
+    #../services/sane.nix
   ];
 
   # Add additional apps and include Yaru for syntax highlighting
@@ -22,7 +22,7 @@
   };
 
   systemd.services.configure-appcenter-repo = {
-    wantedBy = ["multi-user.target"];
+    wantedBy = [ "multi-user.target" ];
     path = [ pkgs.flatpak ];
     script = ''
       flatpak remote-add --if-not-exists appcenter https://flatpak.elementary.io/repo.flatpakrepo

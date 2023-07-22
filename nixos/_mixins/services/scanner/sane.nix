@@ -1,13 +1,12 @@
-{
-  pkgs,
-  lib,
-  desktop,
-  ...
+{ pkgs
+, lib
+, desktop
+, ...
 }: {
   imports =
-    []
+    [ ]
     ++ lib.optional (builtins.isString desktop)
-    ../desktop/apps/utils/simple-scan.nix;
+      ../../apps/utils/simple-scan.nix;
 
   hardware = {
     sane = {

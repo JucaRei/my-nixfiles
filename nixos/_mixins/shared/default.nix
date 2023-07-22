@@ -5,6 +5,10 @@
     ../services/network/networkmanager.nix
     ../services/network/openssh.nix
     ../services/printer/cups.nix
+    ../services/sound/pipewire.nix
+    ../services/scanner/sane.nix
+    ../services/security/firewall.nix
+    ../services/security/polkit.nix
     ../hardware/bluetooth
     ../hardware/power/powertop-save.nix
     ../hardware/harddrive/ssd.nix

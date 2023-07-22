@@ -1,14 +1,13 @@
-{
-  config,
-  pkgs,
-  ...
+{ config
+, pkgs
+, ...
 }: {
   environment.systemPackages = with pkgs; [
     powertop
   ];
 
   boot = {
-    kernelParams = ["pcie_aspm.policy=powersave"];
+    kernelParams = [ "pcie_aspm.policy=powersave" ];
     extraModprobeConfig = ''
       options snd_hda_intel power_save=1
       options iwlwifi power_save=1 d0i3_disable=0 uapsd_disable=0
@@ -23,7 +22,55 @@
   };
 
   services = {
-    tlp.enable = true;
+    #power-profiles-daemon.enable = true;
+    # Automatic CPU speed and power optimizer for Linux
+    auto-cpufreq = { enable = true; };
+    # Provide Power Management Support
+    upower = {
+      enable = true;
+      usePercentageForPolicy = true;
+      percentageLow = 40;
+      percentageCritical = 20;
+      percentageAction = 5;
+      #criticalPowerAction = "Hibernate";
+      criticalPowerAction = "HybridSleep";
+    };
+    #cpupower-gui.enable = true;
+
+    #power-profiles-daemon.enable = lib.mkForce false; #dont work with tlp
+    tlp = {
+      enable = true;
+      settings = {
+        AHCI_RUNTIME_PM_ON_AC = "auto";
+        AHCI_RUNTIME_PM_ON_BAT = "auto";
+        CPU_BOOST_ON_AC = 1;
+        CPU_BOOST_ON_BAT = 0;
+        CPU_ENERGY_PERF_POLICY_ON_AC = "performance";
+        CPU_ENERGY_PERF_POLICY_ON_BAT = "power";
+        CPU_HWP_DYN_BOOST_ON_AC = 1;
+        CPU_HWP_DYN_BOOST_ON_BAT = 0;
+        CPU_MAX_PERF_ON_AC = 100;
+        CPU_MAX_PERF_ON_BAT = 100;
+        CPU_MIN_PERF_ON_AC = 0;
+        CPU_MIN_PERF_ON_BAT = 0;
+        CPU_SCALING_GOVERNOR_ON_AC = "performance";
+        CPU_SCALING_GOVERNOR_ON_BAT = "powersave";
+        NMI_WATCHDOG = 0;
+        PCIE_ASPM_ON_AC = "performance";
+        PCIE_ASPM_ON_BAT = "powersupersave";
+        PLATFORM_PROFILE_ON_AC = "performance";
+        PLATFORM_PROFILE_ON_BAT = "low-power";
+
+        # Runtime PM causes system lockup with i350-T4
+        #RUNTIME_PM_DRIVER_DENYLIST = "igb";
+
+        RUNTIME_PM_ON_AC = "auto";
+        RUNTIME_PM_ON_BAT = "auto";
+        SCHED_POWERSAVE_ON_AC = 0;
+        SCHED_POWERSAVE_ON_BAT = 1;
+        TLP_DEFAULT_MODE = "AC";
+      };
+    };
     udev.extraRules = ''
       ACTION=="add", SUBSYSTEM=="net", KERNEL=="eth*", RUN+="${pkgs.ethtool}/bin/ethtool -s %k wol d"
       ACTION=="add", SUBSYSTEM=="net", KERNEL=="wlan*", RUN+="${pkgs.iw}/bin/iw dev %k set power_save on"
@@ -37,4 +84,9 @@
   };
 
   powerManagement.powertop.enable = true;
+  # FIXME always coredumps on boot
+  #systemd.services.powertop.serviceConfig = {
+  #  Restart = "on-failure";
+  #  RestartSec = "2s";
+  #};
 }
