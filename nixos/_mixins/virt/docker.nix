@@ -1,15 +1,14 @@
-{
-  lib,
-  pkgs,
-  hostname,
-  ...
+{ lib
+, pkgs
+, hostname
+, ...
 }: {
   virtualisation = {
     oci-containers.backend = "docker";
     docker = {
       enable = true;
       enableOnBoot = lib.mkDefault false;
-      enableNvidia = true;
+      # enableNvidia = true;
       rootless = {
         enable = true;
         package = pkgs.docker;

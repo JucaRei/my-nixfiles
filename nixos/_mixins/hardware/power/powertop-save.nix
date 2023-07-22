@@ -39,7 +39,7 @@
 
     #power-profiles-daemon.enable = lib.mkForce false; #dont work with tlp
     tlp = {
-      enable = true;
+      enable = false;
       settings = {
         AHCI_RUNTIME_PM_ON_AC = "auto";
         AHCI_RUNTIME_PM_ON_BAT = "auto";
