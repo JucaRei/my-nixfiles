@@ -83,7 +83,7 @@
     # tor.enable = pkgs.lib.mkForce false;
   };
 
-  powerManagement.powertop.enable = true;
+  #powerManagement.powertop.enable = true;
   # FIXME always coredumps on boot
   #systemd.services.powertop.serviceConfig = {
   #  Restart = "on-failure";

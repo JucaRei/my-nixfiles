@@ -50,4 +50,6 @@
     pulseaudio.enable = lib.mkForce false;
     #extraConfig = "\n    load-module module-switch-on-connect\n  ";
   };
+  # Recent fix for pipewire-pulse breakage
+  #systemd.user.services.pipewire-pulse.path = [pkgs.pulseaudio];
 }
