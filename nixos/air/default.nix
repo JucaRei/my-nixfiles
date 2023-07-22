@@ -11,7 +11,7 @@
     # (import ./disks.nix { })
     (modulesPath + "/installer/scan/not-detected.nix")
     ../_mixins/hardware/boot/efi.nix
-    ../_mixins/services/bluetooth.nix
+    ../_mixins/hardware/bluetooth
     #../_mixins/services/zerotier.nix
     ../_mixins/virt/docker.nix
     ../_mixins/virt
