@@ -94,7 +94,7 @@
     "d /home/${username}/Scripts 0755 ${username} users - -"
     "d /home/${username}/Studio/OBS/config/obs-studio/ 0755 ${username} users - -"
     "d /home/${username}/Documents/workspace/linux 0755 ${username} users - -"
-    "d /home/${username}/Documents/workspace/virtualmachines{windowns,linux,mac} 0755 ${username} users - -"
+    "d /home/${username}/Documents/workspace/virtualmachines/{windowns,linux,mac} 0755 ${username} users - -"
     "d /home/${username}/Documents/workspace/docker-configs/resources 0755 ${username} users - -"
     "d /home/${username}/Documents/workspace/docker-configs/composes 0755 ${username} users - -"
     "d /home/${username}/Documents/workspace/lab 0755 ${username} users - -"
