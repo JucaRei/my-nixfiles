@@ -12,6 +12,7 @@
     (modulesPath + "/installer/scan/not-detected.nix")
     ../_mixins/hardware/boot/efi.nix
     ../_mixins/hardware/bluetooth
+    ../_mixins/hardware/backlight/acpilight.nix
     #../_mixins/services/zerotier.nix
     ../_mixins/services/security/doas.nix
     ../_mixins/virt/docker.nix
@@ -142,7 +143,7 @@
   }];
 
   boot = {
-    #isContainer = false;
+    isContainer = false;
 
     #plymouth = {
     #  enable = lib.mkForce true;
