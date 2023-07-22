@@ -1,17 +1,10 @@
-{ pkgs
-, lib
-, ...
-}: {
-  imports = [
-    ./configs/qt-style.nix
-    ./apps/browsers/firefox.nix
-    ../services/networkmanager.nix
-  ];
+{ pkgs, lib, inputs, forAllSystems, ... }: {
+  imports = [ ];
 
   environment.budgie.excludePackages = with pkgs; [ mate.mate-terminal ];
 
   environment.systemPackages = [
-    #inputs.nix-software-center.packages.${system}.nix-software-center
+    inputs.nix-software-center.packages.${forAllSystems}.nix-software-center
   ];
 
   # Enable some programs to provide a complete desktop
@@ -37,11 +30,11 @@
         lightdm = {
           enable = true;
           greeters.slick.enable = true;
-          autoLogin = {
-            enable = false;
-            #enable = true;
-            #user = "${username}";
-          };
+        };
+        autoLogin = {
+          enable = false;
+          #enable = true;
+          #user = "${username}";
         };
       };
 
