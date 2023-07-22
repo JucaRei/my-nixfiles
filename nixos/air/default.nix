@@ -205,8 +205,8 @@
       "vm.dirty_background_ratio" = 1;
       "vm.dirty_ratio" = 50;
     };
-    kernelPackages = pkgs.linuxPackages_latest;
-    #kernelPackages = pkgs.linuxPackages_zen;
+    #kernelPackages = pkgs.linuxPackages_latest;
+    kernelPackages = pkgs.linuxPackages_zen;
     supportedFilesystems = [ "btrfs" ]; # fat 32 and btrfs
   };
   hardware.acpilight.enable = true;
