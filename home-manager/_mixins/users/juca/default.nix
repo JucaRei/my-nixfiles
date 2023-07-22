@@ -17,10 +17,8 @@
     #    tab_width = 4
     #    [ALIASES]
     #  ";
-    file.".distroboxrc".text = "
-      xhost +si:localuser:$USER
-    ";
-    file.".face".source = ./face.png;
+    file.".distroboxrc".text = "\n      xhost +si:localuser:$USER\n    ";
+    file.".face".source = ./face.jpg;
     #file."Development/debian/.envrc".text = "export DEB_VENDOR=Debian";
     #file."Development/ubuntu/.envrc".text = "export DEB_VENDOR=Ubuntu";
     file.".ssh/config".text = "
@@ -60,20 +58,20 @@
      # Host ubuntupodcast.org
      #   HostName live.ubuntupodcast.org
     ";
-    #file."Quickemu/nixos-console.conf".text = ''
-    #  #!/run/current-system/sw/bin/quickemu --vm
-    #  guest_os="linux"
-    #  disk_img="nixos-console/disk.qcow2"
-    #  disk_size="96G"
-    #  iso="nixos-console/nixos.iso"
-    #'';
-    #file."Quickemu/nixos-desktop.conf".text = ''
-    #  #!/run/current-system/sw/bin/quickemu --vm
-    #  guest_os="linux"
-    #  disk_img="nixos-desktop/disk.qcow2"
-    #  disk_size="96G"
-    #  iso="nixos-desktop/nixos.iso"
-    #'';
+    file."Quickemu/nixos-console.conf".text = ''
+      #!/run/current-system/sw/bin/quickemu --vm
+      guest_os="linux"
+      disk_img="nixos-console/disk.qcow2"
+      disk_size="96G"
+      iso="nixos-console/nixos.iso"
+    '';
+    file."Quickemu/nixos-desktop.conf".text = ''
+      #!/run/current-system/sw/bin/quickemu --vm
+      guest_os="linux"
+      disk_img="nixos-desktop/disk.qcow2"
+      disk_size="96G"
+      iso="nixos-desktop/nixos.iso"
+    '';
     #sessionVariables = {
     #  BZR_EMAIL = "juca Wimpress <code@wimpress.io>";
     #  DEBFULLNAME = "juca Wimpress";
@@ -93,27 +91,24 @@
   };
 
   systemd.user.tmpfiles.rules = [
-    "d /home/${username}/Audio 0755 ${username} users - -"
-    "d /home/${username}/Development/debian 0755 ${username} users - -"
-    "d /home/${username}/Development/DeterminateSystems 0755 ${username} users - -"
-    "d /home/${username}/Development/flexiondotorg 0755 ${username} users - -"
-    "d /home/${username}/Development/mate-desktop 0755 ${username} users - -"
-    "d /home/${username}/Development/NixOS 0755 ${username} users - -"
-    "d /home/${username}/Development/quickemu-project 0755 ${username} users - -"
-    "d /home/${username}/Development/restfulmedia 0755 ${username} users - -"
-    "d /home/${username}/Development/ubuntu 0755 ${username} users - -"
-    "d /home/${username}/Development/ubuntu-mate 0755 ${username} users - -"
-    "d /home/${username}/Development/wimpysworld 0755 ${username} users - -"
-    "d /home/${username}/Dropbox 0755 ${username} users - -"
-    "d /home/${username}/Games 0755 ${username} users - -"
-    "d /home/${username}/Quickemu/nixos-console 0755 ${username} users - -"
-    "d /home/${username}/Quickemu/nixos-desktop 0755 ${username} users - -"
     "d /home/${username}/Scripts 0755 ${username} users - -"
     "d /home/${username}/Studio/OBS/config/obs-studio/ 0755 ${username} users - -"
+    "d /home/${username}/Documents/workspace/linux 0755 ${username} users - -"
+    "d /home/${username}/Documents/workspace/virtualmachines{windowns,linux,mac} 0755 ${username} users - -"
+    "d /home/${username}/Documents/workspace/docker-configs/{composes,resources} 0755 ${username} users - -"
+    "d /home/${username}/Documents/workspace/lab 0755 ${username} users - -"
+    "d /home/${username}/Documents/workspace/github 0755 ${username} users - -"
+    "d /home/${username}/Documents/workspace/bitbucket 0755 ${username} users - -"
+    "d /home/${username}/Documents/workspace/gitlab 0755 ${username} users - -"
+    "d /home/${username}/Documents/workspace/scripts/ 0755 ${username} users - -"
+    "d /home/${username}/Videos/{Animes/{movies,series,OVA},Series,Movies,Youtube/Tutorials} 0755 ${username} users - -"
+    "d /home/${username}/Games 0755 ${username} users - -"
+    "d /home/${username}/Quickemu/nixos-desktop 0755 ${username} users - -"
+    "d /home/${username}/Quickemu/nixos-console 0755 ${username} users - -"
     "d /home/${username}/Syncthing 0755 ${username} users - -"
-    "d /home/${username}/Volatile/Vorta 0755 ${username} users - -"
-    "d /home/${username}/Websites 0755 ${username} users - -"
+    "d /home/${username}/Pictures/{family,backup,phones,wallpapers,resources} 0755 ${username} users - -"
     "d /home/${username}/Zero 0755 ${username} users - -"
+    "d /home/${username}/Volatile/Vorta 0755 ${username} users - -"
     "L+ /home/${username}/.config/obs-studio/ - - - - /home/${username}/Studio/OBS/config/obs-studio/"
   ];
 }
