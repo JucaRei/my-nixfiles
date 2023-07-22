@@ -54,9 +54,9 @@ in
       #   extraGSettingsOverridePackages = [ ];
       #   extraPlugins = with pkgs; [ budgiePlugins.budgie-analogue-clock-applet ];
       # };
+      #};
     };
   };
-};
-xdg.portal.extraPortals = with pkgs; [ xdg-desktop-portal-gnome ];
-security.pam.services = { budgie-screensaver.allowNullPassword = true; };
+  xdg.portal.extraPortals = with pkgs; [ xdg-desktop-portal-gnome ];
+  security.pam.services = { budgie-screensaver.allowNullPassword = true; };
 }
