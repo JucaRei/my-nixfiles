@@ -9,6 +9,7 @@ in
 
   environment.systemPackages = [
     inputs.nix-software-center.packages.${system}.nix-software-center
+    inputs.budgie.nixosModules.default.${system}.budgie
   ];
 
   # Enable some programs to provide a complete desktop
@@ -46,7 +47,9 @@ in
         budgie = {
           enable = lib.mkForce true;
           sessionPath = [ ];
-          extraGSettingsOverrides = "";
+          extraGSettingsOverrides = ''
+            [com.solus-project.icon-tasklist:Budgie]
+            pinned-launchers=["firefox.desktop", "nixos-manual.desktop", "mate-terminal.desktop", "nemo.desktop", "gparted.desktop", "io.calamares.calamares.desktop"] '';
           extraGSettingsOverridePackages = [ ];
           extraPlugins = with pkgs; [ budgiePlugins.budgie-analogue-clock-applet ];
         };
