@@ -107,7 +107,7 @@ with lib.hm.gvariant;
     };
 
     "org/mate/desktop/peripherals/mouse" = {
-      cursor-size = 32;
+      cursor-size = 24;
       cursor-theme = "Yaru";
     };
 
@@ -142,7 +142,7 @@ with lib.hm.gvariant;
       button-layout = ":minimize,maximize,close";
       center-new-windows = false;
       compositing-manager = true;
-      num-workspaces = 8;
+      num-workspaces = 6;
       show-tab-border = false;
       theme = "Yaru-dark";
       titlebar-font = "Work Sans Semi-Bold 12";
@@ -200,12 +200,10 @@ with lib.hm.gvariant;
     "org/mate/marco/workspace-names" = {
       name-1 = " Web ";
       name-2 = " Work ";
-      name-3 = " Chat ";
-      name-4 = " Code ";
-      name-5 = " Virt ";
-      name-6 = " Cast ";
-      name-7 = " Fun ";
-      name-8 = " Stuff ";
+      name-3 = " Code ";
+      name-4 = " Virt ";
+      name-5 = " Fun ";
+      name-6 = " Stuff ";
     };
 
     "org/mate/maximus" = {
@@ -315,7 +313,7 @@ with lib.hm.gvariant;
     cursorTheme = {
       name = "Yaru";
       package = pkgs.yaru-theme;
-      size = 32;
+      size = 24;
     };
 
     font = {
@@ -356,7 +354,7 @@ with lib.hm.gvariant;
   home.pointerCursor = {
     name = "Yaru";
     package = pkgs.yaru-theme;
-    size = 32;
+    size = 24;
     gtk.enable = true;
     x11.enable = true;
   };

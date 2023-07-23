@@ -1,8 +1,7 @@
-{
-  pkgs,
-  config,
-  username,
-  ...
+{ pkgs
+, config
+, username
+, ...
 }: {
   boot = {
     extraModprobeConfig = ''
@@ -12,17 +11,22 @@
       options kvm ignore_nsrs=1
 
       #Load VFIO related modules
-      "options vfio-pci"
-      "ids=10de:1c02,10de:10f1"
+      #"options vfio-pci"
+      #"ids=10de:1c02,10de:10f1"
     '';
 
     # Load VFIO related modules
-    kernelModules = ["vfio_virqfd" "vfio_pci" "vfio_iommu_type1" "vfio"];
+    kernelModules = [
+      #"vfio_virqfd"
+      "vfio_pci"
+      "vfio_iommu_type1"
+      "vfio"
+    ];
 
     # Enable IOMMU
-    kernelParams = ["intel_iommu=on"];
+    kernelParams = [ "intel_iommu=on" ];
   };
-  users.groups.libvirtd.members = ["root" "${username}"];
+  users.groups.libvirtd.members = [ "root" "${username}" ];
 
   environment.systemPackages = with pkgs; [
     virt-manager
@@ -41,7 +45,7 @@
         package = pkgs.qemu_kvm;
         ovmf = {
           enable = true;
-          packages = with pkgs; [OVMFFull.fd];
+          packages = with pkgs; [ OVMFFull.fd ];
         };
         runAsRoot = true;
         swtpm.enable = true;

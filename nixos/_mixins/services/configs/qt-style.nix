@@ -14,7 +14,7 @@
 
   qt = {
     enable = true;
-    platformTheme = "gtk2";
-    style = "gtk2";
+    platformTheme = lib.mkDefault "gtk2";
+    style = lib.mkDefault "gtk2";
   };
 }

@@ -179,8 +179,7 @@
 
     kernelModules = [
       #"i965"
-      "i915"
-      "kvm-intel"
+      #"i915"
       "wl"
       "z3fold"
       #"hdapsd"
@@ -189,8 +188,8 @@
       "lz4hc_compress"
     ];
     kernelParams = [
-      "hid_apple.swap_opt_cmd=1" # This will switch the left Alt and Cmd key as well as the right Alt/AltGr and Cmd key.
-      "i915.force_probe=0116" # Force enable my intel graphics
+      #"hid_apple.swap_opt_cmd=1" # This will switch the left Alt and Cmd key as well as the right Alt/AltGr and Cmd key.
+      #"i915.force_probe=0116" # Force enable my intel graphics
       #"video=efifb:off" # Disable efifb driver, which crashes Xavier AGX/NX
       #"video=efifb"
       "zswap.enabled=1"
@@ -198,16 +197,15 @@
       "zswap.max_pool_percent=20"
       "zswap.zpool=z3fold"
       "fs.inotify.max_user_watches=524288"
-      "mitigations=off"
     ];
     kernel.sysctl = {
       #"kernel.sysrq" = 1;
       #"kernel.printk" = "3 3 3 3";
       "dev.i915.perf_stream_paranoid" = 0;
-      "vm.vfs_cache_pressure" = 300;
-      "vm.swappiness" = 25;
-      "vm.dirty_background_ratio" = 1;
-      "vm.dirty_ratio" = 50;
+      #"vm.vfs_cache_pressure" = 300;
+      #"vm.swappiness" = 25;
+      #"vm.dirty_background_ratio" = 1;
+      #"vm.dirty_ratio" = 50;
     };
     #kernelPackages = pkgs.linuxPackages_latest;
     kernelPackages = pkgs.linuxPackages_zen;
@@ -233,6 +231,13 @@
     mbpfan = {
       enable = true;
       aggressive = true;
+    };
+
+    xserver.libinput.touchpad = {
+      horizontalScrolling = true;
+      naturalScrolling = false;
+      tapping = true;
+      tappingDragLock = false;
     };
   };
 

@@ -24,7 +24,7 @@
   services = {
     #power-profiles-daemon.enable = true;
     # Automatic CPU speed and power optimizer for Linux
-    auto-cpufreq = { enable = true; };
+    #auto-cpufreq = { enable = true; };
     # Provide Power Management Support
     upower = {
       enable = true;

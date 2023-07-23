@@ -2,6 +2,7 @@
   imports = [
     #../services/flatpak.nix
     #../services/sane.nix
+    ../apps/terminal/tilix.nix
   ];
 
   # Add some packages to complete the MATE desktop
