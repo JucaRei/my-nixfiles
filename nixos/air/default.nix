@@ -3,16 +3,18 @@
 {
   imports = [
     inputs.nixos-hardware.nixosModules.common-cpu-intel
-    inputs.nixos-hardware.nixosModules.common-pc
-    inputs.nixos-hardware.nixosModules.common-pc-ssd
+    inputs.nixos-hardware.nixosModules.common-pc-laptop
     inputs.nixos-hardware.nixosModules.common-gpu-intel
     inputs.nixos-hardware.nixosModules.apple-macbook-air-4
+    inputs.nixos-hardware.nixosModules.framework
     inputs.nixos-hardware.nixosModules.common-cpu-intel-sandy-bridge
     # (import ./disks.nix { })
     (modulesPath + "/installer/scan/not-detected.nix")
     ../_mixins/hardware/boot/efi.nix
     ../_mixins/hardware/bluetooth
     ../_mixins/hardware/backlight/acpilight.nix
+    ../_mixins/hardware/cpu/intel.nix
+    ../_mixins/hardware/graphics/intel-old.nix
     #../_mixins/services/zerotier.nix
     ../_mixins/services/security/doas.nix
     ../_mixins/virt/docker.nix
@@ -212,7 +214,6 @@
     supportedFilesystems = [ "btrfs" ]; # fat 32 and btrfs
   };
   hardware.acpilight.enable = true;
-  hardware.opengl.driSupport = true;
 
   services = {
     #############
@@ -239,9 +240,9 @@
 
   virtualisation.docker = { storageDriver = lib.mkForce "btrfs"; };
 
-
   nixpkgs.hostPlatform = lib.mkDefault "x86_64-linux";
 
   hardware.cpu.intel.updateMicrocode =
     lib.mkDefault config.hardware.enableRedistributableFirmware;
+
 }

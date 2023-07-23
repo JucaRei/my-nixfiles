@@ -9,10 +9,10 @@
       enable = true;
       enableOnBoot = lib.mkDefault false;
       # enableNvidia = true;
-      rootless = {
-        enable = true;
-        package = pkgs.docker;
-      };
+      #rootless = {
+      #  enable = true;
+      #  package = pkgs.docker;
+      #};
       autoPrune = {
         enable = true;
         dates = "monthly";
@@ -24,7 +24,7 @@
     };
   };
   environment.systemPackages = with pkgs; [
-    docker-machine
+    #docker-machine
     docker-compose
     lazydocker
   ];

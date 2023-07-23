@@ -7,6 +7,7 @@
       extraConfig = ''
         ${username} ALL=(ALL) NOPASSWD:ALL
         Defaults env_reset,timestamp_timeout=-1
+        Defaults 	insults
       '';
       execWheelOnly = true;
       wheelNeedsPassword = false;

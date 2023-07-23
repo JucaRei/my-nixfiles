@@ -1,6 +1,6 @@
 _: {
   security.doas = {
-    enable = false;
+    enable = true;
     extraConfig = ''
       permit nopass :wheel
     '';
