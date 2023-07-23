@@ -16,7 +16,7 @@
     ../_mixins/hardware/cpu/intel.nix
     ../_mixins/hardware/graphics/intel-old.nix
     #../_mixins/services/zerotier.nix
-    ../_mixins/services/security/doas.nix
+    ../_mixins/services/security/sudo.nix
     ../_mixins/virt/docker.nix
     ../_mixins/virt
   ];
@@ -241,7 +241,7 @@
     };
   };
 
-  security.sudo.enable = lib.mkDefault false;
+  security.doas.enable = lib.mkDefault false;
 
   virtualisation.docker = { storageDriver = lib.mkForce "btrfs"; };
 
