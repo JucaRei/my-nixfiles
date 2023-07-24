@@ -69,7 +69,7 @@ in
 
     # 🍑 smooth rebuilds
     # Reduce disk usage
-    daemonIOSchedClass = "idle";
+    #daemonIOSchedClass = "idle";
     # Leave nix builds as a background task
     #daemonCPUSchedPolicy = "idle";
     #daemonIOSchedPriority = 2; # 7 max
