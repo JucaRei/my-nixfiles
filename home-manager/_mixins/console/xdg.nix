@@ -63,22 +63,22 @@ in
     userDirs = {
       enable = true;
       createDirectories = lib.mkDefault true;
-      desktop = "${config.home.homeDirectory}/$HOME/Desktop";
-      documents = "${config.home.homeDirectory}$HOME/Documents";
-      download = "${config.home.homeDirectory}$HOME/Downloads";
-      music = "${config.home.homeDirectory}$HOME/Music";
-      pictures = "${config.home.homeDirectory}$HOME/Pictures";
-      publicShare = "${config.home.homeDirectory}$HOME/Public";
-      templates = "${config.home.homeDirectory}$HOME/Templates";
+      desktop = "${config.home.homeDirectory}//Desktop";
+      documents = "${config.home.homeDirectory}/Documents";
+      download = "${config.home.homeDirectory}/Downloads";
+      music = "${config.home.homeDirectory}/Music";
+      pictures = "${config.home.homeDirectory}/Pictures";
+      publicShare = "${config.home.homeDirectory}/Public";
+      templates = "${config.home.homeDirectory}/Templates";
       extraConfig = {
-        XDG_SCREENSHOTS_DIR = "${config.home.homeDirectory}$HOME/Pictures/screenshots";
-        XDG_WALLPAPERS_DIR = "${config.home.homeDirectory}$HOME/Pictures/wallpapers";
+        XDG_SCREENSHOTS_DIR = "${config.home.homeDirectory}/Pictures/screenshots";
+        XDG_WALLPAPERS_DIR = "${config.home.homeDirectory}/Pictures/wallpapers";
         #XDG_CONTAINERS_DIR = "${config.home.homeDirectory}/containers-data";
-        XDG_WORKSPACE_DIR = "${config.home.homeDirectory}$HOME/Documents/workspace";
-        XDG_CACHE_HOME = "${config.home.homeDirectory}$HOME/.cache";
-        XDG_CONFIG_HOME = "${config.home.homeDirectory}$HOME/.config";
-        XDG_DATA_HOME = "${config.home.homeDirectory}$HOME/.local/share";
-        XDG_BIN_HOME = "${config.home.homeDirectory}$HOME/.local/bin";
+        XDG_WORKSPACE_DIR = "${config.home.homeDirectory}/Documents/workspace";
+        XDG_CACHE_HOME = "${config.home.homeDirectory}/.cache";
+        XDG_CONFIG_HOME = "${config.home.homeDirectory}/.config";
+        XDG_DATA_HOME = "${config.home.homeDirectory}/.local/share";
+        XDG_BIN_HOME = "${config.home.homeDirectory}/.local/bin";
       };
     };
   };
