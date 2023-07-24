@@ -52,7 +52,7 @@
       lurk # Modern Unix `strace`
       moar # Modern Unix `less`
       neofetch # Terminal system info
-      nixpkgs-review # Nix code review
+      #nixpkgs-review # Nix code review
       nurl # Nix URL fetcher
       nyancat # Terminal rainbow spewing feline
       optipng # Terminal PNG optimizer
