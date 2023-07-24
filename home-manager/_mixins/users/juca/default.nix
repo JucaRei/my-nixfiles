@@ -90,7 +90,7 @@
     };
   };
 
-  systemd.user.tmpfiles.rules = [
+  systemd.user.tmpfiles.rules = lib.mkDefault [
     "d /home/${username}/Scripts 0755 ${username} users - -"
     "d /home/${username}/Studio/OBS/config/obs-studio/ 0755 ${username} users - -"
     "d /home/${username}/Documents/workspace/linux 0755 ${username} users - -"
