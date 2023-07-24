@@ -72,13 +72,12 @@
       SYSTEMD_EDITOR = "micro";
       VISUAL = "micro";
     };
+  };
 
-
-    programs = {
-      home-manager.enable = true;
-      info.enable = true;
-      jq.enable = true;
-    };
+  programs = {
+    home-manager.enable = true;
+    info.enable = true;
+    jq.enable = true;
   };
 
   # Nicely reload system units when changing configs
