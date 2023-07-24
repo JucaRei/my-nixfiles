@@ -18,7 +18,7 @@
     ./neofetch.nix
     ./nixpkgs.nix
     ./powerline-go.nix
-    ./neovim.nix
+    #./neovim.nix
     ./readline.nix
     ./variables.nix
     ./zoxide.nix
