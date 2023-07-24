@@ -62,7 +62,7 @@ in
     };
     userDirs = {
       enable = true;
-      createDirectories = true;
+      createDirectories = lib.mkDefault true;
       desktop = "${config.home.homeDirectory}/Desktop";
       documents = "${config.home.homeDirectory}/Documents";
       download = "${config.home.homeDirectory}/Downloads";
