@@ -71,7 +71,7 @@ in
     # Reduce disk usage
     daemonIOSchedClass = "idle";
     # Leave nix builds as a background task
-    daemonCPUSchedPolicy = "idle";
+    #daemonCPUSchedPolicy = "idle";
     #daemonIOSchedPriority = 2; # 7 max
 
     gc = {
