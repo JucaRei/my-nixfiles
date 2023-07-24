@@ -1,5 +1,5 @@
 { pkgs, ... }: {
-  program = {
+  programs = {
     atuin = {
       enableBashIntegration = true;
       enableFishIntegration = true;
