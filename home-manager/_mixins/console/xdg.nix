@@ -62,14 +62,6 @@ in
     };
     userDirs = {
       enable = true;
-      createDirectories = lib.mkDefault true;
-      desktop = "${config.home.homeDirectory}/Desktop";
-      documents = "${config.home.homeDirectory}/Documents";
-      download = "${config.home.homeDirectory}/Downloads";
-      music = "${config.home.homeDirectory}/Music";
-      pictures = "${config.home.homeDirectory}/Pictures";
-      publicShare = "${config.home.homeDirectory}/Public";
-      templates = "${config.home.homeDirectory}/Templates";
       extraConfig = {
         XDG_SCREENSHOTS_DIR = "${config.home.homeDirectory}/Pictures/screenshots";
         XDG_WALLPAPERS_DIR = "${config.home.homeDirectory}/Pictures/wallpapers";

@@ -21,7 +21,7 @@
     #./neovim.nix
     ./readline.nix
     ./zoxide.nix
-    ./xdg.nix
+    #./xdg.nix
   ];
 
   home = {
