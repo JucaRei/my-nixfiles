@@ -42,7 +42,7 @@
           enable = true;
           cursorTheme.name = "Yaru";
           cursorTheme.package = pkgs.yaru-theme;
-          cursorTheme.size = 32;
+          cursorTheme.size = 24;
           iconTheme.name = "Yaru-magenta-dark";
           iconTheme.package = pkgs.yaru-theme;
           theme.name = "Yaru-magenta-dark";
