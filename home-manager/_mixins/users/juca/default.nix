@@ -128,6 +128,7 @@
     "d /home/${username}/Pictures/resources 0755 ${username} users - -"
     "d /home/${username}/Zero 0755 ${username} users - -"
     "d /home/${username}/Volatile/Vorta 0755 ${username} users - -"
+    "d /home/${username}/.config 0755 ${username} users - -"
     "L+ /home/${username}/.config/obs-studio/ - - - - /home/${username}/Studio/OBS/config/obs-studio/"
   ];
 }
