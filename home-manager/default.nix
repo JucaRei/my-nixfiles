@@ -13,7 +13,7 @@ in
     # inputs.nix-colors.homeManagerModules.default
 
     # You can also split up your configuration and import pieces of it here:
-    ./_mixins/console
+    ./_mixins/shared
   ]
   ++ lib.optional (builtins.isString desktop) ./_mixins/desktop
   ++ lib.optional (builtins.isPath (./. + "/_mixins/users/${username}")) ./_mixins/users/${username};
@@ -109,7 +109,7 @@ in
     };
     package = lib.mkDefault pkgs.unstable.nix;
     settings = {
-      sandbox = true;
+      #sandbox = true;
       auto-optimise-store = true;
       experimental-features = [ "nix-command" "flakes" "repl-flake" ];
       warn-dirty = false;
