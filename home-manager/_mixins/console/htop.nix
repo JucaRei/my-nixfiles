@@ -2,7 +2,7 @@
   home = {
     packages = [ pkgs.htop ];
     file = {
-      "${config.xdg.configHome}/htop/htoprc".text = builtins.readFile ../../../assets/htop/htoprc;
+      xdg.configFile."htop/htoprc" = builtins.readFile ../../../assets/htop/htoprc;
     };
   };
 
