@@ -65,7 +65,7 @@ in
 
   nix = {
     checkConfig = true;
-    checkAllErrors = true;
+    #checkAllErrors = true;
 
     # 🍑 smooth rebuilds
     # Reduce disk usage

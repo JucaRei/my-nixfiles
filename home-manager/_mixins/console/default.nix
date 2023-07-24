@@ -30,16 +30,16 @@
     # https://jvns.ca/blog/2022/04/12/a-list-of-new-ish--command-line-tools/
     packages = with pkgs; [
       asciinema # Terminal recorder
-      breezy # Terminal bzr client
-      butler # Terminal Itch.io API client
+      #breezy # Terminal bzr client
+      #butler # Terminal Itch.io API client
       chafa # Terminal image viewer
       dconf2nix # Nix code from Dconf files
-      debootstrap # Terminal Debian installer
+      #debootstrap # Terminal Debian installer
       diffr # Modern Unix `diff`
       difftastic # Modern Unix `diff`
       dua # Modern Unix `du`
       duf # Modern Unix `df`
-      du-dust # Modern Unix `du`
+      #du-dust # Modern Unix `du`
       entr # Modern Unix `watch`
       fd # Modern Unix `find`
       ffmpeg-headless # Terminal video encoder
