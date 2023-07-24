@@ -20,7 +20,6 @@
     ./powerline-go.nix
     #./neovim.nix
     ./readline.nix
-    ./variables.nix
     ./zoxide.nix
     ./xdg.nix
   ];
@@ -65,6 +64,14 @@
       wget2 # Terminal downloader
       yq-go # Terminal `jq` for YAML
     ];
+
+    sessionVariables = {
+      EDITOR = "micro";
+      MANPAGER = "sh -c 'col --no-backspaces --spaces | bat --language man'";
+      PAGER = "moar";
+      SYSTEMD_EDITOR = "micro";
+      VISUAL = "micro";
+    };
   };
 
   programs = {
