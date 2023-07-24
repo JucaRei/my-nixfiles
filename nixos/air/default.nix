@@ -241,6 +241,10 @@
     };
   };
 
+  environment.systemPackages = with pkgs; [
+    xorg.xbacklight
+  ];
+
   security.doas.enable = lib.mkDefault false;
 
   virtualisation.docker = { storageDriver = lib.mkForce "btrfs"; };
