@@ -1,6 +1,8 @@
 { lib, ... }: {
   boot.loader = {
-    efi = { canTouchEfiVariables = false; };
+    efi = {
+      canTouchEfiVariables = false;
+    };
     grub = {
       enable = true;
       efiSupport = false;
