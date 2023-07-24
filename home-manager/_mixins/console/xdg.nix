@@ -62,13 +62,21 @@ in
     };
     userDirs = {
       enable = true;
+      createDirectories = true;
+      desktop = "${config.home.homeDirectory}/Desktop";
+      documents = "${config.home.homeDirectory}/Documents";
+      download = "${config.home.homeDirectory}/Downloads";
+      music = "${config.home.homeDirectory}/Music";
+      pictures = "${config.home.homeDirectory}/Pictures";
+      publicShare = "${config.home.homeDirectory}/Public";
+      templates = "${config.home.homeDirectory}/Templates";
       extraConfig = {
         XDG_SCREENSHOTS_DIR = "${config.home.homeDirectory}/Pictures/screenshots";
         XDG_WALLPAPERS_DIR = "${config.home.homeDirectory}/Pictures/wallpapers";
         #XDG_CONTAINERS_DIR = "${config.home.homeDirectory}/containers-data";
         XDG_WORKSPACE_DIR = "${config.home.homeDirectory}/Documents/workspace";
         XDG_CACHE_HOME = "${config.home.homeDirectory}/.cache";
-        #XDG_CONFIG_HOME = lib.mkDefault "\${HOME}/.config";
+        XDG_CONFIG_HOME = lib.mkDefault "\${HOME}/.config";
         XDG_DATA_HOME = "${config.home.homeDirectory}/.local/share";
         XDG_BIN_HOME = "${config.home.homeDirectory}/.local/bin";
       };
