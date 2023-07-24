@@ -13,7 +13,7 @@
     ./gh.nix
     ./glow.nix
     ./gpg.nix
-    #./htop.nix
+    ./htop.nix
     ./micro.nix
     ./neofetch.nix
     ./nixpkgs.nix
@@ -21,7 +21,7 @@
     #./neovim.nix
     ./readline.nix
     ./zoxide.nix
-    #./xdg.nix
+    ./xdg.nix
   ];
 
   home = {

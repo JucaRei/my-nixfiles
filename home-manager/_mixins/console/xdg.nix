@@ -56,13 +56,13 @@ in
 {
   xdg = {
     enable = true;
-    mimeApps = {
-      enable = false;
-      defaultApplications = associations;
-    };
+    #mimeApps = {
+    #  enable = false;
+    #  defaultApplications = associations;
+    #};
     userDirs = {
       enable = true;
-      createDirectories = true;
+      createDirectories = lib.mkDefault true;
       desktop = "${config.home.homeDirectory}/Desktop";
       documents = "${config.home.homeDirectory}/Documents";
       download = "${config.home.homeDirectory}/Downloads";
@@ -76,7 +76,7 @@ in
         #XDG_CONTAINERS_DIR = "${config.home.homeDirectory}/containers-data";
         XDG_WORKSPACE_DIR = "${config.home.homeDirectory}/Documents/workspace";
         XDG_CACHE_HOME = "${config.home.homeDirectory}/.cache";
-        XDG_CONFIG_HOME = lib.mkDefault "\${HOME}/.config";
+        XDG_CONFIG_HOME = "${config.home.homeDirectory}/.config";
         XDG_DATA_HOME = "${config.home.homeDirectory}/.local/share";
         XDG_BIN_HOME = "${config.home.homeDirectory}/.local/bin";
       };
