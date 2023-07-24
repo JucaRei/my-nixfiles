@@ -13,11 +13,13 @@
     ./gh.nix
     ./glow.nix
     ./gpg.nix
+    ./htop.nix
     ./micro.nix
     ./neofetch.nix
     ./nixpkgs.nix
     ./powerline-go.nix
     ./neovim.nix
+    ./readline.nix
     ./variables.nix
     ./zoxide.nix
     ./xdg.nix
