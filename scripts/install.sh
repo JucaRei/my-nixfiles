@@ -74,9 +74,9 @@ if [[ $REPLY =~ ^[Yy]$ ]]; then
 fi
 
 
-#sudo nix run github:nix-community/disko \
-#    --extra-experimental-features "nix-command flakes" \
-#    --no-write-lock-file \
-#    -- \
-#    --mode zap_create_mount \
-#    "nixos/rocinante/disks.nix"
+sudo nix run github:nix-community/disko \
+    --extra-experimental-features "nix-command flakes" \
+    --no-write-lock-file \
+    -- \
+    --mode zap_create_mount \
+    "nixos/rocinante/disks.nix"
