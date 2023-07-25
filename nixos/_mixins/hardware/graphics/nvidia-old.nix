@@ -4,7 +4,10 @@
       # Enable the nvidia settings menu
       nvidiaSettings = true;
       forceFullCompositionPipeline = true;
-      #powerManagement.enable = true;
+      powerManagement.enable = true;
+
+      # Modesetting is needed for most Wayland compositors
+      modesetting.enable = true;
     };
   };
 
@@ -12,7 +15,7 @@
 
 
   boot = {
-    blacklistedKernelModules = [ "nouveau" ];
+    blacklistedKernelModules = [ "module_blacklist=i915" ];
     extraModulePackages = [ config.boot.kernelPackages.nvidia_x11_legacy340 ];
   };
 }
