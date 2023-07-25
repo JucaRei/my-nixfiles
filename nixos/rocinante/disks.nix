@@ -24,7 +24,7 @@ in
                 type = "filesystem";
                 format = "ext4";
                 # Overwirte the existing filesystem
-                extraArgs = [ "-f" ];
+                #extraArgs = [ "-f" ];
                 mountpoint = "/";
                 mountOptions = defaultExt4Opts;
               };
