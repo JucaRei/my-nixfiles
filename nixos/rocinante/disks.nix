@@ -11,7 +11,8 @@ in
         device = "/dev/sda";
         type = "disk";
         content = {
-          type = "gpt";
+          #type = "gpt";
+          type = "msdos";
           partitions = {
             boot = {
               size = "1M";
