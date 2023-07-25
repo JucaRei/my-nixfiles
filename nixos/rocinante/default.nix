@@ -7,7 +7,7 @@
     #inputs.nixos-hardware.nixosModules.common-cpu-intel
     #inputs.nixos-hardware.nixosModules.common-pc-laptop
     #inputs.nixos-hardware.nixosModules.common-pc-ssd
-    #(import ./disks.nix { })
+    (import ./disks.nix { })
     ../_mixins/hardware/boot/bios.nix
     ../_mixins/hardware/bluetooth
     ../_mixins/hardware/cpu/intel.nix
@@ -30,8 +30,11 @@
   }];
 
   boot = {
-    initrd.availableKernelModules = [ "uhci_hcd" "ehci_pci" "ata_piix" "ahci" "firewire_ohci" "usbhid" "usb_storage" "sd_mod" "sr_mod" ];
-    kernelModules = [ "applesmc" "kvm-intel" "bcm5974" ];
+    initrd = {
+      availableKernelModules = [ "uhci_hcd" "ehci_pci" "ata_piix" "ahci" "firewire_ohci" "usbhid" "usb_storage" "sd_mod" "sr_mod" ];
+      kernelModules = [ "b43" "bcm5974" "wl" ];
+    };
+    kernelModules = [ "applesmc" "kvm-intel" "bcm5974" "b43" ];
     #kernelPackages = lib.mkDefault pkgs.linuxPackages_6_3;
     #kernelPackages = lib.mkDefault pkgs.linuxPackages_5_4;
     kernelPackages = lib.mkDefault pkgs.linuxPackages_5_15;
@@ -40,9 +43,9 @@
     loader.grub = {
       gfxpayloadBios = "1920x1200";
     };
-    extraModprobeConfig = ''
-      options bcm5974
-    '';
+    #extraModprobeConfig = ''
+    #  options bcm5974
+    #'';
   };
 
   hardware.opengl = {
@@ -55,6 +58,8 @@
   hardware.acpilight.enable = true;
 
   services = {
+
+    enableB43Firmware = true;
     mbpfan = {
       enable = true;
       aggressive = true;
