@@ -23,7 +23,7 @@
           set menu_color_normal=light-blue/black
           set menu_color_highlight=black/light-blue
         '';
-        splashMode = lib.mkDefault "normal";
+        #splashMode = lib.mkDefault "normal";
         #splashImage = lib.mkDefault null;
       };
       systemd-boot.enable = false;
