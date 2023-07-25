@@ -15,7 +15,7 @@
 
 
   boot = {
-    blacklistedKernelModules = [ "module_blacklist=i915" ];
+    blacklistedKernelModules = [ "nouveau" "module_blacklist=i915" ];
     extraModulePackages = [ config.boot.kernelPackages.nvidia_x11_legacy340 ];
   };
 }
