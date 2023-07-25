@@ -6,7 +6,7 @@
     inputs.nixos-hardware.nixosModules.common-cpu-intel
     inputs.nixos-hardware.nixosModules.common-pc-laptop
     inputs.nixos-hardware.nixosModules.common-pc-ssd
-    (import ./disks.nix { })
+    #(import ./disks.nix { })
     ../_mixins/hardware/boot/bios.nix
     ../_mixins/hardware/bluetooth
     ../_mixins/hardware/cpu/intel.nix
