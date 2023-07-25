@@ -31,8 +31,8 @@ parted /dev/sda -- mkpart primary 1MB 100%
 parted /dev/sda -- set 1 boot on
 
 DEVICE=/dev/sda
-opts="defaults,noatime,nodiratime"
+OPTS="defaults,noatime,nodiratime"
 
 #mkfs.xfs -f -L "NIXOS" ${DEVICE}2
 mkfs.xfs -f -L "NIXOS" /dev/sda1
-mount -o $opts /dev/disk/by-label/NIXOS /mnt/
+mount -o ${OPTS} /dev/disk/by-label/NIXOS /mnt

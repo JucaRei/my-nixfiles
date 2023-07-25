@@ -19,7 +19,7 @@
 
   # disko does manage mounting of / /boot /home, but I want to mount by-partlabel
   fileSystems."/" = lib.mkForce {
-    device = "/dev/disk/by-partlabel/NIXOS";
+    device = "/dev/disk/by-label/NIXOS";
     fsType = "xfs";
     options = [ "defaults" "noatime" "nodiratime" ];
   };
@@ -64,7 +64,7 @@
     inxi
   ];
 
-
+  services.xserver.videoDrivers = [ "nvidia " ];
   hardware.cpu.intel.updateMicrocode = lib.mkDefault config.hardware.enableRedistributableFirmware;
 
   nixpkgs.hostPlatform = lib.mkDefault "x86_64-linux";
