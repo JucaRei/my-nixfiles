@@ -16,7 +16,7 @@ in
             boot = {
               size = "1M";
               type = "EF02"; # for grub MBR
-              flags = [ "bios_grub" ];
+              #flags = [ "bios_grub" ];
             };
             nixos = {
               size = "100%";
