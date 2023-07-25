@@ -18,4 +18,5 @@
 parted /dev/sda -- mklabel msdos
 # parted /dev/sda -- mkpart no-fs 1MB 
 parted /dev/sda -- mkpart primary 1MB 100%
-parted /dev/sda -- set 1 bios_grub on
+parted /dev/sda -- set 1 boot on
+#parted /dev/sda -- set 1 bios_grub on
