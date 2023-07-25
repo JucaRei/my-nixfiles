@@ -14,7 +14,7 @@
     ../_mixins/hardware/wifi/broadcom-wifi.nix
     ../_mixins/hardware/graphics/nvidia-old.nix
     ../_mixins/services/security/sudo.nix
-    ../_mixins/virt
+    ../_mixins/virt/docker-legacy.nix
   ];
 
   # disko does manage mounting of / /boot /home, but I want to mount by-partlabel
@@ -32,7 +32,8 @@
   boot = {
     initrd.availableKernelModules = [ "uhci_hcd" "ehci_pci" "ata_piix" "ahci" "firewire_ohci" "usbhid" "usb_storage" "sd_mod" "sr_mod" ];
     kernelModules = [ "kvm-intel" ];
-    kernelPackages = lib.mkDefault pkgs.linuxPackages_6_3;
+    #kernelPackages = lib.mkDefault pkgs.linuxPackages_6_3;
+    kernelPackages = lib.mkDefault pkgs.linuxPackages_5_4;
     kernelParams = [ "intel_idle.max_cstate=1" ];
     loader.grub = {
       gfxpayloadBios = "1920x1200";
@@ -52,18 +53,27 @@
       enable = true;
       aggressive = true;
     };
-    xserver.libinput.touchpad = {
-      horizontalScrolling = true;
-      naturalScrolling = false;
-      tapping = true;
-      tappingDragLock = false;
+    xserver = {
+      #libinput.touchpad = {
+      #  horizontalScrolling = true;
+      #  naturalScrolling = false;
+      #  tapping = true;
+      #  tappingDragLock = false;
+      #};
+      synaptics = {
+        enable = true;
+        twoFingerScroll = true;
+        tapButtons = true;
+        palmDetect = true;
+        horizontalScroll = true;
+      };
     };
   };
 
   environment.systemPackages = with pkgs; [
     xorg.xbacklight
     xorg.xrdb
-    intel-gpu-tools
+    #intel-gpu-tools
     inxi
   ];
 
