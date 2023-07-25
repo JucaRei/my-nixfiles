@@ -33,7 +33,8 @@
     initrd.availableKernelModules = [ "uhci_hcd" "ehci_pci" "ata_piix" "ahci" "firewire_ohci" "usbhid" "usb_storage" "sd_mod" "sr_mod" ];
     kernelModules = [ "kvm-intel" ];
     #kernelPackages = lib.mkDefault pkgs.linuxPackages_6_3;
-    kernelPackages = lib.mkDefault pkgs.linuxPackages_5_4;
+    #kernelPackages = lib.mkDefault pkgs.linuxPackages_5_4;
+    kernelPackages = lib.mkDefault pkgs.linuxPackages_5_15;
     kernelParams = [ "intel_idle.max_cstate=1" ];
     loader.grub = {
       gfxpayloadBios = "1920x1200";
@@ -44,6 +45,7 @@
     enable = true;
     driSupport = true;
     driSupport32Bit = true;
+    setLdLibraryPath = true;
   };
 
   hardware.acpilight.enable = true;
