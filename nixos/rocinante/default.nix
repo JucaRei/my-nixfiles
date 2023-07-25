@@ -34,6 +34,9 @@
     kernelModules = [ "kvm-intel" ];
     kernelPackages = lib.mkDefault pkgs.linuxPackages_6_3;
     kernelParams = [ "intel_idle.max_cstate=1" ];
+    loader.grub = {
+      gfxpayloadBios = "1920x1200";
+    };
   };
 
   hardware.opengl = {
