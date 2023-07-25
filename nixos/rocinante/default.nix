@@ -54,12 +54,15 @@
       aggressive = true;
     };
     xserver = {
-      #libinput.touchpad = {
-      #  horizontalScrolling = true;
-      #  naturalScrolling = false;
-      #  tapping = true;
-      #  tappingDragLock = false;
-      #};
+      libinput = {
+        enable = lib.mkForce false;
+        touchpad = {
+          horizontalScrolling = true;
+          naturalScrolling = false;
+          tapping = true;
+          tappingDragLock = false;
+        };
+      };
       synaptics = {
         enable = true;
         twoFingerScroll = true;
