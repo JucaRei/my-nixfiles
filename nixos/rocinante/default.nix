@@ -18,20 +18,9 @@
 
   # disko does manage mounting of / /boot /home, but I want to mount by-partlabel
   fileSystems."/" = lib.mkForce {
-    device = "/dev/disk/by-partlabel/root";
+    device = "/dev/disk/by-partlabel/NIXOS";
     fsType = "xfs";
-    options = [ "defaults" "relatime" "nodiratime" ];
-  };
-
-  fileSystems."/boot/efi" = lib.mkForce {
-    device = "/dev/disk/by-partlabel/bios";
-    fsType = "vfat";
-  };
-
-  fileSystems."/home" = lib.mkForce {
-    device = "/dev/disk/by-partlabel/home";
-    fsType = "xfs";
-    options = [ "defaults" "relatime" "nodiratime" ];
+    options = [ "defaults" "noatime" "nodiratime" ];
   };
 
   swapDevices = [{
@@ -45,16 +34,34 @@
     kernelPackages = lib.mkDefault pkgs.linuxPackages_6_3;
   };
 
-  # Use passed hostname to configure basic networking
-  networking = {
-    defaultGateway = "192.168.2.1";
-    interfaces.enp3s0.ipv4.addresses = [{
-      address = "192.168.2.10";
-      prefixLength = 24;
-    }];
-    nameservers = [ "192.168.2.1" ];
-    useDHCP = lib.mkForce false;
+  hardware.opengl = {
+    enable = true;
+    driSupport = true;
+    driSupport32Bit = true;
   };
+
+  hardware.acpilight.enable = true;
+
+  services = {
+    mbpfan = {
+      enable = true;
+      aggressive = true;
+    };
+    xserver.libinput.touchpad = {
+      horizontalScrolling = true;
+      naturalScrolling = false;
+      tapping = true;
+      tappingDragLock = false;
+    };
+  };
+
+  environment.systemPackages = with pkgs; [
+    xorg.xbacklight
+    xorg.xrdb
+    intel-gpu-tools
+    inxi
+  ];
+
 
   hardware.cpu.intel.updateMicrocode = lib.mkDefault config.hardware.enableRedistributableFirmware;
 
