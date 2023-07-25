@@ -59,6 +59,9 @@
       aggressive = true;
     };
     xserver = {
+      deviceSection = lib.mkDefault ''
+        Option "TearFree" "true"
+      '';
       libinput = {
         enable = lib.mkForce false;
         touchpad = {
@@ -67,9 +70,6 @@
           tapping = true;
           tappingDragLock = false;
         };
-        deviceSection = lib.mkDefault ''
-          Option "TearFree" "true"
-        '';
       };
       synaptics = {
         enable = lib.mkDefault true;
