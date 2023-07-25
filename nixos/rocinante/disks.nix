@@ -52,7 +52,7 @@ in
         type = "disk";
         content = {
           type = "gpt";
-          partitions = [{
+          partitions = {
             boot = {
               size = "1M";
               type = "EF02"; # for grub MBR
@@ -70,7 +70,7 @@ in
                 mountOptions = defaultExt4Opts;
               };
             };
-          }];
+          };
         };
       };
     };
