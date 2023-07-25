@@ -1,9 +1,9 @@
 _: {
-  programs = {
-    exa = {
+  direnv = {
+    enable = true;
+    enableBashIntegration = true;
+    nix-direnv = {
       enable = true;
-      enableAliases = true;
-      icons = true;
     };
   };
 }

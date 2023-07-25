@@ -197,6 +197,7 @@
       "zswap.max_pool_percent=20"
       "zswap.zpool=z3fold"
       "fs.inotify.max_user_watches=524288"
+      "intel_iommu=on"
     ];
     kernel.sysctl = {
       #"kernel.sysrq" = 1;
@@ -243,6 +244,9 @@
 
   environment.systemPackages = with pkgs; [
     xorg.xbacklight
+    xorg.xrdb
+    intel-gpu-tools
+    inxi
   ];
 
   security.doas.enable = lib.mkDefault false;

@@ -1,16 +1,18 @@
 # Gigabyte GB-BXCEH-2955 (Celeron 2955U: Haswell)
 
-{ inputs, lib, pkgs, ... }:
+{ inputs, lib, pkgs, config, ... }:
 {
   imports = [
     inputs.nixos-hardware.nixosModules.common-cpu-intel
-    inputs.nixos-hardware.nixosModules.common-gpu-intel
-    inputs.nixos-hardware.nixosModules.common-pc
+    inputs.nixos-hardware.nixosModules.common-pc-laptop
     inputs.nixos-hardware.nixosModules.common-pc-ssd
     (import ./disks.nix { })
-    ../_mixins/hardware/systemd-boot.nix
-    ../_mixins/services/bluetooth.nix
-    ../_mixins/services/zerotier.nix
+    ../_mixins/hardware/boot/bios.nix
+    ../_mixins/hardware/bluetooth
+    ../_mixins/hardware/cpu/intel.nix
+    ../_mixins/hardware/wifi/broadcom-wifi.nix
+    ../_mixins/hardware/graphics/nvidia-old.nix
+    ../_mixins/services/security/sudo.nix
     ../_mixins/virt
   ];
 
@@ -21,8 +23,8 @@
     options = [ "defaults" "relatime" "nodiratime" ];
   };
 
-  fileSystems."/boot" = lib.mkForce {
-    device = "/dev/disk/by-partlabel/ESP";
+  fileSystems."/boot/efi" = lib.mkForce {
+    device = "/dev/disk/by-partlabel/bios";
     fsType = "vfat";
   };
 
@@ -38,9 +40,9 @@
   }];
 
   boot = {
-    initrd.availableKernelModules = [ "xhci_pci" "ehci_pci" "ahci" "usbhid" "uas" "sd_nod" ];
+    initrd.availableKernelModules = [ "uhci_hcd" "ehci_pci" "ata_piix" "ahci" "firewire_ohci" "usbhid" "usb_storage" "sd_mod" "sr_mod" ];
     kernelModules = [ "kvm-intel" ];
-    kernelPackages = lib.mkDefault pkgs.linuxPackages_5_15;
+    kernelPackages = lib.mkDefault pkgs.linuxPackages_6_3;
   };
 
   # Use passed hostname to configure basic networking
@@ -53,6 +55,8 @@
     nameservers = [ "192.168.2.1" ];
     useDHCP = lib.mkForce false;
   };
+
+  hardware.cpu.intel.updateMicrocode = lib.mkDefault config.hardware.enableRedistributableFirmware;
 
   nixpkgs.hostPlatform = lib.mkDefault "x86_64-linux";
 }
