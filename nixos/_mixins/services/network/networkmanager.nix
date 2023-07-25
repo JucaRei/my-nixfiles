@@ -25,6 +25,7 @@
       192.168.1.230 air
       192.168.1.200 DietPi
       192.168.1.76  rocinante
+      192.168.1.45  rocinante
     '';
   };
   # Workaround https://github.com/NixOS/nixpkgs/issues/180175

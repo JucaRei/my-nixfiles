@@ -1,11 +1,11 @@
 { lib, ... }: {
   boot = {
     initrd = {
-      # SSH on initramfs.
-      network = {
-        enable = true;
-        ssh.enable = true;
-      };
+      ## SSH on initramfs.
+      #network = {
+      #  enable = true;
+      #  ssh.enable = true;
+      #};
     };
     tmp.cleanOnBoot = true;
     loader = {
@@ -14,7 +14,7 @@
       };
       grub = {
         enable = true;
-        version = 2;
+        #version = 2;
         efiSupport = false;
         device = lib.mkDefault "/dev/sda"; # MBR/BIOS
 
