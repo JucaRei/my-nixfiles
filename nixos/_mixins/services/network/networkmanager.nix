@@ -1,4 +1,4 @@
-{ pkgs, ... }: {
+{ pkgs, config, ... }: {
   networking = {
     firewall = {
       allowedTCPPorts = [ 22 ];
@@ -28,6 +28,10 @@
       192.168.1.45  rocinante
     '';
   };
+
+  # Make it use predictable interface names starting with eth0
+  boot.kernelParams = [ "net.ifnames=0" ];
+
   # Workaround https://github.com/NixOS/nixpkgs/issues/180175
   systemd.services.NetworkManager-wait-online.enable = false;
 }

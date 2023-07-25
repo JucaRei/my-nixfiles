@@ -1,4 +1,5 @@
-# Gigabyte GB-BXCEH-2955 (Celeron 2955U: Haswell)
+# MacbookPro 4,1 early 2009
+# nvidia 8600 gt
 
 { inputs, lib, pkgs, config, ... }:
 {
@@ -32,6 +33,7 @@
     initrd.availableKernelModules = [ "uhci_hcd" "ehci_pci" "ata_piix" "ahci" "firewire_ohci" "usbhid" "usb_storage" "sd_mod" "sr_mod" ];
     kernelModules = [ "kvm-intel" ];
     kernelPackages = lib.mkDefault pkgs.linuxPackages_6_3;
+    kernelParams = [ "intel_idle.max_cstate=1" ];
   };
 
   hardware.opengl = {

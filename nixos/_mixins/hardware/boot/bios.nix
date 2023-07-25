@@ -9,14 +9,12 @@
     };
     tmp.cleanOnBoot = true;
     loader = {
-      efi = {
-        canTouchEfiVariables = false;
-      };
       grub = {
         enable = true;
         #version = 2;
         efiSupport = false;
         device = lib.mkDefault "/dev/sda"; # MBR/BIOS
+        fsIdentifier = "label";
 
         backgroundColor = "#21202D";
         configurationLimit = 6;
@@ -28,6 +26,8 @@
         splashMode = lib.mkDefault "normal";
         #splashImage = lib.mkDefault null;
       };
+      systemd-boot.enable = false;
+      efi.canTouchEfiVariables = false;
     };
   };
 }
