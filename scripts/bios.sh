@@ -34,5 +34,5 @@ DEVICE=/dev/sda
 opts="defaults,noatime,nodiratime"
 
 #mkfs.xfs -f -L "NIXOS" ${DEVICE}2
-mkfs.xfs -f -L "NIXOS" /dev/sda
+mkfs.xfs -f -L "NIXOS" /dev/sda1
 mount -o $opts /dev/disk/by-label/NIXOS /mnt/
