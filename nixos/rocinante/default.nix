@@ -35,7 +35,8 @@
     #kernelPackages = lib.mkDefault pkgs.linuxPackages_6_3;
     #kernelPackages = lib.mkDefault pkgs.linuxPackages_5_4;
     kernelPackages = lib.mkDefault pkgs.linuxPackages_5_15;
-    kernelParams = [ "intel_idle.max_cstate=1" "hid_apple.iso_layout=0" "acpi_backlight=vendor" "acpi_mask_gpe=0x15" ];
+    #kernelParams = [ "intel_idle.max_cstate=1" "hid_apple.iso_layout=0" "acpi_backlight=vendor" "acpi_mask_gpe=0x15" ];
+    kernelParams = [ "intel_idle.max_cstate=1" "acpi_backlight=vendor" ];
     loader.grub = {
       gfxpayloadBios = "1920x1200";
     };
