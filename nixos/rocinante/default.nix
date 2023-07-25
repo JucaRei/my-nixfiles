@@ -31,14 +31,17 @@
 
   boot = {
     initrd.availableKernelModules = [ "uhci_hcd" "ehci_pci" "ata_piix" "ahci" "firewire_ohci" "usbhid" "usb_storage" "sd_mod" "sr_mod" ];
-    kernelModules = [ "kvm-intel" ];
+    kernelModules = [ "applesmc" "kvm-intel" "bcm5974" ];
     #kernelPackages = lib.mkDefault pkgs.linuxPackages_6_3;
     #kernelPackages = lib.mkDefault pkgs.linuxPackages_5_4;
     kernelPackages = lib.mkDefault pkgs.linuxPackages_5_15;
-    kernelParams = [ "intel_idle.max_cstate=1" ];
+    kernelParams = [ "intel_idle.max_cstate=1" "hid_apple.iso_layout=0" "acpi_backlight=vendor" "acpi_mask_gpe=0x15" ];
     loader.grub = {
       gfxpayloadBios = "1920x1200";
     };
+    extraModprobeConfig = ''
+      options bcm5974
+    '';
   };
 
   hardware.opengl = {
@@ -64,9 +67,12 @@
           tapping = true;
           tappingDragLock = false;
         };
+        deviceSection = lib.mkDefault ''
+          Option "TearFree" "true"
+        '';
       };
       synaptics = {
-        enable = true;
+        enable = lib.mkDefault true;
         twoFingerScroll = true;
         tapButtons = true;
         palmDetect = true;
