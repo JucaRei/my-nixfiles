@@ -36,9 +36,9 @@
     # Fast moving apps use the unstable branch
     #unstable.discord
     #unstable.fluffychat
-    unstable.gitkraken
+    #unstable.gitkraken
     #unstable.tdesktop
     unstable.vscode-fhs
-    unstable.wavebox
+    #unstable.wavebox
   ];
 }
