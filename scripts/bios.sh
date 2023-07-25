@@ -12,9 +12,3 @@ mkpart primary xfs 2 100%
 print
 quit
 END
-
-mkfs.xfs -f -L "NIXOS" ${device}2
-opts="defaults,noatime,nodiratime"
-mount -o $opts /dev/disk/by-partlabel/NIXOS /mnt
-
-lsblk -fm
