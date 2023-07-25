@@ -69,13 +69,13 @@
           tappingDragLock = false;
         };
       };
-    };
-    synaptics = {
-      enable = lib.mkDefault true;
-      twoFingerScroll = true;
-      tapButtons = true;
-      palmDetect = true;
-      horizontalScroll = true;
+      synaptics = {
+        enable = lib.mkDefault true;
+        twoFingerScroll = true;
+        tapButtons = true;
+        palmDetect = true;
+        horizontalScroll = true;
+      };
     };
   };
 
