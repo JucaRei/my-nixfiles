@@ -7,7 +7,7 @@ in
 {
   disko.devices = {
     disk = {
-      vdb = {
+      sda = {
         device = "/dev/sda";
         type = "disk";
         content = {
@@ -18,7 +18,7 @@ in
               type = "EF02"; # for grub MBR
               flags = [ "bios_grub" ];
             };
-            root = {
+            nixos = {
               size = "100%";
               content = {
                 type = "filesystem";
