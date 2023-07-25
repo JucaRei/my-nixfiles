@@ -58,8 +58,6 @@
   hardware.acpilight.enable = true;
 
   services = {
-
-    enableB43Firmware = true;
     mbpfan = {
       enable = true;
       aggressive = true;
@@ -91,6 +89,8 @@
     glxinfo
     inxi
   ];
+
+  networking.enableB43Firmware = true;
 
   powerManagement.cpuFreqGovernor = "performance";
 
