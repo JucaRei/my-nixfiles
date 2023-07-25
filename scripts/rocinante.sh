@@ -1,25 +1,17 @@
 #!/bin/sh
-export drive="/dev/sda"
 
-#        
+DEVICE=/dev/sda
 
-sgdisk -Z $drive
-parted -s -a optimal $drive \
-       mklabel gpt \
-       mkpart no-fs 0 1024KiB \
-       align-check optimal 1 \
-       set 1 bios_grub on \
-       print
+cat | parted ${DEVICE} << END
+mktable gpt
+mkpart primary ext2 1 2
+set 1 bios_grub on
+mkpart primary xfs 2 100%
+print
+quit
 
+END
 
-#parted --script $drive -- \
-#        mklabel gpt \
-#        mkpart no-fs 0 1MiB \
-#        set 1 bios_grub on \
-#        align-check optimal 1 \
-#        print
-#
-mkfs.xfs $drive -f -L "NIXOS"
+mkfs.btrfs -f -L "NIXOS" ${device}2
 
-opts="defaults,noatime,nodiratime"
-mount -o $opts $drive /mnt
+lsblk -fm
