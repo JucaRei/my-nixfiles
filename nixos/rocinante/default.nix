@@ -17,12 +17,12 @@
     ../_mixins/virt/docker-legacy.nix
   ];
 
-  # disko does manage mounting of / /boot /home, but I want to mount by-partlabel
-  fileSystems."/" = lib.mkForce {
-    device = "/dev/disk/by-label/NIXOS";
-    fsType = "xfs";
-    options = [ "defaults" "noatime" "nodiratime" ];
-  };
+  ## disko does manage mounting of / /boot /home, but I want to mount by-partlabel
+  #fileSystems."/" = lib.mkForce {
+  #  device = "/dev/disk/by-label/NIXOS";
+  #  fsType = "xfs";
+  #  options = [ "defaults" "noatime" "nodiratime" ];
+  #};
 
   swapDevices = [{
     device = "/swap";
