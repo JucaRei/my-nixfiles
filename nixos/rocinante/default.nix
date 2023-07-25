@@ -59,13 +59,15 @@
       enable = true;
       aggressive = true;
     };
-    libinput = {
-      enable = lib.mkForce false;
-      touchpad = {
-        horizontalScrolling = true;
-        naturalScrolling = false;
-        tapping = true;
-        tappingDragLock = false;
+    xserver = {
+      libinput = {
+        enable = lib.mkForce false;
+        touchpad = {
+          horizontalScrolling = true;
+          naturalScrolling = false;
+          tapping = true;
+          tappingDragLock = false;
+        };
       };
     };
     synaptics = {
