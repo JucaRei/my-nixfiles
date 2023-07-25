@@ -1,10 +1,10 @@
-{ config, ... }: {
+{ config, lib, ... }: {
   hardware = {
     nvidia = {
       # Enable the nvidia settings menu
       nvidiaSettings = true;
       forceFullCompositionPipeline = true;
-      powerManagement.enable = true;
+      #powerManagement.enable = true;
 
       # Modesetting is needed for most Wayland compositors
       modesetting.enable = true;
@@ -12,6 +12,14 @@
   };
 
   hardware.nvidia.package = config.boot.kernelPackages.nvidiaPackages.legacy_340;
+
+  services = {
+    xserver = {
+      deviceSection = lib.mkDefault ''
+        Option "TearFree" "true"
+      '';
+    };
+  };
 
 
   boot = {

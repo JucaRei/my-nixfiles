@@ -10,7 +10,7 @@
     ../services/security/firewall.nix
     ../services/security/polkit.nix
     ../hardware/bluetooth
-    ../hardware/power/powertop-save.nix
+    #../hardware/power/powertop-save.nix
     ../hardware/harddrive/ssd.nix
     #../editors
     ./fonts.nix

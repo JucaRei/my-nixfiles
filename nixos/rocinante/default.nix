@@ -4,9 +4,9 @@
 { inputs, lib, pkgs, config, ... }:
 {
   imports = [
-    inputs.nixos-hardware.nixosModules.common-cpu-intel
-    inputs.nixos-hardware.nixosModules.common-pc-laptop
-    inputs.nixos-hardware.nixosModules.common-pc-ssd
+    #inputs.nixos-hardware.nixosModules.common-cpu-intel
+    #inputs.nixos-hardware.nixosModules.common-pc-laptop
+    #inputs.nixos-hardware.nixosModules.common-pc-ssd
     #(import ./disks.nix { })
     ../_mixins/hardware/boot/bios.nix
     ../_mixins/hardware/bluetooth
@@ -59,26 +59,21 @@
       enable = true;
       aggressive = true;
     };
-    xserver = {
-      deviceSection = lib.mkDefault ''
-        Option "TearFree" "true"
-      '';
-      libinput = {
-        enable = lib.mkForce false;
-        touchpad = {
-          horizontalScrolling = true;
-          naturalScrolling = false;
-          tapping = true;
-          tappingDragLock = false;
-        };
+    libinput = {
+      enable = lib.mkForce false;
+      touchpad = {
+        horizontalScrolling = true;
+        naturalScrolling = false;
+        tapping = true;
+        tappingDragLock = false;
       };
-      synaptics = {
-        enable = lib.mkDefault true;
-        twoFingerScroll = true;
-        tapButtons = true;
-        palmDetect = true;
-        horizontalScroll = true;
-      };
+    };
+    synaptics = {
+      enable = lib.mkDefault true;
+      twoFingerScroll = true;
+      tapButtons = true;
+      palmDetect = true;
+      horizontalScroll = true;
     };
   };
 
@@ -86,8 +81,11 @@
     xorg.xbacklight
     xorg.xrdb
     #intel-gpu-tools
+    glxinfo
     inxi
   ];
+
+  powerManagement.cpuFreqGovernor = "performance";
 
   hardware.cpu.intel.updateMicrocode = lib.mkDefault config.hardware.enableRedistributableFirmware;
 
