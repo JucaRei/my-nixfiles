@@ -32,7 +32,7 @@ in
           Option "RegistryDwords" "EnableBrightnessControl=1"
         EndSection
       '';
-      videoDrivers = [ "nvidiaLegacy340" ];
+      #videoDrivers = [ "nvidiaLegacy340" ];
     };
   };
 
