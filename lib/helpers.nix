@@ -7,7 +7,6 @@
     };
     modules = [
       ../home-manager
-      inputs.nix-index-database.hmModules.nix-index
     ];
   };
 
