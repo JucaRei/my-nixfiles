@@ -8,7 +8,6 @@
     inputs.nixos-hardware.nixosModules.apple-macbook-air-4
     inputs.nixos-hardware.nixosModules.framework
     inputs.nixos-hardware.nixosModules.common-cpu-intel-sandy-bridge
-    inputs.nix-index-database.nixosModules.nix-index
     # (import ./disks.nix { })
     (modulesPath + "/installer/scan/not-detected.nix")
     ../_mixins/hardware/boot/efi.nix

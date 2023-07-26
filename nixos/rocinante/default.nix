@@ -7,7 +7,6 @@
     #inputs.nixos-hardware.nixosModules.common-cpu-intel
     #inputs.nixos-hardware.nixosModules.common-pc-laptop
     #inputs.nixos-hardware.nixosModules.common-pc-ssd
-    inputs.nix-index-database.nixosModules.nix-index
     (import ./disks.nix { })
     ../_mixins/hardware/boot/bios.nix
     ../_mixins/hardware/bluetooth

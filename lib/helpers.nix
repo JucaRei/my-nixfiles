@@ -5,7 +5,10 @@
     extraSpecialArgs = {
       inherit inputs outputs desktop hostname platform username stateVersion;
     };
-    modules = [ ../home-manager ];
+    modules = [
+      ../home-manager
+      inputs.nix-index-database.hmModules.nix-index
+    ];
   };
 
   # Helper function for generating host configs

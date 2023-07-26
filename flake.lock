@@ -84,26 +84,6 @@
         "type": "github"
       }
     },
-    "nix-index-database": {
-      "inputs": {
-        "nixpkgs": [
-          "nixpkgs"
-        ]
-      },
-      "locked": {
-        "lastModified": 1690083300,
-        "narHash": "sha256-xnUtWO/5TuuHkIpmzMXGvHJqS06FSVADnAZ4bvqO4Zo=",
-        "owner": "Mic92",
-        "repo": "nix-index-database",
-        "rev": "c1e6fc40dd5c0d16940bc012421268b94e404b0b",
-        "type": "github"
-      },
-      "original": {
-        "owner": "Mic92",
-        "repo": "nix-index-database",
-        "type": "github"
-      }
-    },
     "nix-software-center": {
       "inputs": {
         "nixpkgs": "nixpkgs",
@@ -241,7 +221,6 @@
         "disko": "disko",
         "home-manager": "home-manager",
         "nix-formatter-pack": "nix-formatter-pack",
-        "nix-index-database": "nix-index-database",
         "nix-software-center": "nix-software-center",
         "nixos-generators": "nixos-generators",
         "nixos-hardware": "nixos-hardware",

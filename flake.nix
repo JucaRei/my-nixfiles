@@ -16,10 +16,10 @@
     nix-formatter-pack.url = "github:Gerschtli/nix-formatter-pack";
     nix-formatter-pack.inputs.nixpkgs.follows = "nixpkgs";
 
-    nix-index-database = {
-      url = "github:Mic92/nix-index-database";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
+    # nix-index-database = {
+    #   url = "github:Mic92/nix-index-database";
+    #   inputs.nixpkgs.follows = "nixpkgs";
+    # };
 
     nixos-hardware.url = "github:NixOS/nixos-hardware/master";
     nix-software-center.url = "github:vlinkz/nix-software-center";
