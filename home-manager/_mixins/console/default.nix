@@ -9,6 +9,7 @@
     #./btop.nix
     ./direnv.nix
     ./fish.nix
+    ./fzf.nix
     ./git.nix
     ./gh.nix
     ./glow.nix
@@ -36,7 +37,6 @@
       #breezy # Terminal bzr client
       #butler # Terminal Itch.io API client
       chafa # Terminal image viewer
-      dconf2nix # Nix code from Dconf files
       #debootstrap # Terminal Debian installer
       diffr # Modern Unix `diff`
       difftastic # Modern Unix `diff`
@@ -67,6 +67,11 @@
       tokei # Modern Unix `wc` for code
       wget2 # Terminal downloader
       yq-go # Terminal `jq` for YAML
+
+      any-nix-shell # fish support for nix shell
+      dconf2nix # Nix code from Dconf files
+      nix-index # locate packages containing certain nixpkgs
+      nix-output-monitor # nom: monitor nix commands
     ];
 
     sessionVariables = {
