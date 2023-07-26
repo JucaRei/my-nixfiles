@@ -19,6 +19,7 @@
     inputs.nixos-hardware.nixosModules.common-gpu-nvidia
     inputs.nixos-hardware.nixosModules.common-pc
     inputs.nixos-hardware.nixosModules.common-pc-ssd
+    inputs.nix-index-database.nixosModules.nix-index
     (import ./disks.nix { })
     ../_mixins/hardware/systemd-boot.nix
     ../_mixins/services/bluetooth.nix

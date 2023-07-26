@@ -21,6 +21,9 @@ in
         [ ]
         ++ lib.optionals (builtins.elem hostname syncthing.hosts)
           syncthing.udpPorts;
+      extraCommands = ''
+        iptables -t raw -A OUTPUT -p udp -m udp --dport 137 -j CT --helper netbios-ns
+      '';
     };
   };
 }

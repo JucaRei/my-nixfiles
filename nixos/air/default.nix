@@ -8,6 +8,7 @@
     inputs.nixos-hardware.nixosModules.apple-macbook-air-4
     inputs.nixos-hardware.nixosModules.framework
     inputs.nixos-hardware.nixosModules.common-cpu-intel-sandy-bridge
+    inputs.nix-index-database.nixosModules.nix-index
     # (import ./disks.nix { })
     (modulesPath + "/installer/scan/not-detected.nix")
     ../_mixins/hardware/boot/efi.nix
@@ -178,7 +179,8 @@
     };
 
     kernelModules = [
-      #"i965"
+      "applesmc"
+      "i965"
       #"i915"
       "wl"
       "z3fold"
@@ -188,8 +190,10 @@
       "lz4hc_compress"
     ];
     kernelParams = [
-      #"hid_apple.swap_opt_cmd=1" # This will switch the left Alt and Cmd key as well as the right Alt/AltGr and Cmd key.
-      #"i915.force_probe=0116" # Force enable my intel graphics
+      "hid_apple.swap_opt_cmd=1" # This will switch the left Alt and Cmd key as well as the right Alt/AltGr and Cmd key.
+      #"hid_apple.fnmode=2"
+      #"hid_apple.swap_fn_leftctrl=1"
+      "i915.force_probe=0116" # Force enable my intel graphics
       #"video=efifb:off" # Disable efifb driver, which crashes Xavier AGX/NX
       #"video=efifb"
       "zswap.enabled=1"
@@ -212,7 +216,9 @@
     kernelPackages = pkgs.linuxPackages_zen;
     supportedFilesystems = [ "btrfs" ]; # fat 32 and btrfs
   };
-  hardware.acpilight.enable = true;
+  hardware = {
+    acpilight.enable = true;
+  };
 
   services = {
     #############
@@ -226,12 +232,21 @@
       };
     };
 
+    ############
+    ### GVFS ###
+    ############
+    gvfs.enable = true;
+
+
     ################################
     ### Device specific services ###
     ################################
     mbpfan = {
       enable = true;
       aggressive = true;
+      #lowTemp = 56;
+      #highTemp = 62;
+      #maxTemp = 70;
     };
 
     xserver.libinput.touchpad = {
@@ -247,7 +262,15 @@
     xorg.xrdb
     intel-gpu-tools
     inxi
+
+    cifs-utils
   ];
+
+  programs = {
+    kbdlight.enable = true;
+  };
+
+  powerManagement.cpuFreqGovernor = "ondemand";
 
   security.doas.enable = lib.mkDefault false;
 

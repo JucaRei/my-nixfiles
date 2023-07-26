@@ -20,6 +20,8 @@
     ./powerline-go.nix
     #./neovim.nix
     ./readline.nix
+    ./exa.nix
+    ./yt-dlp.nix
     ./zoxide.nix
     ./xdg.nix
   ];

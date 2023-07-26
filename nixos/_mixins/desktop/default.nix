@@ -6,15 +6,22 @@
   ++ lib.optional (builtins.pathExists (./. + "/${desktop}.nix")) ./${desktop}.nix;
 
   boot = {
-    kernelParams = [ "quiet" "vt.global_cursor_default=0" "mitigations=off" ];
+    kernelParams = [
+      "quiet"
+      "vt.global_cursor_default=0"
+      "mitigations=off"
+    ];
     plymouth.enable = true;
   };
 
-  # X11 automation
   environment.systemPackages = with pkgs; [
+    # X11 automation
     wmctrl
     xdotool
     ydotool
+
+    # Torrent
+    deluge-gtk
   ];
 
   hardware = {
