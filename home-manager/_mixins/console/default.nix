@@ -74,6 +74,10 @@
       SYSTEMD_EDITOR = "micro";
       VISUAL = "micro";
     };
+
+    sessionPath = [
+      "$HOME/.local/bin"
+    ];
   };
 
   programs = {
