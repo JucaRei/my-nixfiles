@@ -15,7 +15,7 @@
       '';
     };
 
-    variables = {
+    shellAliases = {
       yta-aac = "yt-dlp --extract-audio --audio-format aac ";
       yta-best = "yt-dlp --extract-audio --audio-format best --output '%(title)s.%(ext)s' --no-keep-video ";
       yta-flac = "yt-dlp --extract-audio --audio-format flac --output '%(title)s.%(ext)s' --no-keep-video ";
