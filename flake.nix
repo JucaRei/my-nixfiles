@@ -40,6 +40,8 @@
 
     nixos-generators.url = "github:NixOS/nixos-hardware/master";
 
+    robotnix.url = "github:danielfullmer/robotnix";
+
     #emacs-overlay = {
     #  # Emacs Overlays
     #  url = "github:nix-community/emacs-overlay";
@@ -75,6 +77,7 @@
     { self
     , nix-formatter-pack
     , nixpkgs
+    , robotnix
     , ...
     } @ inputs:
     let
@@ -84,6 +87,11 @@
       libx = import ./lib { inherit inputs outputs stateVersion; };
     in
     {
+      robotnixConfigurations = nixpkgs.lib.mapAttrs (n: v: robotnix.lib.robotnixSystem v) {
+        pyxis = import ./mobile/samsung-note8/default.nix;
+        # More phones here ...
+        # E.g: bacon = import ./hosts/bacon/default.nix;
+      };
       # home-manager switch -b backup --flake $HOME/Zero/nix-config
       # nix build .#homeConfigurations."juca@rocinante".activationPackage
       homeConfigurations = {

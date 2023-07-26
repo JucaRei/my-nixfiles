@@ -230,7 +230,7 @@ in
       memory_usage = {
         disabled = false;
         threshold = 0;
-        mem_symbol = "";
+        #symbol = "";
         style = "fg:cyan bg:purple";
         format = "[ $ram_pct $swap_pct $symbol ]($style)";
       };
