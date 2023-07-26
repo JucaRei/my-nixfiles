@@ -1,6 +1,18 @@
 { disks ? [ "/dev/nvme0n1" "/dev/nvme1n1" ], ... }:
 let
-  defaultXfsOpts = [ "defaults" "relatime" "nodiratime" ];
+  # "subvol=@"
+  options = [
+    "rw"
+    "noatime"
+    "nodiratime"
+    "ssd"
+    "nodatacow"
+    "compress-force=zstd:5"
+    "space_cache=v2"
+    "commit=120"
+    "autodefrag"
+    "discard=async"
+  ];
 in
 {
   disko.devices = {

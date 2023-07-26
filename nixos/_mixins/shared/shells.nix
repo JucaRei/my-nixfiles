@@ -45,7 +45,7 @@ _: {
 
         # VM testing
         nixclone =
-          "git clone --depth=1 https://github.com/JucaRei/nixos-configs $HOME/Zero/nix-config";
+          "git clone --depth=1 https://github.com/JucaRei/nix-configurations $HOME/Zero/nix-config";
         nix-gc = "sudo nix-collect-garbage --delete-older-than 5d";
         #rebuild-all = "sudo nix-collect-garbage --delete-older-than 14d && sudo nixos-rebuild switch --flake $HOME/Zero/nix-config && home-manager switch -b backup --flake $HOME/Zero/nix-config";
         rebuild-all =

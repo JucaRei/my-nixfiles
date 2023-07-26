@@ -17,13 +17,15 @@
     ./micro.nix
     ./neofetch.nix
     ./nixpkgs.nix
-    ./powerline-go.nix
+    #./powerline-go.nix
     #./neovim.nix
     ./readline.nix
     ./exa.nix
+    ./starship.nix
     ./yt-dlp.nix
     ./zoxide.nix
     ./xdg.nix
+    #./zsh.nix
   ];
 
   home = {

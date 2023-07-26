@@ -13,6 +13,14 @@ _: {
         top = "btm --basic --tree --hide_table_gap --dot_marker --mem_as_value";
         tree = "exa --tree";
         wget = "wget2";
+
+        ### Nix
+        rebuild-home = "home-manager switch -b backup --flake $HOME/Zero/nix-config";
+        rebuild-lock = "pushd $HOME/Zero/nix-config && nix flake lock --recreate-lock-file && popd";
+        rebuild-iso-console = "pushd $HOME/Zero/nix-config && nix build .#nixosConfigurations.iso-console.config.system.build.isoImage && popd";
+        rebuild-iso-desktop = "pushd $HOME/Zero/nix-config && nix build .#nixosConfigurations.iso-desktop.config.system.build.isoImage && popd";
+        nix-hash-sha256 = "nix-hash --flat --base32 --type sha256";
+        ### Yt-dlp
         yta-aac = "yt-dlp --extract-audio --audio-format aac ";
         yta-best = "yt-dlp --extract-audio --audio-format best --output '%(title)s.%(ext)s' --no-keep-video ";
         yta-flac = "yt-dlp --extract-audio --audio-format flac --output '%(title)s.%(ext)s' --no-keep-video ";
