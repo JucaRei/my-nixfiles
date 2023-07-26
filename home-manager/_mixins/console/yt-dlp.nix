@@ -5,7 +5,7 @@
     };
   };
   home = {
-    packages = with pkgs; [ yt-dlp-light ];
+    packages = with pkgs; [ yt-dlp ];
     file = {
       ".config/yt-dlp/config".text = ''
         --ignore-errors
