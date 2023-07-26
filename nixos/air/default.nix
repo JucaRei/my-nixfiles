@@ -147,6 +147,22 @@
   boot = {
     isContainer = false;
 
+    # compile kernel with SE Linux support - but also support for other LSM modules
+    kernelPatches = [{
+      ### Add Selinux?
+      name = "selinux-config";
+      patch = null;
+      extraConfig = ''
+        SECURITY_SELINUX y
+        SECURITY_SELINUX_BOOTPARAM n
+        SECURITY_SELINUX_DISABLE n
+        SECURITY_SELINUX_DEVELOP y
+        SECURITY_SELINUX_AVC_STATS y
+        SECURITY_SELINUX_CHECKREQPROT_VALUE 0
+        DEFAULT_SECURITY_SELINUX n
+      '';
+    }];
+
     #plymouth = {
     #  enable = lib.mkForce true;
     #  theme = "breeze";
@@ -189,6 +205,7 @@
       "lz4hc_compress"
     ];
     kernelParams = [
+      "security=selinux" # tell kernel to use SE Linux
       "hid_apple.swap_opt_cmd=1" # This will switch the left Alt and Cmd key as well as the right Alt/AltGr and Cmd key.
       #"hid_apple.fnmode=2"
       #"hid_apple.swap_fn_leftctrl=1"
@@ -215,6 +232,7 @@
     kernelPackages = pkgs.linuxPackages_zen;
     supportedFilesystems = [ "btrfs" ]; # fat 32 and btrfs
   };
+
   hardware = {
     acpilight.enable = true;
   };
@@ -263,7 +281,14 @@
     inxi
 
     cifs-utils
+
+    # SElinux
+    # policycoreutils is for load_policy, fixfiles, setfiles, setsebool, semodile, and sestatus.
+    policycoreutils
   ];
+
+  # build systemd with SE Linux support so it loads policy at boot and supports file labelling
+  systemd.package = pkgs.systemd.override { withSelinux = true; };
 
   programs = {
     kbdlight.enable = true;

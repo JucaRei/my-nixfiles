@@ -88,12 +88,12 @@
     in
     {
       robotnixConfigurations = nixpkgs.lib.mapAttrs (n: v: robotnix.lib.robotnixSystem v) {
-        pyxis = import ./mobile/samsung-note8/default.nix;
+        samsung-note8 = import ./mobile/samsung-note8/default.nix;
         # More phones here ...
         # E.g: bacon = import ./hosts/bacon/default.nix;
       };
       # home-manager switch -b backup --flake $HOME/Zero/nix-config
-      # nix build .#homeConfigurations."juca@rocinante".activationPackage
+      # nix build .#homeConfigurations." juca@rocinante".activationPackage
       homeConfigurations = {
         # .iso images
         #"juca@iso-console" = libx.mkHome { hostname = "iso-console"; username = "nixos"; };
@@ -157,3 +157,4 @@
       );
     };
 }
+
