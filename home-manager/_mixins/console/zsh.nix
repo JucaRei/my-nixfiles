@@ -4,7 +4,7 @@ let
   kubectl = pkgs.writeShellScriptBin "kubectl" ''${builtins.readFile ../../../assets/zsh/kubectl.zsh }'';
 in
 {
-  home.packages = with pkgs; [
+  environment.systemPackages = with pkgs; [
     prompt
     kubectl
   ];
@@ -12,7 +12,6 @@ in
     zsh = {
       enable = true;
       enableAutosuggestions = true;
-
     };
   };
 }
