@@ -76,7 +76,7 @@ in
           format = "msdos";
           partitions = [
             {
-              name = "NIXOS";
+              name = "root";
               part-type = "primary";
               start = "1M";
               end = "100%";
