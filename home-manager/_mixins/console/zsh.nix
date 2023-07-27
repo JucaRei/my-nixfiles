@@ -10,11 +10,12 @@
       home.file."prompt.zsh".source = ../../../assets/zsh/prompt.zsh;
       home.file."kubeclt.zsh".source = ../../../assets/zsh/prompt.zsh;
     };
-    programs = {
-      zsh = {
-        enable = true;
-        enableAutosuggestions = true;
-      };
+  };
+
+  programs = {
+    zsh = {
+      enable = true;
+      enableAutosuggestions = true;
     };
   };
 }
