@@ -66,29 +66,30 @@ in
   #    };
   #  };
   #};
-
-  disk = {
-    sda = {
-      device = "/dev/sda";
-      type = "disk";
-      content = {
-        type = "table";
-        format = "msdos";
-        partitions = [
-          {
-            name = "NIXOS";
-            part-type = "primary";
-            start = "1M";
-            end = "100%";
-            bootable = true;
-            content = {
-              type = "filesystem";
-              format = "ext4";
-              mountpoint = "/";
-              mountOptions = defaultExt4Opts;
-            };
-          }
-        ];
+  disko.devices = {
+    disk = {
+      sda = {
+        device = "/dev/sda";
+        type = "disk";
+        content = {
+          type = "table";
+          format = "msdos";
+          partitions = [
+            {
+              name = "NIXOS";
+              part-type = "primary";
+              start = "1M";
+              end = "100%";
+              bootable = true;
+              content = {
+                type = "filesystem";
+                format = "ext4";
+                mountpoint = "/";
+                mountOptions = defaultExt4Opts;
+              };
+            }
+          ];
+        };
       };
     };
   };
