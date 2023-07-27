@@ -4,7 +4,7 @@ let
   kubectl = pkgs.writeShellScriptBin "kubectl" ''${builtins.readFile ../../../assets/zsh/kubectl.zsh }'';
 in
 {
-  environment.systemPackages = with pkgs; [
+  home.packages = with pkgs; [
     prompt
     kubectl
   ];

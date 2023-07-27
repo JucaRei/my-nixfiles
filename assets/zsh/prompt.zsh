@@ -1,3 +1,5 @@
+#!/bin/zsh
+
 # Spaceship Prompt
 if [ $(whoami) = 'root' ]
 then
