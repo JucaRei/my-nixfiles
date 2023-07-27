@@ -25,7 +25,7 @@
     ./starship.nix
     ./yt-dlp.nix
     ./zoxide.nix
-    ./xdg.nix
+    #./xdg.nix
     ./zsh.nix
   ];
 
