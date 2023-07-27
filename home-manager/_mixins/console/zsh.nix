@@ -7,8 +7,8 @@
   home = {
     packages = [ pkgs.zsh ];
     file = {
-      home.file."prompt.zsh".source = ../../../assets/zsh/prompt.zsh;
-      home.file."kubeclt.zsh".source = ../../../assets/zsh/prompt.zsh;
+      "prompt.zsh".source = ../../../assets/zsh/prompt.zsh;
+      "kubeclt.zsh".source = ../../../assets/zsh/prompt.zsh;
     };
   };
 
