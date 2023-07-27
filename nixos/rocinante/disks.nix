@@ -9,32 +9,31 @@ in
     disk = {
       sda = {
         #device = "/dev/sda";
-        device = builtins.elemAt disks 0;
         type = "disk";
+        device = builtins.elemAt disks 0;
         content = {
           type = "gpt";
-          #type = "msdos";
           format = "gpt";
+          #type = "msdos";
           partitions = [{
-            boot = {
-              size = "1M";
-              type = "EF02"; # for grub MBR
-              flags = [ "bios_grub" ];
-            }
-              {
-                name = "NIXOS";
-                start = "1M";
-                end = "100%";
-                content = {
-                  type = "filesystem";
-                  # Overwirte the existing filesystem
-                  #extraArgs = [ "-f" ];
-                  format = "ext4";
-                  mountpoint = "/";
-                  mountOptions = defaultExt4Opts;
-                };
+            name = "primary";
+            size = "1M";
+            type = "EF02"; # for grub MBR
+            flags = [ "bios_grub" ];
+          }
+            {
+              name = "NIXOS";
+              start = "1M";
+              end = "100%";
+              content = {
+                type = "filesystem";
+                # Overwirte the existing filesystem
+                #extraArgs = [ "-f" ];
+                format = "ext4";
+                mountpoint = "/";
+                mountOptions = defaultExt4Opts;
               };
-          }];
+            }];
         };
       };
     };
