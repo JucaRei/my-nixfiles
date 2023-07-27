@@ -4,7 +4,7 @@
 #DEVICE=/dev/sda
 #sgdisk -Z ${DEVICE}
 
-#mklabel gpt
+#mklabel msdos
 #cat | parted ${DEVICE} << END
 ##mktable gpt
 #mkpart primary ext2 1 2
@@ -15,14 +15,27 @@
 #quit
 #END
 
+
+#set 1 bios_grub on
+cat | parted ${DEVICE} << END
+mklabel msdos
+mkpart primary ext2 1 2
+set 1 boot on
+mkpart primary xfs 2 100%
+print
+quit
+0;
+END
+
 #############
 ### MSDOS ###
 #############
 
-#parted /dev/sda -- mklabel msdos
+parted -s -a optimal /dev/sda mklabel msdos
 ## parted /dev/sda -- mkpart no-fs 1MB 
+parted /dev/sda -- mkpart primary ext2 0 2MiB
 #parted /dev/sda -- mkpart primary ext2 1 2
-#parted /dev/sda -- set 1 boot on
+parted -s /dev/sda -- set 1 boot on
 #parted /dev/sda -- mkpart primary xfs 2 100%
 #parted /dev/sda -- name 2 'NIXOS'
 #parted /dev/sda -- print
@@ -49,11 +62,11 @@
 
 parted -s -a optimal /dev/sda mklabel gpt
 #parted /dev/sda -- mklabel gpt
-parted /dev/sda -- mkpart primary ext2 1 2
-parted /dev/sda -- set 1 bios_grub on
-parted /dev/sda -- mkpart primary ext4 2 100%
+parted -s /dev/sda -- mkpart primary ext2 1 2
+parted -s /dev/sda -- set 1 bios_grub on
+parted -s /dev/sda -- mkpart primary ext4 2 100%
 #parted /dev/sda -- mkpart primary xfs 2 100%
-parted /dev/sda -- name 2 'NIXOS'
+parted -s /dev/sda -- name 2 'NIXOS'
 parted /dev/sda -- print
 
 #mkfs.ext4 -O "^has_journal" /dev/sda2 -L "NIXOS" -F
