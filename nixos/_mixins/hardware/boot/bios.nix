@@ -14,7 +14,7 @@
         #version = 2;
         efiSupport = false;
         device = lib.mkDefault "/dev/sda"; # MBR/BIOS
-        fsIdentifier = "label";
+        #fsIdentifier = "label";
 
         backgroundColor = "#21202D";
         configurationLimit = 6;

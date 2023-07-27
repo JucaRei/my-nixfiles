@@ -1,5 +1,6 @@
 # Example to create a bios compatible gpt partition
-{ disks ? [ "/dev/sda" ], ... }:
+#{ disks ? [ "/dev/sda" ], ... }:
+{ ... }:
 let
   #defaultXfsOpts = [ "defaults" "relatime" "nodiratime" ];
   defaultExt4Opts = [ "defaults" "noatime" "nodiratime" "commit=60" "barrier=0 " ];
