@@ -6,10 +6,7 @@
 {
   home = {
     packages = [ pkgs.zsh ];
-    file = {
-      "prompt.zsh".source = ../../../assets/zsh/prompt.zsh;
-      "kubeclt.zsh".source = ../../../assets/zsh/kubectl.zsh;
-    };
+    "${config.xdg.configHome}/*.zshrc".text = builtins.readFile ../../../assets/zsh;
   };
 
   programs = {

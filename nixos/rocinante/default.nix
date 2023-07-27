@@ -92,6 +92,9 @@
 
   networking.enableB43Firmware = true;
 
+  # ens5
+  # wlp0s29f7u1
+
   powerManagement.cpuFreqGovernor = "performance";
 
   hardware.cpu.intel.updateMicrocode = lib.mkDefault config.hardware.enableRedistributableFirmware;

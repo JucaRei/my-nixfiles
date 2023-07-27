@@ -219,6 +219,7 @@
       "zswap.zpool=z3fold"
       "fs.inotify.max_user_watches=524288"
       "intel_iommu=on"
+      "net.ifnames=0"
     ];
     kernel.sysctl = {
       #"kernel.sysrq" = 1;
