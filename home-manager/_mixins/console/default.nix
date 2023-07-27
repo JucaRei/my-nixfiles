@@ -26,7 +26,7 @@
     ./yt-dlp.nix
     ./zoxide.nix
     ./xdg.nix
-    #./zsh.nix
+    ./zsh.nix
   ];
 
   home = {
