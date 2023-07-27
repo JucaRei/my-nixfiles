@@ -9,15 +9,15 @@
     #./btop.nix
     ./direnv.nix
     ./fish.nix
-    ./fzf.nix
+    #./fzf.nix
     ./git.nix
     ./gh.nix
     ./glow.nix
-    #./gpg.nix
+    ./gpg.nix
     ./htop.nix
     ./micro.nix
     ./neofetch.nix
-    ./nixpkgs.nix
+    #./nixpkgs.nix
     #./powerline-go.nix
     #./neovim.nix
     ./readline.nix
@@ -25,7 +25,7 @@
     ./starship.nix
     ./yt-dlp.nix
     ./zoxide.nix
-    #./xdg.nix
+    ./xdg.nix
     ./zsh.nix
   ];
 

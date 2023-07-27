@@ -162,11 +162,11 @@
         "dumb.rdb"
         "Thumbs.db"
       ];
-      includes = [
-        {
-          path = "~/.config/git/local";
-        }
-      ];
+      #includes = [
+      #  {
+      #    path = "~/.config/git/local";
+      #  }
+      #];
     };
   };
 }

@@ -78,7 +78,7 @@ in
         XDG_CACHE_HOME = "${config.home.homeDirectory}/.cache";
         XDG_CONFIG_HOME = "${config.home.homeDirectory}/.config";
         XDG_DATA_HOME = "${config.home.homeDirectory}/.local/share";
-        XDG_BIN_HOME = "${config.home.homeDirectory}/.local/bin";
+        #XDG_BIN_HOME = "${config.home.homeDirectory}/.local/bin";
       };
     };
   };
