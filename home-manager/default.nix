@@ -75,7 +75,7 @@ in
       keep-going = false;
 
       # Allow to run nix
-      allowed-users = [ "${username}" "nixbld" "wheel" ];
+      allowed-users = [ "nixbld" "wheel" ];
     };
 
     extraOptions = ''
