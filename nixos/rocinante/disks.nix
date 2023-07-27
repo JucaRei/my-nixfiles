@@ -14,6 +14,7 @@ in
         content = {
           type = "gpt";
           #type = "msdos";
+          format = "gpt";
           partitions = [{
             boot = {
               size = "1M";

@@ -47,9 +47,14 @@
 ### GPT bios ###
 ################
 
-parted /dev/sda -- mklabel gpt
+parted -s -a optimal /dev/sda mklabel gpt
+#parted /dev/sda -- mklabel gpt
 parted /dev/sda -- mkpart primary ext2 1 2
 parted /dev/sda -- set 1 bios_grub on
-parted /dev/sda -- mkpart primary xfs 2 100%
+parted /dev/sda -- mkpart primary ext4 2 100%
+#parted /dev/sda -- mkpart primary xfs 2 100%
 parted /dev/sda -- name 2 'NIXOS'
 parted /dev/sda -- print
+
+#mkfs.ext4 -O "^has_journal" /dev/sda2 -L "NIXOS" -F
+#mount -t ext4 -O defaults,data=writeback,noatime,commit=60,barrier=0,discard /dev/sda3 /mnt
