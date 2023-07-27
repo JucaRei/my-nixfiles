@@ -5,20 +5,21 @@ let
   defaultExt4Opts = [ "defaults" "noatime" "nodiratime" "commit=60" "barrier=0 " ];
 in
 {
+  #device = "/dev/sda";
+  #type = "msdos";
   disko.devices = {
     disk = {
-      sda = {
-        #device = "/dev/sda";
+      vda = {
         type = "disk";
         device = builtins.elemAt disks 0;
         content = {
-          type = "gpt";
+          type = "table";
           format = "gpt";
-          #type = "msdos";
           partitions = [{
             name = "primary";
-            size = "1M";
-            type = "EF02"; # for grub MBR
+            start = "0%";
+            end = "1M";
+            #type = "EF02"; # for grub MBR
             flags = [ "bios_grub" ];
           }
             {
@@ -28,7 +29,7 @@ in
               content = {
                 type = "filesystem";
                 # Overwirte the existing filesystem
-                #extraArgs = [ "-f" ];
+                extraArgs = [ "-f" ];
                 format = "ext4";
                 mountpoint = "/";
                 mountOptions = defaultExt4Opts;
