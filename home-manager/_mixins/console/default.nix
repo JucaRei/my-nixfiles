@@ -6,7 +6,7 @@
     ./bat.nix
     ./broot.nix
     ./bottom.nix
-    #./btop.nix
+    ./btop.nix
     ./direnv.nix
     ./fish.nix
     #./fzf.nix
