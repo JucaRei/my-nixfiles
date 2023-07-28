@@ -14,19 +14,19 @@
     ./gh.nix
     ./glow.nix
     ./gpg.nix
-    #./htop.nix
+    ./htop.nix
     ./micro.nix
     ./neofetch.nix
     #./nixpkgs.nix
     #./powerline-go.nix
     #./neovim.nix
-    #./readline.nix
+    ./readline.nix
     ./exa.nix
     ./starship.nix
-    #./yt-dlp.nix
+    ./yt-dlp.nix
     ./zoxide.nix
-    #./xdg.nix
-    ./zsh.nix
+    ./xdg.nix
+    #./zsh.nix
   ];
 
   home = {
@@ -81,16 +81,15 @@
       SYSTEMD_EDITOR = "micro";
       VISUAL = "micro";
     };
-
-    programs = {
-      home-manager = {
-        enable = true;
-        info.enable = true;
-        jq.enable = true;
-      };
-    };
-
-    # Nicely reload system units when changing configs
-    systemd.user.startServices = "sd-switch";
   };
+  #home-manager = {
+  programs = {
+    #enable = true;
+    info.enable = true;
+    jq.enable = true;
+
+    #};
+  };
+  # Nicely reload system units when changing configs
+  systemd.user.startServices = "sd-switch";
 }

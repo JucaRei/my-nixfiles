@@ -67,7 +67,7 @@ in
     package = lib.mkDefault pkgs.unstable.nix;
     settings = {
       #sandbox = true;
-      auto-optimise-store = true;
+      #auto-optimise-store = true;
       experimental-features = [ "nix-command" "flakes" "repl-flake" ];
       warn-dirty = false;
 
