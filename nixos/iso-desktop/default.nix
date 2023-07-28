@@ -18,7 +18,7 @@
       verbose = false;
     };
 
-    kernelModules = [ "vhost_vsock" ];
+    kernelModules = [ "vhost_vsock" "wl" "nvidia" "b43" ];
 
     kernel.sysctl = {
       #"net.ipv4.ip_forward" = 1;
