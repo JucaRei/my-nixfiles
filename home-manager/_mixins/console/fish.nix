@@ -14,6 +14,8 @@ _: {
         tree = "exa --tree";
         wget = "wget2";
 
+        sk = "sk --ansi -c 'grep -rI --color=always --line-number " { } " .'";
+
         ### Nix
         rebuild-home = "home-manager switch -b backup --flake $HOME/Zero/nix-config";
         rebuild-lock = "pushd $HOME/Zero/nix-config && nix flake lock --recreate-lock-file && popd";
