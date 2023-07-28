@@ -101,7 +101,7 @@
         # Workstations
         "juca@air" = libx.mkHome { hostname = "air"; username = "juca"; desktop = "mate"; };
         "juca@rocinante" = libx.mkHome { hostname = "rocinante"; username = "juca"; };
-        "junior@rocinante" = libx.mkHome { hostname = "rocinante"; username = "juca"; };
+        "junior@rocinante" = libx.mkHome { hostname = "rocinante"; username = "junior"; };
         "juca@oldmac" = libx.mkHome { hostname = "rocinante"; username = "juca"; desktop = "mate"; };
         #"juca@nitro" = libx.mkHome { hostname = "nitro"; username = "juca"; desktop = "pantheon"; };
         "juca@vm" = libx.mkHome { hostname = "vm"; username = "juca"; desktop = "budgie"; };
