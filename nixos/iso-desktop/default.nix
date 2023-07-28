@@ -4,8 +4,8 @@
 , ...
 }: {
   imports = [
-    ../_mixins/hardware/bluetooth.nix
-    ../_mixins/services/pipewire.nix
+    ../_mixins/hardware/bluetooth
+    ../_mixins/services/sound/pipewire.nix
   ];
 
   boot = {
