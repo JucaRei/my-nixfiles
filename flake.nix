@@ -96,8 +96,8 @@
       # nix build .#homeConfigurations." juca@rocinante".activationPackage
       homeConfigurations = {
         # .iso images
-        #"juca@iso-console" = libx.mkHome { hostname = "iso-console"; username = "nixos"; };
-        #"juca@iso-desktop" = libx.mkHome { hostname = "iso-desktop"; username = "nixos"; desktop = "pantheon"; };
+        "juca@iso-console" = libx.mkHome { hostname = "iso-console"; username = "nixos"; };
+        "juca@iso-desktop" = libx.mkHome { hostname = "iso-desktop"; username = "nixos"; desktop = "pantheon"; };
         # Workstations
         "juca@air" = libx.mkHome { hostname = "air"; username = "juca"; desktop = "mate"; };
         "juca@rocinante" = libx.mkHome { hostname = "rocinante"; username = "juca"; };
