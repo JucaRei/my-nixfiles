@@ -72,10 +72,10 @@ in
       warn-dirty = false;
 
       # https://nixos.org/manual/nix/unstable/command-ref/conf-file.html
-      keep-going = false;
+      keep-going = true;
 
       # Allow to run nix
-      allowed-users = [ "nixbld" "wheel" ];
+      allowed-users = [ "${username}" "nixbld" "wheel" ];
     };
 
     extraOptions = ''

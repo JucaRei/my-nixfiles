@@ -14,18 +14,18 @@
     ./gh.nix
     ./glow.nix
     ./gpg.nix
-    ./htop.nix
+    #./htop.nix
     ./micro.nix
     ./neofetch.nix
     #./nixpkgs.nix
     #./powerline-go.nix
     #./neovim.nix
-    ./readline.nix
+    #./readline.nix
     ./exa.nix
     ./starship.nix
-    ./yt-dlp.nix
+    #./yt-dlp.nix
     ./zoxide.nix
-    ./xdg.nix
+    #./xdg.nix
     ./zsh.nix
   ];
 
@@ -68,10 +68,10 @@
       wget2 # Terminal downloader
       yq-go # Terminal `jq` for YAML
 
-      any-nix-shell # fish support for nix shell
-      dconf2nix # Nix code from Dconf files
-      nix-index # locate packages containing certain nixpkgs
-      nix-output-monitor # nom: monitor nix commands
+      #any-nix-shell # fish support for nix shell
+      #dconf2nix # Nix code from Dconf files
+      #nix-index # locate packages containing certain nixpkgs
+      #nix-output-monitor # nom: monitor nix commands
     ];
 
     sessionVariables = {
@@ -82,17 +82,15 @@
       VISUAL = "micro";
     };
 
-    sessionPath = [
-      "$HOME/.local/bin"
-    ];
-  };
+    programs = {
+      home-manager = {
+        enable = true;
+        info.enable = true;
+        jq.enable = true;
+      };
+    };
 
-  programs = {
-    home-manager.enable = true;
-    info.enable = true;
-    jq.enable = true;
+    # Nicely reload system units when changing configs
+    systemd.user.startServices = "sd-switch";
   };
-
-  # Nicely reload system units when changing configs
-  systemd.user.startServices = "sd-switch";
 }

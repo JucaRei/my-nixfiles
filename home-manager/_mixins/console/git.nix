@@ -3,8 +3,6 @@
     git = {
       enable = true;
 
-      userName = "Reinaldo P Jr";
-      userEmail = "reinaldo800@gmail.com";
       package = pkgs.gitFull.override {
         # Use SSH from macOS instead with support for Keyring
         # https://github.com/NixOS/nixpkgs/issues/62353

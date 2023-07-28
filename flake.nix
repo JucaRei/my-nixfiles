@@ -87,11 +87,11 @@
       libx = import ./lib { inherit inputs outputs stateVersion; };
     in
     {
-      robotnixConfigurations = nixpkgs.lib.mapAttrs (n: v: robotnix.lib.robotnixSystem v) {
-        samsung-note8 = import ./mobile/samsung-note8/default.nix;
-        # More phones here ...
-        # E.g: bacon = import ./hosts/bacon/default.nix;
-      };
+      #robotnixConfigurations = nixpkgs.lib.mapAttrs (n: v: robotnix.lib.robotnixSystem v) {
+      #  samsung-note8 = import ./mobile/samsung-note8/default.nix;
+      #  # More phones here ...
+      #  # E.g: bacon = import ./hosts/bacon/default.nix;
+      #};
       # home-manager switch -b backup --flake $HOME/Zero/nix-config
       # nix build .#homeConfigurations." juca@rocinante".activationPackage
       homeConfigurations = {
@@ -100,7 +100,8 @@
         #"juca@iso-desktop" = libx.mkHome { hostname = "iso-desktop"; username = "nixos"; desktop = "pantheon"; };
         # Workstations
         "juca@air" = libx.mkHome { hostname = "air"; username = "juca"; desktop = "mate"; };
-        "juca@rocinante" = libx.mkHome { hostname = "rocinante"; username = "juca"; desktop = "mate"; };
+        "juca@rocinante" = libx.mkHome { hostname = "rocinante"; username = "juca"; };
+        "juca@oldmac" = libx.mkHome { hostname = "rocinante"; username = "juca"; desktop = "mate"; };
         #"juca@nitro" = libx.mkHome { hostname = "nitro"; username = "juca"; desktop = "pantheon"; };
         "juca@vm" = libx.mkHome { hostname = "vm"; username = "juca"; desktop = "budgie"; };
         #"juca@pi" = libx.mkHome { hostname = "pi"; username = "juca"; desktop = "pantheon"; };

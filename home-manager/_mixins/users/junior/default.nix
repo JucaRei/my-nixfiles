@@ -4,7 +4,7 @@
 
   home = {
     file.".distroboxrc".text = "\n      xhost +si:localuser:$USER\n    ";
-    file.".face".source = ./face.jpg;
+    file.".face".source = ../juca/face.jpg;
   };
   programs = {
     git = {

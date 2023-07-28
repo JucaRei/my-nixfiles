@@ -8,7 +8,7 @@
     ./gnome-sound-recorder.nix
     ./meld.nix
     ./rhythmbox.nix
-    ./tilix.nix
+    #./tilix.nix
     (./. + "/${desktop}.nix")
   ];
 
