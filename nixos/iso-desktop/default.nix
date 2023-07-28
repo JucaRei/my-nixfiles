@@ -26,8 +26,6 @@
     };
   };
 
-  environment.systemPackages = with pkgs; [ ];
-
   services = {
     xserver.videoDrivers = [ ];
     ananicy.enable = lib.mkForce false;
