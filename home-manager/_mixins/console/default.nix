@@ -26,6 +26,7 @@
     ./yt-dlp.nix
     ./zoxide.nix
     ./xdg.nix
+    ./skim.nix
     #./zsh.nix
   ];
 
