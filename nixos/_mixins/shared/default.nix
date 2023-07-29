@@ -110,7 +110,7 @@
   ### Default Timezone ###
   ########################
 
-  services.xserver.layout = lib.mkDefault if (builtins.isString == "nitro") then "br" else "us";
+  services.xserver.layout = if (builtins.isString == "nitro") then "br" else "us";
   time.timeZone = lib.mkDefault "America/Sao_Paulo";
   #location = {
   #  latitude = -23.539380;
