@@ -15,7 +15,7 @@
         General = {
           Enable = "Source,Sink,Media,Socket";
           JustWorksRepairing = "always";
-          MultiProfile = "multiple";
+          #MultiProfile = "multiple";
           # make Xbox Series X controller work
           #Class = "0x000100";
           #ControllerMode = "bredr";

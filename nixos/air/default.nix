@@ -15,6 +15,7 @@
     ../_mixins/hardware/backlight/acpilight.nix
     ../_mixins/hardware/cpu/intel.nix
     ../_mixins/hardware/graphics/intel-old.nix
+    ../_mixins/hardware/wifi/broadcom-wifi.nix
     #../_mixins/services/zerotier.nix
     ../_mixins/services/security/sudo.nix
     ../_mixins/virt/docker.nix
@@ -180,7 +181,7 @@
       };
     };
     #blacklistedKernelModules = lib.mkForce [ "nvidia" ];
-    extraModulePackages = with config.boot.kernelPackages; [ broadcom_sta ];
+    #extraModulePackages = with config.boot.kernelPackages; [ ];
     #extraModprobeConfig = ''
     #  options i915 enable_guc=2 enable_dc=4 enable_hangcheck=0 error_capture=0 enable_dp_mst=0 fastboot=1 #parameters may differ
     #'';
@@ -196,9 +197,8 @@
 
     kernelModules = [
       "applesmc"
-      "i965"
-      #"i915"
-      "wl"
+      #"i965"
+      "i915"
       "z3fold"
       #"hdapsd"
       "crc32c-intel"

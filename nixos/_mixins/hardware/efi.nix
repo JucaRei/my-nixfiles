@@ -11,7 +11,7 @@ _: {
       };
       grub = {
         enable = true;
-        device = "nodev"; # "nodev" for efi only
+        devices = [ "nodev" ]; # "nodev" for efi only
         efiSupport = true;
         efiInstallAsRemovable = false;
         configurationLimit = 4;

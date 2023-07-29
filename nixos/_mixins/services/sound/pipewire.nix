@@ -1,5 +1,6 @@
 { desktop, lib, pkgs, ... }:
 {
+  imports = [ ../security/rtkit.nix ];
   environment = {
     systemPackages = with pkgs; [
       pulsemixer # Terminal PulseAudio mixer
@@ -29,7 +30,7 @@
         builtins.toJSON { "stream.properties"."resample.quality" = 15; };
     };
   };
-  security.rtkit.enable = true;
+  #security.rtkit.enable = true;
   services = {
     pipewire = {
       enable = true;

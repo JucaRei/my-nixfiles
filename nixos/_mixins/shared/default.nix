@@ -22,9 +22,15 @@
   ### Default Boot Options ###
   ############################
   boot = {
-    initrd = { verbose = false; };
+    initrd = { 
+      verbose = false; 
+    };
     consoleLogLevel = 0;
-    kernelModules = [ "vhost_vsock" "kvm-intel" "tcp_bbr" ];
+    kernelModules = [ 
+      "vhost_vsock"
+      "kvm-intel"
+      "tcp_bbr"
+    ];
     kernelParams = [
       # The 'splash' arg is included by the plymouth option
       "quiet"
@@ -83,7 +89,7 @@
 
   i18n = {
     defaultLocale = lib.mkForce "en_US.utf8";
-    extraLocaleSettings = {
+    extraLocaleSettings = lib.mkDefault {
       #LC_CTYPE = lib.mkDefault "pt_BR.UTF-8"; # Fix ç in us-intl.
       LC_ADDRESS = "pt_BR.utf8";
       LC_IDENTIFICATION = "pt_BR.utf8";
@@ -104,7 +110,7 @@
   ### Default Timezone ###
   ########################
 
-  services.xserver.layout = if (builtins.isString == "nitro") then "br" else "us";
+  services.xserver.layout = lib.mkDefault if (builtins.isString == "nitro") then "br" else "us";
   time.timeZone = lib.mkDefault "America/Sao_Paulo";
   #location = {
   #  latitude = -23.539380;
