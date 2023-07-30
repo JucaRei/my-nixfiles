@@ -25,7 +25,7 @@ in
         iptables -t raw -A OUTPUT -p udp -m udp --dport 137 -j CT --helper netbios-ns
       '';
       #Bluetooth
-      autoLoadConntrackHelpers = true;
+      #autoLoadConntrackHelpers = true;
     };
   };
 }
