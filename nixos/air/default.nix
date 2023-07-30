@@ -37,7 +37,7 @@
       "nodiratime"
       "ssd"
       "nodatacow"
-      "compress-force=zstd:5"
+      "compress-force=zstd:15"
       "space_cache=v2"
       "commit=120"
       "autodefrag"
@@ -55,7 +55,7 @@
       "nodiratime"
       "ssd"
       "nodatacow"
-      "compress-force=zstd:5"
+      "compress-force=zstd:15"
       "space_cache=v2"
       "commit=120"
       "autodefrag"
@@ -73,7 +73,7 @@
       "nodiratime"
       "ssd"
       "nodatacow"
-      "compress-force=zstd:5"
+      "compress-force=zstd:15"
       "space_cache=v2"
       "commit=120"
       "autodefrag"
@@ -91,7 +91,7 @@
       "nodiratime"
       "ssd"
       "nodatacow"
-      "compress-force=zstd:5"
+      "compress-force=zstd:15"
       "space_cache=v2"
       "commit=120"
       "autodefrag"
@@ -109,7 +109,7 @@
       "nodiratime"
       "ssd"
       "nodatacow"
-      "compress-force=zstd:5"
+      "compress-force=zstd:15"
       "space_cache=v2"
       "commit=120"
       "autodefrag"
@@ -235,8 +235,8 @@
     };
     #kernelPackages = pkgs.linuxPackages_latest;
     #kernelPackages = pkgs.linuxPackages_zen;
-    #kernelPackages = pkgs.linuxPackages_zen;
-    kernelPackages = pkgs.linuxPackages_xanmod_stable;
+    kernelPackages = pkgs.linuxPackages_zen;
+    #kernelPackages = pkgs.linuxPackages_xanmod_stable;
     supportedFilesystems = [ "btrfs" ]; # fat 32 and btrfs
   };
   #hardware = {
