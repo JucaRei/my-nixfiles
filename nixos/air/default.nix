@@ -18,6 +18,8 @@
     ../_mixins/hardware/wifi/broadcom-wifi.nix
     #../_mixins/services/zerotier.nix
     ../_mixins/services/security/sudo.nix
+    ../_mixins/services/network/samba.nix
+    ../_mixins/services/network/nfs.nix
     ../_mixins/virt/docker.nix
     ../_mixins/virt
   ];
