@@ -1,4 +1,4 @@
-{ lib, ... }:
+{ lib, pkgs, ... }:
 with lib.hm.gvariant; {
   imports = [
     #../../../apps/vorta.nix
@@ -13,5 +13,10 @@ with lib.hm.gvariant; {
   #    picture-uri = "file:///home/juca/Pictures/Determinate/DeterminateColorway-1280x720.png";
   #  };
   #};
+  home.packages = with pkgs; ([
+    kodi]) ++ (with kodiPackages; [
+      trakt
+      youtube
+  ]);
   services.kbfs.enable = lib.mkForce true;
 }
