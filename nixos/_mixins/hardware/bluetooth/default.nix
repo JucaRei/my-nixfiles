@@ -3,16 +3,17 @@
   hardware = {
     bluetooth = {
       enable = true;
-      #package = pkgs.bluezFull;
+      package = pkgs.bluezFull;
 
       # battery info support
-      package = pkgs.bluez5-experimental;
+      #package = pkgs.bluez5-experimental;
 
       powerOnBoot = true;
       disabledPlugins = [ "sap" ];
       hsphfpd.enable = false;
       settings = {
         General = {
+          Experimental = true;
           Enable = "Source,Sink,Media,Socket";
           JustWorksRepairing = "always";
           #MultiProfile = "multiple";
