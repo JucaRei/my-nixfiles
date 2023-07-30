@@ -99,7 +99,7 @@
         "juca@iso-console" = libx.mkHome { hostname = "iso-console"; username = "nixos"; };
         "juca@iso-desktop" = libx.mkHome { hostname = "iso-desktop"; username = "nixos"; desktop = "pantheon"; };
         # Workstations
-        "juca@air" = libx.mkHome { hostname = "air"; username = "juca"; desktop = "pantheon"; };
+        "juca@air" = libx.mkHome { hostname = "air"; username = "juca"; desktop = "mate"; };
         "juca@rocinante" = libx.mkHome { hostname = "rocinante"; username = "juca"; };
         "junior@rocinante" = libx.mkHome { hostname = "rocinante"; username = "junior"; };
         "juca@oldmac" = libx.mkHome { hostname = "rocinante"; username = "juca"; desktop = "mate"; };
@@ -120,7 +120,7 @@
         # Workstations
         #  - sudo nixos-rebuild switch --flake $HOME/Zero/nix-config
         #  - nix build .#nixosConfigurations.rocinante.config.system.build.toplevel
-        air = libx.mkHost { hostname = "air"; username = "juca"; desktop = "pantheon"; };
+        air = libx.mkHost { hostname = "air"; username = "juca"; desktop = "mate"; };
         rocinante = libx.mkHost { hostname = "rocinante"; username = "juca"; desktop = "mate"; };
         #nitro = libx.mkHost { hostname = "nitro"; username = "juca"; desktop = "pantheon"; };
         vm = libx.mkHost { hostname = "vm"; username = "juca"; desktop = "budgie"; };

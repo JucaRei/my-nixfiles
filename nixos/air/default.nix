@@ -172,7 +172,7 @@
 
     loader = {
       efi = {
-        #canTouchEfiVariables = lib.mkDefault true; 
+        #canTouchEfiVariables = lib.mkDefault true;
         efiSysMountPoint = "/boot/efi";
       };
       grub = {
@@ -180,7 +180,7 @@
         efiInstallAsRemovable = lib.mkForce true;
       };
     };
-    #blacklistedKernelModules = lib.mkForce [ "nvidia" ];
+    blacklistedKernelModules = lib.mkForce [ "nvidia" "nouveau" ];
     #extraModulePackages = with config.boot.kernelPackages; [ ];
     #extraModprobeConfig = ''
     #  options i915 enable_guc=2 enable_dc=4 enable_hangcheck=0 error_capture=0 enable_dp_mst=0 fastboot=1 #parameters may differ
@@ -197,8 +197,8 @@
 
     kernelModules = [
       "applesmc"
-      #"i965"
-      "i915"
+      "i965"
+      #"i915"
       "z3fold"
       #"hdapsd"
       "crc32c-intel"
@@ -210,7 +210,10 @@
       "hid_apple.swap_opt_cmd=1" # This will switch the left Alt and Cmd key as well as the right Alt/AltGr and Cmd key.
       #"hid_apple.fnmode=2"
       #"hid_apple.swap_fn_leftctrl=1"
-      "i915.force_probe=0116" # Force enable my intel graphics
+      "video.use_native_backlight=1"
+      "acpi=force"
+      "acpi_backlight=video" # "acpi_backlight=vendor"
+      #"i915.force_probe=0116" # Force enable my intel graphics
       #"video=efifb:off" # Disable efifb driver, which crashes Xavier AGX/NX
       #"video=efifb"
       "zswap.enabled=1"
@@ -218,7 +221,7 @@
       "zswap.max_pool_percent=20"
       "zswap.zpool=z3fold"
       "fs.inotify.max_user_watches=524288"
-      "intel_iommu=on"
+      #"intel_iommu=on"
       "net.ifnames=0"
     ];
     kernel.sysctl = {
@@ -231,13 +234,21 @@
       #"vm.dirty_ratio" = 50;
     };
     #kernelPackages = pkgs.linuxPackages_latest;
-    kernelPackages = pkgs.linuxPackages_zen;
+    #kernelPackages = pkgs.linuxPackages_zen;
+    #kernelPackages = pkgs.linuxPackages_zen;
+    kernelPackages = pkgs.linuxPackages_xanmod_stable;
     supportedFilesystems = [ "btrfs" ]; # fat 32 and btrfs
   };
+  #hardware = {
+  #  acpilight.enable = true;
+  #};
 
-  hardware = {
-    acpilight.enable = true;
-  };
+  #Section "Device"
+  #        Identifier "card0"
+  #        Driver "intel"
+  #        Option "Backlight" "intel_backlight"
+  #        BusID "PCI:0:2:0"
+  #EndSection
 
   services = {
     #############
@@ -269,7 +280,7 @@
     };
 
     xserver.libinput.touchpad = {
-      horizontalScrolling = true;
+      horizontalScrolling = false;
       naturalScrolling = false;
       tapping = true;
       tappingDragLock = false;
@@ -281,6 +292,8 @@
     xorg.xrdb
     intel-gpu-tools
     inxi
+    #light
+    kbdlight
 
     cifs-utils
 
@@ -294,6 +307,7 @@
 
   programs = {
     kbdlight.enable = true;
+    #light.enable = true;
   };
 
   powerManagement.cpuFreqGovernor = "ondemand";
