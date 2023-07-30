@@ -9,6 +9,9 @@
       enable = true;
     };
     displayManager = {
+      sddm = {
+        enable = true;
+      };
       defaultSession = "lxqt";
       autoLogin = {
         enable = false;
@@ -29,14 +32,14 @@
         [Qt]
         font="Noto Sans,11,-1,5,50,0,0,0,0,0"
       '';
-    "xdg/lxqt/panel.conf".text = ''
-      [quicklaunch]
-      alignment=Left
-      apps\1\desktop=/run/current-system/sw/share/applications/foosball.desktop
-      apps\2\desktop=/run/current-system/sw/share/applications/chromium-browser.desktop
-      apps\size=2
-      type=quicklaunch
-    '';
+    #"xdg/lxqt/panel.conf".text = ''
+    #  [quicklaunch]
+    #  alignment=Left
+    #  apps\1\desktop=/run/current-system/sw/share/applications/foosball.desktop
+    #  apps\2\desktop=/run/current-system/sw/share/applications/chromium-browser.desktop
+    #  apps\size=2
+    #  type=quicklaunch
+    #'';
   };
   fonts.fonts = with pkgs; [
     noto-fonts
@@ -45,7 +48,7 @@
   environment.etc = {
     # Openbox theme. Warning this applies only for new users as if the user has an rc.xml file the system one is
     # not used… and this file is created at startup. Mistral will be install below.
-    "xdg/openbox/rc.xml".source = ../../../assets/openbox-rc.xml;
+    "xdg/openbox/rc.xml".source = ../../../assets/lxqt/openbox-rc.xml;
   };
   
   ######### Install themes
@@ -57,7 +60,7 @@
       # Theme from https://www.box-look.org/p/1017738/
       mistralTheme = pkgs.stdenv.mkDerivation {
         name = "mistral";
-        src = ../../../assets/Mistral.obt;
+        src = ../../../assets/lxqt/Mistral.obt;
         dontUnpack = true;
         installPhase = ''
           mkdir -p $out/share/themes/
@@ -68,7 +71,7 @@
       # see also  https://www.gnome-look.org/p/1358330
       vimix_cursor = pkgs.stdenv.mkDerivation {
         name = "vimix";
-        src = ../../../assets/Sweet-cursors.tar.xz;
+        src = ../../../assets/lxqt/Sweet-cursors.tar.xz;
         installPhase = ''
           mkdir -p $out/share/icons/Sweet-cursors
           cp -r * $out/share/icons/Sweet-cursors
