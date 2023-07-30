@@ -5,6 +5,7 @@ with lib.hm.gvariant; {
     #../../../services/keybase.nix
     #../../../services/maestral.nix
     ../../../services/mpris-proxy.nix
+    ../../../apps/media/kodi.nix
     #../../services/syncthing.nix
   ];
   #dconf.settings = {
@@ -12,11 +13,6 @@ with lib.hm.gvariant; {
   #    picture-options = "zoom";
   #    picture-uri = "file:///home/juca/Pictures/Determinate/DeterminateColorway-1280x720.png";
   #  };
-  #};
-  home.packages = with pkgs; ([
-    kodi]) ++ (with kodiPackages; [
-      trakt
-      youtube
-  ]);
+  #};S
   services.kbfs.enable = lib.mkForce true;
 }

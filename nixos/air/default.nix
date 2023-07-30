@@ -318,9 +318,5 @@
 
   nixpkgs.hostPlatform = lib.mkDefault "x86_64-linux";
 
-  nixpkgs.config.packageOverrides = pkgs: {
-    vaapiIntel = pkgs.vaapiIntel.override { enableHybridCodec = true; };
-  };
-
   hardware.cpu.intel.updateMicrocode = lib.mkDefault config.hardware.enableRedistributableFirmware;
 }
