@@ -19,6 +19,51 @@
     # Force kernel log in tty1, otherwise it will override greetd
     kernelParams = [ "console=tty1" ];
 
+    # compile kernel with SE Linux support - but also support for other LSM modules
+    kernelPatches = [{
+      ### Add Selinux?
+      name = "selinux-config";
+      patch = null;
+      extraConfig = ''
+        ## Enable SELINUX
+        CONFIG_SECURITY_SELINUX y
+        CONFIG_SECURITY_SELINUX_BOOTPARAM n
+        CONFIG_SECURITY_SELINUX_DISABLE n
+        CONFIG_SECURITY_SELINUX_DEVELOP y
+        CONFIG_SECURITY_SELINUX_AVC_STATS y
+        CONFIG_SECURITY_SELINUX_CHECKREQPROT_VALUE 0
+        CONFIG_DEFAULT_SECURITY_SELINUX n
+        CONFIG_HYPERV_TESTING n
+
+        ### Memory
+        CONFIG_HAVE_KERNEL_GZIP=y
+        CONFIG_HAVE_KERNEL_BZIP2=y
+        CONFIG_HAVE_KERNEL_LZMA=y
+        CONFIG_HAVE_KERNEL_XZ=y
+        CONFIG_HAVE_KERNEL_LZO=y
+        CONFIG_HAVE_KERNEL_LZ4=y
+        CONFIG_HAVE_KERNEL_ZSTD=y
+        CONFIG_ZSWAP_ZPOOL_DEFAULT_ZSMALLOC=y
+        CONFIG_ZSWAP_ZPOOL_DEFAULT="zsmalloc"
+        CONFIG_ZBUD=y
+        CONFIG_Z3FOLD=y
+        CONFIG_ZSMALLOC=y
+        CONFIG_ZSMALLOC_STAT=y
+        CONFIG_ZSMALLOC_CHAIN_SIZE=8
+        CONFIG_ZRAM_DEF_COMP_LZ4HC=y
+
+        #
+        # Compression
+        #
+        # CONFIG_CRYPTO_DEFLATE is not set
+        CONFIG_CRYPTO_LZO=y
+        # CONFIG_CRYPTO_842 is not set
+        CONFIG_CRYPTO_LZ4=y
+        CONFIG_CRYPTO_LZ4HC=y
+        CONFIG_CRYPTO_ZSTD=y
+      '';
+    }];
+
     #kernelParams = [ "resume_offset=140544" ];
     #resumeDevice = "/dev/disk/by-label/NIXOS";
 
@@ -33,10 +78,10 @@
 
       ### kernel modules to be loaded in the second stage, that are needed to mount the root file system ###
       kernelModules = [
-        #"zswap.compressor=z3fold"
+        "zswap.compressor=z3fold"
         "z3fold"
         "crc32c-intel"
-        #"zswap.zpool=lz4hc"
+        "zswap.zpool=lz4hc"
         "lz4hc_compress"
         #"kvm-intel"
         #"v4l2loopback" # Virtual Camera
@@ -54,7 +99,8 @@
       verbose = false;
     };
     #kernelPackages = pkgs.linuxPackages_latest;
-    kernelPackages = pkgs.linuxPackages_6_3;
+    #kernelPackages = pkgs.linuxPackages_6_3;
+    kernelPackages = pkgs.linuxPackages_lqx;
 
     # Allow compilation of packages ARM/ARM64 architectures via QEMU
     # e.g. nix-build -A <pkg> --argstr system aarch64-linux
@@ -71,8 +117,8 @@
     kernel.sysctl = {
       #"kernel.sysrq" = 1;
       #"kernel.printk" = "3 3 3 3";
-      "vm.vfs_cache_pressure" = 300;
-      "vm.swappiness" = 25;
+      "vm.vfs_cache_pressure" = 500;
+      "vm.swappiness" = 20;
       "vm.dirty_background_ratio" = 1;
       "vm.dirty_ratio" = 50;
     };
