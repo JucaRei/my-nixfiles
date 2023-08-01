@@ -68,6 +68,7 @@
       tokei # Modern Unix `wc` for code
       wget2 # Terminal downloader
       yq-go # Terminal `jq` for YAML
+      ookla-speedtest
 
       #any-nix-shell # fish support for nix shell
       #dconf2nix # Nix code from Dconf files
