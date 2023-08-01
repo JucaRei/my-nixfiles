@@ -77,7 +77,7 @@
     { self
     , nix-formatter-pack
     , nixpkgs
-    , robotnix
+    #, robotnix
     , ...
     } @ inputs:
     let
@@ -111,7 +111,7 @@
         #"juca@pi-mini" = libx.mkHome { hostname = "pi-mini"; username = "juca"; };
         ### Non-nixos
         "junior@archnitro" = libx.mkHome { hostname = "archnitro"; username = "junior"; };
-        # WSL
+        # WSL - Alpine
         "juca@nitrowin" = libx.mkHome { hostname = "nitrowin"; username = "juca"; };
       };
       nixosConfigurations = {
