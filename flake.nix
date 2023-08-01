@@ -95,10 +95,10 @@
       # home-manager switch -b backup --flake $HOME/Zero/nix-config
       # nix build .#homeConfigurations." juca@rocinante".activationPackage
       homeConfigurations = {
-        # .iso images
+        ### .iso images
         "juca@iso-console" = libx.mkHome { hostname = "iso-console"; username = "nixos"; };
         "juca@iso-desktop" = libx.mkHome { hostname = "iso-desktop"; username = "nixos"; desktop = "pantheon"; };
-        # Workstations
+        ### Workstations
         "juca@air" = libx.mkHome { hostname = "air"; username = "juca"; desktop = "mate"; };
         "juca@rocinante" = libx.mkHome { hostname = "rocinante"; username = "juca"; };
         "junior@rocinante" = libx.mkHome { hostname = "rocinante"; username = "junior"; };
@@ -106,11 +106,13 @@
         #"juca@nitro" = libx.mkHome { hostname = "nitro"; username = "juca"; desktop = "pantheon"; };
         "juca@vm" = libx.mkHome { hostname = "vm"; username = "juca"; desktop = "budgie"; };
         #"juca@pi" = libx.mkHome { hostname = "pi"; username = "juca"; desktop = "pantheon"; };
-        # Servers
+        ### Servers
         #"juca@vm-mini" = libx.mkHome { hostname = "vm-mini"; username = "juca"; };
         #"juca@pi-mini" = libx.mkHome { hostname = "pi-mini"; username = "juca"; };
-        # Non-nixos
+        ### Non-nixos
         "junior@archnitro" = libx.mkHome { hostname = "archnitro"; username = "junior"; };
+        # WSL
+        "juca@nitrowin" = libx.mkHome { hostname = "nitrowin"; username = "juca"; };
       };
       nixosConfigurations = {
         # .iso images
