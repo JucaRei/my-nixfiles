@@ -69,6 +69,7 @@
       wget2 # Terminal downloader
       yq-go # Terminal `jq` for YAML
       ookla-speedtest
+      util-linux # for small systems
 
       #any-nix-shell # fish support for nix shell
       #dconf2nix # Nix code from Dconf files
