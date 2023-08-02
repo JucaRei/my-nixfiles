@@ -83,6 +83,11 @@
       PAGER = "moar";
       SYSTEMD_EDITOR = "micro";
       VISUAL = "micro";
+
+      # clean up ~
+      LESSHISTFILE = cache + "/less/history";
+      WINEPREFIX = d + "/wine";
+      XAUTHORITY = "$XDG_RUNTIME_DIR/Xauthority";
     };
   };
   #home-manager = {
@@ -90,7 +95,7 @@
     #enable = true;
     info.enable = true;
     jq.enable = true;
-
+    nix-index.enable = true;
     #};
   };
   # Nicely reload system units when changing configs
