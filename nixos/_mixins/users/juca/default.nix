@@ -29,6 +29,7 @@ in
       "wireshark"
       "lxd"
       #"git"
+      "render"
       "libvirtd"
     ];
     # mkpasswd -m sha-512

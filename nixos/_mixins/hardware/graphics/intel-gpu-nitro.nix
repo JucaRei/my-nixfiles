@@ -9,6 +9,7 @@
         extraPackages = [ ] ++ lib.optionals (pkgs.system == "x86_64-linux")
           (with pkgs; [
             intel-media-driver # LIBVA_DRIVER_NAME=iHD
+            intel-compute-runtime
             vaapiIntel # LIBVA_DRIVER_NAME=i965 (older but works better for Firefox/Chromium)
             vaapiVdpau
             libvdpau-va-gl
@@ -23,6 +24,11 @@
         #];
       };
     };
+  };
+
+  environment.variables = {
+    VDPAU_DRIVER =
+      lib.mkIf config.hardware.opengl.enable (lib.mkDefault "va_gl");
   };
 
   nixpkgs.config.packageOverrides = pkgs: {

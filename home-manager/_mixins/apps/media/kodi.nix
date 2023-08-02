@@ -1,4 +1,4 @@
-{ pkgs, lib, ... }:
+{ pkgs, lib, username, ... }:
 with lib.hm.gvariant; {
 
     home.packages = with pkgs; ([
@@ -6,5 +6,15 @@ with lib.hm.gvariant; {
         ]) ++ (with kodiPackages; [
           trakt
           youtube
+          jellyfin
     ]);
+
+    services = {
+        jellyfin = {
+            enable = true;
+            user = ${username};
+        };
+        jellyseerr.enable = true;
+        #jellyfin.openFirewall = true;
+    };
 }
