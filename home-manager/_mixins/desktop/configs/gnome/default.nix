@@ -9,6 +9,7 @@
 {
   dconf.settings = {
     "org/gnome/shell" = {
+      disable-user-extensions = false;
       favorite-apps = [
         "org.gnome.Settings.desktop"
         "Alacritty.desktop"
@@ -42,6 +43,9 @@
         "gsconnect@andyholmes.github.io"
         "pip-on-top@rafostar.github.com"
         "forge@jmmaranan.com"
+        "pop-shell@system76.com"
+        "native-window-placement@gnome-shell-extensions.gcampax.github.com" # works better with pop-shell
+        "appindicatorsupport@rgcjonas.gmail.com"
         # "dash-to-dock@micxgx.gmail.com"             # Dash to panel alternative
         # "fullscreen-avoider@noobsai.github.com"     # Incompatible with dash-to-panel
       ];
@@ -187,6 +191,13 @@
     "org/gnome/shell/extensions/forge" = {
       window-gap-size = 8;
       dnd-center-layout = "stacked";
+    };
+    "org/gnome/shell/extensions/pop-shell" = {
+      tile-by-default = true;
+      snap-to-grid = true;
+      smart-gaps = true;
+      show-title = false;
+      active-hint = false;
     };
     "org/gnome/shell/extensions/forge/keybindings" = {
       # Set active colors manually

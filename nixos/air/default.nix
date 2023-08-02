@@ -130,6 +130,13 @@
   #  ]; # Note these options effect the entire BTRFS filesystem and not just this volume, with the exception of `"subvol=swap"`, the other options are repeated in my other `fileSystem` mounts
   #};
 
+  #fileSystems."/.swap" = {
+  #  device = "/dev/disk/by-uuid/5830e9b3-260b-451c-bfee-2028c64c6199";
+  #  fsType = "btrfs";
+  #  options = [ "subvol=@swap" "nodatacow" "noatime" ];
+  #  neededForBoot = true;
+  #};
+
   fileSystems."/boot/efi" = {
     device = "/dev/disk/by-partlabel/EFI";
     fsType = "vfat";
@@ -145,6 +152,9 @@
     #device = "/swap/swapfile";
     #size = (1024 * 2); # RAM size
     #size = (1024 * 16) + (1024 * 2); # RAM size + 2 GB
+  
+    #device = "/.swap/swapfile";
+    #size = 8192;
   }];
 
   boot = {

@@ -78,6 +78,7 @@
     , nix-formatter-pack
     , nixpkgs
     #, robotnix
+    , nur
     , ...
     } @ inputs:
     let
