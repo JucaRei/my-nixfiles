@@ -18,6 +18,9 @@
         networkmanager-openvpn
         networkmanager-openconnect
       ];
+      unmanaged = [
+        "interface-name:veth*"
+      ];
     };
     extraHosts = ''
       192.168.1.50  nitro
