@@ -314,6 +314,20 @@
         "type": "gitlab"
       }
     },
+    "nur": {
+      "locked": {
+        "lastModified": 1691095520,
+        "narHash": "sha256-Vu72WREEfQbwHqxlv7AW3dTMFFlT1Pexkkju6Pb5v54=",
+        "owner": "nix-community",
+        "repo": "NUR",
+        "rev": "2e58a3127d964b1add23f86ef6a51966d0717988",
+        "type": "github"
+      },
+      "original": {
+        "id": "nur",
+        "type": "indirect"
+      }
+    },
     "robotnix": {
       "inputs": {
         "androidPkgs": "androidPkgs",
@@ -345,6 +359,7 @@
         "nixos-hardware": "nixos-hardware",
         "nixpkgs": "nixpkgs_2",
         "nixpkgs-unstable": "nixpkgs-unstable",
+        "nur": "nur",
         "robotnix": "robotnix"
       }
     },

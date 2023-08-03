@@ -9,8 +9,8 @@
   ];
 
   boot = {
-    kernelPackages = pkgs.linuxPackages_5_10;
-    extraModulePackages = with config.boot.kernelPackages; [ v4l2loopback nvidiaPackages.legacy_340 nvidiaPackages.stable nvidia_x11_legacy340 broadcom_sta ];
+    kernelPackages = pkgs.linuxPackages_6_1;
+    extraModulePackages = with config.boot.kernelPackages; [ v4l2loopback nvidiaPackages.legacy_340 nvidia_x11_legacy340 broadcom_sta ];
     extraModprobeConfig = lib.mkDefault "";
     initrd = {
       availableKernelModules = [ ];
