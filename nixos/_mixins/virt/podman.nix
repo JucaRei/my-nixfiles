@@ -36,7 +36,9 @@
     #};
 
     podman = {
-      defaultNetwork.settings = {dns_enabled = true;};
+      defaultNetwork.settings = {
+        dns_enabled = true;
+      };
       #extraPackages = [ pkgs.zfs ];  # Using podman with ZFS
       dockerCompat = true;
       enable = true;
