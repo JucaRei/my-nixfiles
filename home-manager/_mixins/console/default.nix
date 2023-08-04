@@ -27,7 +27,7 @@
     ./zoxide.nix
     ./xdg.nix
     ./skim.nix
-    ./command-not-found.nix
+    ./command-not-found
     #./zsh.nix
   ];
 
