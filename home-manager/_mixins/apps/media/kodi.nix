@@ -9,12 +9,12 @@ with lib.hm.gvariant; {
           jellyfin
     ]);
 
-    services = {
-        jellyfin = {
-            enable = true;
-            user = ${username};
-        };
-        jellyseerr.enable = true;
-        #jellyfin.openFirewall = true;
-    };
+    # services = {
+    #     jellyfin = {
+    #         enable = true;
+    #         user = ${username};
+    #     };
+    #     jellyseerr.enable = true;
+    #     #jellyfin.openFirewall = true;
+    # };
 }
