@@ -15,7 +15,7 @@
     ];
 
     shellHook = ''
-    alias build="echo build"
+      export PS1="[\e[0;34m(Flakes)\$\e[m:\w]\$ "
       echo "You can apply this flake to your system with nixos-rebuild switch --flake .#"
       echo "
        ______   _           _

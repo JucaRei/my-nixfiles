@@ -2,7 +2,7 @@
 
   imports = [
     ./fwupd.nix
-    #./journald.nix
+    ./journald.nix
     ./qt-style.nix
   ];
 
