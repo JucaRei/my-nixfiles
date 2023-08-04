@@ -13,7 +13,7 @@
     ./git.nix
     ./gh.nix
     ./glow.nix
-    ./gpg.nix
+    #./gpg.nix
     ./htop.nix
     ./micro.nix
     ./neofetch.nix

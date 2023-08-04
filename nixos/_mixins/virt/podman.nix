@@ -45,6 +45,8 @@
         then "nvidia" config.services.xserver.videoDrivers
         else false
       );
+      # required for containers under podman-compose to be able to communicate
+      defaultNetwork.dnsname.enable = true;
     };
     containers = {
       registries.search = [

@@ -262,7 +262,7 @@
       "zswap.max_pool_percent=20"
       "zswap.zpool=z3fold"
       "fs.inotify.max_user_watches=524288"
-      #"intel_iommu=on"
+      #"intel_iommu=igfx_off"
       "net.ifnames=0"
     ];
     kernel.sysctl = {
