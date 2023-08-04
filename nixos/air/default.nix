@@ -161,49 +161,49 @@
     isContainer = false;
 
     # compile kernel with SE Linux support - but also support for other LSM modules
-    kernelPatches = [{
-      ### Add Selinux?
-      name = "selinux-config";
-      patch = null;
-      extraConfig = ''
-        ## Enable SELINUX
-        CONFIG_SECURITY_SELINUX y
-        CONFIG_SECURITY_SELINUX_BOOTPARAM n
-        CONFIG_SECURITY_SELINUX_DISABLE n
-        CONFIG_SECURITY_SELINUX_DEVELOP y
-        CONFIG_SECURITY_SELINUX_AVC_STATS y
-        CONFIG_SECURITY_SELINUX_CHECKREQPROT_VALUE 0
-        CONFIG_DEFAULT_SECURITY_SELINUX n
-        CONFIG_HYPERV_TESTING n
+    # kernelPatches = [{
+    #   ### Add Selinux?
+    #   name = "selinux-config";
+    #   patch = null;
+    #   extraConfig = ''
+    #     ## Enable SELINUX
+    #     CONFIG_SECURITY_SELINUX y
+    #     CONFIG_SECURITY_SELINUX_BOOTPARAM n
+    #     CONFIG_SECURITY_SELINUX_DISABLE n
+    #     CONFIG_SECURITY_SELINUX_DEVELOP y
+    #     CONFIG_SECURITY_SELINUX_AVC_STATS y
+    #     CONFIG_SECURITY_SELINUX_CHECKREQPROT_VALUE 0
+    #     CONFIG_DEFAULT_SECURITY_SELINUX n
+    #     CONFIG_HYPERV_TESTING n
 
-        ### Memory
-        CONFIG_HAVE_KERNEL_GZIP=y
-        CONFIG_HAVE_KERNEL_BZIP2=y
-        CONFIG_HAVE_KERNEL_LZMA=y
-        CONFIG_HAVE_KERNEL_XZ=y
-        CONFIG_HAVE_KERNEL_LZO=y
-        CONFIG_HAVE_KERNEL_LZ4=y
-        CONFIG_HAVE_KERNEL_ZSTD=y
-        CONFIG_ZSWAP_ZPOOL_DEFAULT_ZSMALLOC=y
-        CONFIG_ZSWAP_ZPOOL_DEFAULT="zsmalloc"
-        CONFIG_ZBUD=y
-        CONFIG_Z3FOLD=y
-        CONFIG_ZSMALLOC=y
-        CONFIG_ZSMALLOC_STAT=y
-        CONFIG_ZSMALLOC_CHAIN_SIZE=8
-        CONFIG_ZRAM_DEF_COMP_LZ4HC=y
+    #     ### Memory
+    #     CONFIG_HAVE_KERNEL_GZIP=y
+    #     CONFIG_HAVE_KERNEL_BZIP2=y
+    #     CONFIG_HAVE_KERNEL_LZMA=y
+    #     CONFIG_HAVE_KERNEL_XZ=y
+    #     CONFIG_HAVE_KERNEL_LZO=y
+    #     CONFIG_HAVE_KERNEL_LZ4=y
+    #     CONFIG_HAVE_KERNEL_ZSTD=y
+    #     CONFIG_ZSWAP_ZPOOL_DEFAULT_ZSMALLOC=y
+    #     CONFIG_ZSWAP_ZPOOL_DEFAULT="zsmalloc"
+    #     CONFIG_ZBUD=y
+    #     CONFIG_Z3FOLD=y
+    #     CONFIG_ZSMALLOC=y
+    #     CONFIG_ZSMALLOC_STAT=y
+    #     CONFIG_ZSMALLOC_CHAIN_SIZE=8
+    #     CONFIG_ZRAM_DEF_COMP_LZ4HC=y
 
-        #
-        # Compression
-        #
-        # CONFIG_CRYPTO_DEFLATE is not set
-        CONFIG_CRYPTO_LZO=y
-        # CONFIG_CRYPTO_842 is not set
-        CONFIG_CRYPTO_LZ4=y
-        CONFIG_CRYPTO_LZ4HC=y
-        CONFIG_CRYPTO_ZSTD=y
-      '';
-    }];
+    #     #
+    #     # Compression
+    #     #
+    #     # CONFIG_CRYPTO_DEFLATE is not set
+    #     CONFIG_CRYPTO_LZO=y
+    #     # CONFIG_CRYPTO_842 is not set
+    #     CONFIG_CRYPTO_LZ4=y
+    #     CONFIG_CRYPTO_LZ4HC=y
+    #     CONFIG_CRYPTO_ZSTD=y
+    #   '';
+    # }];
 
     #plymouth = {
     #  enable = lib.mkForce true;
@@ -275,7 +275,8 @@
     };
     #kernelPackages = pkgs.linuxPackages_latest;
     #kernelPackages = pkgs.linuxPackages_zen;
-    kernelPackages = pkgs.linuxPackages_zen;
+    kernelPackages = pkgs.linuxPackages_lqx;
+    # kernelPackages = pkgs.linuxPackages_zen;
     #kernelPackages = pkgs.linuxPackages_xanmod_stable;
     supportedFilesystems = [ "btrfs" ]; # fat 32 and btrfs
   };
