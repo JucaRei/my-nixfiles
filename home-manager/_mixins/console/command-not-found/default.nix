@@ -19,7 +19,7 @@
 
   # Modified version of command-not-found.sh that uses our wrapped version of
   # nix-locate, makes the output a bit less noisy, and adds color!
-  command-not-found = pkgs.runCommandLocal "../../../assets/command-not-found/command-not-found.sh" {} ''
+  command-not-found = pkgs.runCommandLocal "command-not-found.sh" {} ''
     mkdir -p $out/etc/profile.d
     substitute ${./command-not-found.sh}                  \
       $out/etc/profile.d/command-not-found.sh             \
