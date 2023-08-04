@@ -146,6 +146,7 @@
 
   swapDevices = [{
     device = "/dev/disk/by-partlabel/SWAP";
+    options = [ "defaults" "noatime" "nodiratime" ];
     ### SWAPFILE
     #device = "/swap/swapfile";
     #size = 2 GiB;
