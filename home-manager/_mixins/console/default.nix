@@ -85,9 +85,9 @@
       VISUAL = "micro";
 
       # clean up ~
-      LESSHISTFILE = cache + "/less/history";
-      WINEPREFIX = d + "/wine";
-      XAUTHORITY = "$XDG_RUNTIME_DIR/Xauthority";
+      # LESSHISTFILE = cache + "/less/history";
+      # WINEPREFIX = d + "/wine";
+      # XAUTHORITY = "$XDG_RUNTIME_DIR/Xauthority";
     };
   };
   #home-manager = {

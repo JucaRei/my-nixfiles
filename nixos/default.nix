@@ -9,6 +9,7 @@
     #./_mixins/services/kmscon.nix
     #./_mixins/services/openssh.nix
     #./_mixins/services/smartmon.nix
+    #../home-manager
     ./_mixins/shared
     ./_mixins/users/root
     ./_mixins/users/${username}
