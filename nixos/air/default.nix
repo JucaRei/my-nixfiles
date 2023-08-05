@@ -161,6 +161,11 @@
   boot = {
     isContainer = false;
 
+    # kernel.config = {
+    #   Z3FOLD = "y";
+    #   CRYPTO_LZ4 = "y";
+    # };
+
     # compile kernel with SE Linux support - but also support for other LSM modules
     # kernelPatches = [{
     #   ### Add Selinux?
@@ -386,6 +391,24 @@
   };
 
   nixpkgs.hostPlatform = lib.mkDefault "x86_64-linux";
+
+  ### Load z3fold and lz4
+
+  systemd.services.zswap = {
+    description = "Enable ZSwap, set to LZ4 and Z3FOLD";
+    enable = true;
+    wantedBy = [ "basic.target" ];
+    path = [ pkgs.bash ];
+    serviceConfig = {
+      ExecStart = ''${pkgs.bash}/bin/bash -c 'cd /sys/module/zswap/parameters&& \
+      echo 1 > enabled&& \
+      echo 20 > max_pool_percent&& \
+      echo lz4hc > compressor&& \
+      echo z3fold > zpool'
+      '';
+      Type = "simple";
+    };
+  };
 
   hardware.cpu.intel.updateMicrocode = lib.mkDefault config.hardware.enableRedistributableFirmware;
 }
