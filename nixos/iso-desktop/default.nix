@@ -8,8 +8,8 @@
     ../_mixins/hardware/backlight/brillo.nix
     ../_mixins/services/sound/pulseaudio.nix
     ../_mixins/services/network/samba.nix
-    ../_mixins/services/shared/shells.nix
-    ../_mixins/services/shared/console.nix
+    ../_mixins/shared/shells.nix
+    ../_mixins/shared/console.nix
     ../_mixins/services/peripherals/usb.nix
     ../_mixins/apps/browsers/chromium.nix
     ../_mixins/apps/terminal/tilix.nix

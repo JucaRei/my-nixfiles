@@ -12,6 +12,7 @@
       duf
       htop
       neovim
+      nixpkgs-fmt
     ];
 
     shellHook = ''

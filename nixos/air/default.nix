@@ -12,7 +12,7 @@
     (modulesPath + "/installer/scan/not-detected.nix")
     ../_mixins/hardware/boot/efi.nix
     ../_mixins/hardware/bluetooth
-    ../_mixins/hardware/backlight/acpilight.nix
+    ../_mixins/hardware/backlight/brillo.nix
     ../_mixins/hardware/cpu/intel.nix
     ../_mixins/hardware/graphics/intel-old.nix
     ../_mixins/hardware/wifi/broadcom-wifi.nix
@@ -292,6 +292,28 @@
   #        BusID "PCI:0:2:0"
   #EndSection
 
+  ### INTEL FIX SCREEN TEARING ###
+  environment = {
+    etc."X11/xorg.conf.d/20-intel.conf" = {
+      text = ''
+        Section         "Device"
+          Identifier    "Intel Graphics"
+          Option        "intel"
+          Option        "TearFree"          "true"
+          Option        "AccelMethod"       "sna"
+          Option        "SwapbuffersWait"   "true"
+          Option        "TripleBuffer"      "true"
+          Option        "VariableRefresh"   "true"
+          Option        "DRI"               "2"
+        EndSection
+      '';
+    };
+
+    variables = {
+      VDPAU_DRIVER = lib.mkIf config.hardware.opengl.enable (lib.mkDefault "va_gl");
+    };
+  };
+
   services = {
     #############
     ### Btrfs ###
@@ -309,6 +331,9 @@
     ############
     gvfs.enable = true;
 
+    # Thunderbolt
+    hardware.bolt.enable = true;
+    udev.extraRules = ''KERNEL=="hidraw*", ATTRS{idVendor}=="20d6", ATTRS{idProduct}=="a711", MODE="0660", TAG+="uaccess"'';
 
     ################################
     ### Device specific services ###
@@ -356,7 +381,9 @@
 
   security.doas.enable = lib.mkDefault false;
 
-  virtualisation.docker = { storageDriver = lib.mkForce "btrfs"; };
+  virtualisation.docker = { 
+    storageDriver = lib.mkForce "btrfs"; 
+  };
 
   nixpkgs.hostPlatform = lib.mkDefault "x86_64-linux";
 

@@ -6,6 +6,7 @@ with lib.hm.gvariant; {
     #../../../services/maestral.nix
     ../../../services/mpris-proxy.nix
     ../../../apps/media/kodi.nix
+    #../../../apps/media/handbrake.nix
     #../../services/syncthing.nix
   ];
   #dconf.settings = {
