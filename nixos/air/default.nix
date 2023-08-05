@@ -338,6 +338,7 @@
 
     # Thunderbolt
     hardware.bolt.enable = true;
+    # # Allow usb controllers via HDMI
     udev.extraRules = ''KERNEL=="hidraw*", ATTRS{idVendor}=="20d6", ATTRS{idProduct}=="a711", MODE="0660", TAG+="uaccess"'';
 
     ################################
