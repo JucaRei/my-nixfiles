@@ -75,6 +75,8 @@
       any-nix-shell # fish support for nix shell
       dconf2nix # Nix code from Dconf files
       nix-index # locate packages containing certain nixpkgs
+      nix-index-update
+      nil
       nix-output-monitor # nom: monitor nix commands
     ];
 

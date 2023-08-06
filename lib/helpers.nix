@@ -20,6 +20,7 @@
     "aarch64-linux"
     "i686-linux"
     "x86_64-linux"
+    "x86_64-unknown-linux-musl"
     "aarch64-darwin"
     "x86_64-darwin"
     "riscv64-linux"
