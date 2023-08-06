@@ -77,7 +77,8 @@ with lib.hm.gvariant;
     };
 
     "org/mate/desktop/applications/terminal" = {
-      exec = "mate-terminal";
+      # exec = "mate-terminal";
+      exec = "tilix";
     };
 
     "org/mate/desktop/background" = {
@@ -140,7 +141,7 @@ with lib.hm.gvariant;
     "org/mate/marco/general" = {
       alt-tab-expand-to-fit-title = true;
       button-layout = ":minimize,maximize,close";
-      center-new-windows = false;
+      center-new-windows = true;
       compositing-manager = true;
       num-workspaces = 6;
       show-tab-border = false;
