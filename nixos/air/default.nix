@@ -43,7 +43,6 @@
       "compress-force=zstd:5"
       "space_cache=v2"
       "commit=120"
-      "autodefrag"
       "discard=async"
     ];
   };
@@ -61,7 +60,6 @@
       "compress-force=zstd:15"
       "space_cache=v2"
       "commit=120"
-      "autodefrag"
       "discard=async"
     ];
   };
@@ -79,7 +77,6 @@
       "compress-force=zstd:15"
       "space_cache=v2"
       "commit=120"
-      "autodefrag"
       "discard=async"
     ];
   };
@@ -97,7 +94,6 @@
       "compress-force=zstd:5"
       "space_cache=v2"
       "commit=120"
-      "autodefrag"
       "discard=async"
     ];
   };
@@ -115,7 +111,6 @@
       "compress-force=zstd:15"
       "space_cache=v2"
       "commit=120"
-      "autodefrag"
       "discard=async"
     ];
   };

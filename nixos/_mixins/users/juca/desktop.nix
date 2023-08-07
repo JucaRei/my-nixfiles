@@ -10,7 +10,8 @@
     #../../desktop/opera.nix
     #../../desktop/tilix.nix
     #../../desktop/vivaldi.nix
-  ] ++ lib.optional (builtins.pathExists (../.. + "/desktop/${desktop}-apps.nix")) ../../desktop/${desktop}-apps.nix
+  ] 
+  ++ lib.optional (builtins.pathExists (../.. + "/desktop/${desktop}-apps.nix")) ../../desktop/${desktop}-apps.nix
   ++ lib.optional (builtins.isString desktop) (../.. + "/apps/browsers/firefox.nix")
   ++ lib.optional (builtins.isString desktop) (../.. + "/apps/browsers/vivaldi.nix");
 
@@ -39,7 +40,7 @@
     #unstable.fluffychat
     #unstable.gitkraken
     #unstable.tdesktop
-    unstable.vscode-fhs
+    #unstable.vscode-fhs
     #unstable.wavebox
   ];
 }

@@ -8,10 +8,18 @@ let # env vars required for finegrained
     export __VK_LAYER_NV_optimus=NVIDIA_only
     exec "$@"
   '';
+
+  intelBusId = "PCI:0:2:0";
+  nvidiaBusId = "PCI:1:0:0";
 in
 {
   # install shell script defined above
-  environment.systemPackages = [ nvidia-offload ];
+  environment.systemPackages = [ 
+    nvidia-offload 
+    vulkan-loader
+    vulkan-validation-layers
+    vulkan-tools
+  ];
 
   # enable secondary monitors at boot time
   specialisation = {
@@ -27,19 +35,20 @@ in
     };
   };
 
-  hardware.opengl = {
-    enable = true;
-    driSupport = true;
-  };
-
   hardware.nvidia = {
+    package = pkgs.linuxKernel.packages.linux_zen.nvidia_x11; # zen kernel
+    modesetting.enable = true;
+    nvidiaPersistenced = true;
     prime = {
       offload.enable = true;
 
-      # TODO: move to machine-specific config
-      # FIXME: nix-shell -p lshw --run "lshw -c display"
-      nvidiaBusId = "PCI:1:00:0";
-      intelBusId = "PCI:0:2:0";
+      # Bus ID of the Intel GPU
+      # Find it using lspci, either under 3D or VGA
+      inherit intelBusId;
+
+      # Bus ID of the Nvidia GPU
+      # Find it using lspci, either under 3D or VGA
+      inherit nvidiaBusId;
     };
 
     powerManagement = {
@@ -49,4 +58,18 @@ in
       finegrained = true;
     };
   };
+
+  boot = {
+    blacklistedKernelModules = lib.mkForce [ "nouveau" ];
+    kernelParams = [
+      "clearcpuid=514" # Fixes certain wine games crash on launch
+      "nvidia"
+      "nvidia_modeset"
+      "nvidia-uvm"
+      "nvidia_drm"
+    ];
+    kernel.sysctl = { "vm.max_map_count" = 2147483642; };
+  };
+
+  services.xserver.videoDrivers = ["nvidia"];
 }

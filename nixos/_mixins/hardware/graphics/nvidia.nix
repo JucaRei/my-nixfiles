@@ -28,7 +28,7 @@ in
       # package = config.boot.kernelPackages.nvidiaPackages.legacy_470;
       # package = pkgs.linuxKernel.packages.linux_xanmod_stable.nvidia_x11_legacy470;
       # package = pkgs.linuxKernel.packages.linux_xanmod_stable.nvidia_x11_stable_open;
-      # package = pkgs.linuxKernel.packages.linux_zen.nvidia_x11;
+      package = pkgs.linuxKernel.packages.linux_zen.nvidia_x11;
 
       #open = true;  #opensource
       nvidiaSettings = false;

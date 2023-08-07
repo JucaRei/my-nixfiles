@@ -22,6 +22,8 @@
     #./neovim.nix
     ./readline.nix
     ./exa.nix
+    ./nix.nix
+    ./nixpkgs.nix
     ./starship.nix
     ./yt-dlp.nix
     ./zoxide.nix

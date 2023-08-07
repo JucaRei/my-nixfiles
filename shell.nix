@@ -13,6 +13,7 @@
       htop
       neovim
       nixpkgs-fmt
+      alejandra
     ];
 
     shellHook = ''

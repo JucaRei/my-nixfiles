@@ -1,75 +1,72 @@
-{ disks ? [ "/dev/nvme0n1" "/dev/nvme1n1" ], ... }:
+_:
 let
-  # "subvol=@"
-  options = [
-    "rw"
-    "noatime"
-    "nodiratime"
-    "ssd"
-    "nodatacow"
-    "compress-force=zstd:5"
-    "space_cache=v2"
-    "commit=120"
-    "autodefrag"
-    "discard=async"
-  ];
-in
-{
+# "subvol=@"
+options = [ "rw" "noatime" "nodiratime" "ssd" "nodatacow" "compress-force=zstd:5" "space_cache=v2" "commit=120" "discard=async" ];
+in {
   disko.devices = {
     disk = {
-      nvme0 = {
+      sda = {
         type = "disk";
-        device = builtins.elemAt disks 0;
+        device = "/dev/disk/by-id/ata-APPLE_SSD_TS064C_61UA30RXK6HK";
         content = {
-          type = "table";
-          format = "gpt";
-          partitions = [{
-            name = "ESP";
-            start = "0%";
-            end = "550MiB";
-            bootable = true;
-            flags = [ "esp" ];
-            fs-type = "fat32";
-            content = {
-              type = "filesystem";
-              format = "vfat";
-              mountpoint = "/boot";
-            };
-          }
-            {
-              name = "root";
-              start = "550MiB";
-              end = "100%";
+          type = "gpt";
+          partitions = {
+            ESP = {
+              priority = 1;
+              name = "ESP";
+              start = 0;
+              end = "512MiB";
+              type = "EF00";
               content = {
                 type = "filesystem";
-                # Overwirte the existing filesystem
-                extraArgs = [ "-f" ];
-                format = "xfs";
-                mountpoint = "/";
-                mountOptions = defaultXfsOpts;
+                format = "vfat";
+                mountpoint = "/boot";
+                mountOptions = [ "defaults" "noatime" "nodiratime" ]
               };
-            }];
-        };
-      };
-      nvme1 = {
-        type = "disk";
-        device = builtins.elemAt disks 1;
-        content = {
-          type = "table";
-          format = "gpt";
-          partitions = [{
-            name = "home";
-            start = "0%";
-            end = "100%";
-            content = {
-              type = "filesystem";
-              # Overwirte the existing filesystem
-              extraArgs = [ "-f" ];
-              format = "xfs";
-              mountpoint = "/home";
-              mountOptions = defaultXfsOpts;
             };
-          }];
+            swap = {
+              start = "512MiB";
+              size = "6GiB";
+              content = {
+                type = "swap";
+                randomEncryption = true;
+                resumeDevice = true;
+              };
+            };
+            root = {
+              size = "100%";
+              content = {
+                type = "btrfs";
+                extraArgs = [ "-f" ]; # Override existing partition
+                # Subvolumes must set a mountpoint in order to be mounted,
+                # unless their parent is mounted
+                subvolumes = {
+                  # Subvolume name is different from mountpoint
+                  "/rootfs" = {
+                    mountpoint = "/";
+                    mountOptions = [ "subvol=@" options ];
+                  };
+                  # Subvolume name is the same as the mountpoint
+                  "/home" = {
+                    mountOptions = [ "subvol=@home" options ];
+                    mountpoint = "/home";
+                  };
+                  "/.snapshots" = {
+                    mountOptions = [ "subvol=@snapshots" options ];
+                    mountpoint = "/.snapshots";
+                  };
+                  "/tmp" = {
+                    mountOptions = [ "subvol=@tmp" options ];
+                    mountpoint = "/tmp";
+                  };
+                  "/nix" = {
+                    mountOptions = [ "subvol=@nix" options ];
+                    mountpoint = "/nix";
+                  };
+                };
+              };
+            };
+          };
         };
       };
     };
