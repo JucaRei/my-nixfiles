@@ -97,7 +97,7 @@
     "d /home/${username}/Documents/workspace/virtualmachines/windows 0755 ${username} users - -"
     "d /home/${username}/Documents/workspace/virtualmachines/linux 0755 ${username} users - -"
     "d /home/${username}/Documents/workspace/virtualmachines/mac 0755 ${username} users - -"
-    "d /home/${username}/Documents/workspace/docker-configs/resources 0755 ${username} users - -"
+    "d /home/${username}/Documents/workspace/docker-configs/resources 0750 ${username} users - -"
     "d /home/${username}/Documents/workspace/docker-configs/composes 0755 ${username} users - -"
     "d /home/${username}/Documents/workspace/lab 0755 ${username} users - -"
     "d /home/${username}/Documents/workspace/github 0755 ${username} users - -"

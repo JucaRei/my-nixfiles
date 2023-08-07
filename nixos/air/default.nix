@@ -15,6 +15,7 @@
     ../_mixins/hardware/backlight/brillo.nix
     ../_mixins/hardware/cpu/intel.nix
     ../_mixins/hardware/graphics/intel-old.nix
+    #../_mixins/hardware/power/powersave-top.nix
     ../_mixins/hardware/wifi/broadcom-wifi.nix
     #../_mixins/services/zerotier.nix
     ../_mixins/services/security/sudo.nix
@@ -379,7 +380,7 @@
   #systemd.package = pkgs.systemd.override { withSelinux = true; };
 
   programs = {
-    kbdlight.enable = true;
+    #kbdlight.enable = true;
     #light.enable = true;
   };
 

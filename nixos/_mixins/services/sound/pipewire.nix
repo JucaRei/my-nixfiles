@@ -3,6 +3,8 @@
   imports = [ ../security/rtkit.nix ];
   environment = {
     systemPackages = with pkgs; [
+      alsa-utils
+      pulseaudio
       pulsemixer # Terminal PulseAudio mixer
     ] ++ lib.optionals (desktop != null) [
       pavucontrol # Terminal Media Controller

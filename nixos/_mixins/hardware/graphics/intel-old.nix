@@ -30,5 +30,5 @@
   # # Allow usb controllers via HDMI
   # services.udev.extraRules = ''KERNEL=="hidraw*", ATTRS{idVendor}=="20d6", ATTRS{idProduct}=="a711", MODE="0660", TAG+="uaccess"'';
 
-
+  services.xserver.videoDrivers = [ "intel" "i965" ];
 }

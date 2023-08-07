@@ -3,8 +3,8 @@ let
   # Firewall configuration variable for syncthing
   syncthing = {
     hosts = [ "nitro" "rocinante" "air" "vm" "DietPi" ];
-    tcpPorts = [ 22000 8384 ];
-    udpPorts = [ 22000 21027 ];
+    tcpPorts = [ 22000 8384 8080 ];
+    udpPorts = [ 22000 21027 8080 ];
   };
 in
 {
