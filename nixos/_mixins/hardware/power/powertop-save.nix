@@ -5,6 +5,8 @@
     tlp
   ];
 
+  environment.systemPackages = [config.boot.kernelPackages.x86_energy_perf_policy];
+
   boot = {
     kernelParams = [ "pcie_aspm.policy=powersave" ];
     extraModprobeConfig = ''
