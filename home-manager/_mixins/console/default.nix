@@ -28,7 +28,7 @@
     ./yt-dlp.nix
     ./zoxide.nix
     ./xdg.nix
-    ./skim.nix
+    #./skim.nix
     #./command-not-found
     #./zsh.nix
   ];

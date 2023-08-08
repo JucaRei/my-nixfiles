@@ -23,6 +23,7 @@ in
       ${pkgs.nvd}/bin/nvd diff $oldGenPath $newGenPath
     '';
     homeDirectory = if isDarwin then "/Users/${username}" else "/home/${username}";
+    #homeDirectory = if isDarwin then "/Users/${username}" else "/mnt/c/Users/${username}"
     sessionPath = [ "$HOME/.local/bin" ];
     inherit stateVersion;
     inherit username;

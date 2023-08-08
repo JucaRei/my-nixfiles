@@ -101,11 +101,11 @@
         "juca@iso-desktop" = libx.mkHome { hostname = "iso-desktop"; username = "nixos"; desktop = "pantheon"; };
         ### Workstations
         "juca@air" = libx.mkHome { hostname = "air"; username = "juca"; desktop = "mate"; };
-        #"juca@rocinante" = libx.mkHome { hostname = "rocinante"; username = "juca"; };
+        "juca@rocinante" = libx.mkHome { hostname = "rocinante"; username = "juca"; desktop = "mate";};
         #"junior@rocinante" = libx.mkHome { hostname = "rocinante"; username = "junior"; };
         #"juca@oldmac" = libx.mkHome { hostname = "rocinante"; username = "juca"; desktop = "mate"; };
         #"juca@nitro" = libx.mkHome { hostname = "nitro"; username = "juca"; desktop = "pantheon"; };
-        #"juca@vm" = libx.mkHome { hostname = "vm"; username = "juca"; desktop = "budgie"; };
+        "juca@vm" = libx.mkHome { hostname = "vm"; username = "juca"; desktop = "budgie"; };
         #"juca@pi" = libx.mkHome { hostname = "pi"; username = "juca"; desktop = "pantheon"; };
         ### Servers
         #"juca@vm-mini" = libx.mkHome { hostname = "vm-mini"; username = "juca"; };
@@ -113,7 +113,7 @@
         ### Non-nixos
         #"junior@archnitro" = libx.mkHome { hostname = "archnitro"; username = "junior"; };
         # WSL - Alpine
-        #"juca@nitrowin" = libx.mkHome { hostname = "nitrowin"; username = "juca"; };
+        "juca@nitrowin" = libx.mkHome { hostname = "nitrowin"; username = "juca"; };
       };
       nixosConfigurations = {
         # .iso images
@@ -124,9 +124,9 @@
         #  - sudo nixos-rebuild switch --flake $HOME/Zero/nix-config
         #  - nix build .#nixosConfigurations.rocinante.config.system.build.toplevel
         air = libx.mkHost { hostname = "air"; username = "juca"; desktop = "mate"; };
-        #rocinante = libx.mkHost { hostname = "rocinante"; username = "juca"; desktop = "mate"; };
+        rocinante = libx.mkHost { hostname = "rocinante"; username = "juca"; desktop = "mate"; };
         #nitro = libx.mkHost { hostname = "nitro"; username = "juca"; desktop = "pantheon"; };
-        #vm = libx.mkHost { hostname = "vm"; username = "juca"; desktop = "budgie"; };
+        vm = libx.mkHost { hostname = "vm"; username = "juca"; desktop = "budgie"; };
         # Servers
         #pi = libx.mkHost { hostname = "pi"; username = "juca"; };
         #pi-mini = libx.mkHost { hostname = "pi-mini"; username = "juca"; };
