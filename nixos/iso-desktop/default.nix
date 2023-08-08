@@ -17,7 +17,8 @@
 
   boot = {
     kernelPackages = pkgs.linuxPackages_6_1;
-    extraModulePackages = with config.boot.kernelPackages; [ v4l2loopback nvidiaPackages.legacy_340 nvidia_x11_legacy340 broadcom_sta ];
+    extraModulePackages = with config.boot.kernelPackages; [ broadcom_sta ];
+    # extraModulePackages = with config.boot.kernelPackages; [ v4l2loopback nvidiaPackages.legacy_340 nvidia_x11_legacy340 broadcom_sta ];
     extraModprobeConfig = lib.mkDefault "";
     initrd = {
       availableKernelModules = [ ];
@@ -25,7 +26,7 @@
       verbose = false;
     };
 
-    kernelModules = [ "vhost_vsock" "wl" "nvidia" "b43" ];
+    kernelModules = [ "vhost_vsock" "wl" "b43" ];
 
     kernel.sysctl = {
       #"net.ipv4.ip_forward" = 1;
