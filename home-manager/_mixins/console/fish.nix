@@ -21,6 +21,7 @@ _: {
         ### Nix
         rebuild-home = "home-manager switch -b backup --flake $HOME/Zero/nix-config";
         rebuild-lock = "pushd $HOME/Zero/nix-config && nix flake lock --recreate-lock-file && popd";
+        nix-clean = "sudo nix-collect-garbage -d && nix-collect-garbage -d"
         rebuild-iso-console = "pushd $HOME/Zero/nix-config && nix build .#nixosConfigurations.iso-console.config.system.build.isoImage && popd";
         rebuild-iso-desktop = "pushd $HOME/Zero/nix-config && nix build .#nixosConfigurations.iso-desktop.config.system.build.isoImage && popd";
         nix-hash-sha256 = "nix-hash --flat --base32 --type sha256";

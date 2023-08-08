@@ -11,7 +11,7 @@ if [ "$(id -u)" -eq 0 ]; then
 fi
 
 if [ ! -d "$HOME/Zero/nix-config/.git" ]; then
-  git clone https://gitlab.com/JucaRei/nix-configurations.git "$HOME/Zero/nix-config"
+  git clone https://github.com/JucaRei/my-nixfiles.git "$HOME/Zero/nix-config"
 fi
 
 pushd "$HOME/Zero/nix-config"
@@ -62,7 +62,7 @@ if [[ $REPLY =~ ^[Yy]$ ]]; then
   # Rsync nix-config to the target install and set the remote origin to SSH.
   rsync -a --delete "$HOME/Zero/" "/mnt/home/$TARGET_USER/Zero/"
   pushd "/mnt/home/$TARGET_USER/Zero/nix-config"
-  git remote set-url origin git@gitlab.com:JucaRei/nix-configurations.git
+  git remote set-url origin git@github.com:JucaRei/my-nixfiles.git
   popd
 
   # If there is a keyfile for a data disk, put copy it to the root partition and
