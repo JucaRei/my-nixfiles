@@ -162,7 +162,7 @@
     python3Full
     python.pkgs.pip
     terminus-nerdfont
-  ]
+  ];
 
   nixpkgs.hostPlatform = lib.mkDefault "x86_64-linux";
   nixpkgs.config.permittedInsecurePackages = [ "openssl-1.1.1u" "python-2.7.18.6" ];
