@@ -22,7 +22,8 @@ in {
               };
             };
             swap = {
-              size = "6GiB";
+              start = "300MiB";
+              end = "6GiB";
               content = {
                 type = "swap";
                 randomEncryption = true;
