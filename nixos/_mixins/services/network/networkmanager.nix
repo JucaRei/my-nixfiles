@@ -4,6 +4,9 @@
       allowedTCPPorts = [ 22 ];
       allowPing = true;
     };
+    wireless.iwd = {
+      enable = true;
+    };
     networkmanager = {
       enable = true;
       wifi = {
