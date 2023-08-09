@@ -12,7 +12,7 @@ with lib.hm.gvariant; {
     programs = {
         jellyfin = {
             enable = true;
-            user = ${username};
+            user = username;
         };
         jellyseerr.enable = true;
         jellyfin.openFirewall = true;
