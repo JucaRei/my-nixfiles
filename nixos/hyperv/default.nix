@@ -32,7 +32,7 @@
         #"kvm-intel"
       ];
       checkJournalingFS = false; # for vm
-      supportedFilesystems = [ "xfs" ]; 
+      supportedFilesystems = [ "xfs" ];
       verbose = false;
     };
     kernelPackages = pkgs.linuxPackages_latest;
@@ -67,15 +67,15 @@
   };
 
   zramSwap = {
-   enable = true;
-   swapDevices = 5;
-   memoryPercent = 125; # 20% of total memory
-   algorithm = "zstd";
+    enable = true;
+    swapDevices = 5;
+    memoryPercent = 125; # 20% of total memory
+    algorithm = "zstd";
   };
 
 
   services.xserver = {
-    modules = with pkgs; [ 
+    modules = with pkgs; [
       xrdp
       xorg.xf86videofbdev
     ];
@@ -87,11 +87,11 @@
   };
 
   environment.systemPackages = with pkgs; [
-    linuxKernel.packages.linux_6_1.vm-tools
+    #linuxKernel.packages.linux_6_1.vm-tools
     powershell
     python3Full
-    python.pkgs.pip
-    terminus-nerdfont
+    #python.pkgs.pip
+    #terminus-nerdfont
   ];
 
   nixpkgs.hostPlatform = lib.mkDefault "x86_64-linux";
