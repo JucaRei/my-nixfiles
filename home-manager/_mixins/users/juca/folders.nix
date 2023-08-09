@@ -1,4 +1,4 @@
-_: {
+{ username, ... }: {
 
   systemd.user.tmpfiles.rules = [
     "d /home/${username}/Scripts 0755 ${username} users - -"
