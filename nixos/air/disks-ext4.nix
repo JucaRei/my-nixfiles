@@ -11,7 +11,7 @@ in {
           type = "gpt";
           partitions = {
             ESP = {
-              start = 0;
+              start = "0";
               end = "300MiB";
               type = "EF00";
               content = {
