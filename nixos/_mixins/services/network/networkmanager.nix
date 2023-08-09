@@ -1,4 +1,4 @@
-{ pkgs, config, ... }: {
+{ pkgs, config, lib, ... }: {
   networking = {
     firewall = {
       allowedTCPPorts = [ 22 ];
@@ -7,7 +7,7 @@
     networkmanager = {
       enable = true;
       wifi = {
-        backend = "iwd";
+        backend = lib.mkDefault "iwd";
         #macAddress = "random";
         #scanRandMacAddress = true;
       };
