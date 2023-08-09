@@ -31,90 +31,90 @@
   ### Hard drives ###
   ###################
 
-  fileSystems."/" = {
-    device = "/dev/disk/by-partlabel/NIXOS";
-    fsType = "btrfs";
-    options = [
-      "subvol=@"
-      "rw"
-      "noatime"
-      "nodiratime"
-      "ssd"
-      "nodatacow"
-      "compress-force=zstd:5"
-      "space_cache=v2"
-      "commit=120"
-      "discard=async"
-    ];
-  };
+  # fileSystems."/" = {
+  #   device = "/dev/disk/by-partlabel/NIXOS";
+  #   fsType = "btrfs";
+  #   options = [
+  #     "subvol=@"
+  #     "rw"
+  #     "noatime"
+  #     "nodiratime"
+  #     "ssd"
+  #     "nodatacow"
+  #     "compress-force=zstd:5"
+  #     "space_cache=v2"
+  #     "commit=120"
+  #     "discard=async"
+  #   ];
+  # };
 
-  fileSystems."/home" = {
-    device = "/dev/disk/by-partlabel/NIXOS";
-    fsType = "btrfs";
-    options = [
-      "subvol=@home"
-      "rw"
-      "noatime"
-      "nodiratime"
-      "ssd"
-      "nodatacow"
-      "compress-force=zstd:15"
-      "space_cache=v2"
-      "commit=120"
-      "discard=async"
-    ];
-  };
+  # fileSystems."/home" = {
+  #   device = "/dev/disk/by-partlabel/NIXOS";
+  #   fsType = "btrfs";
+  #   options = [
+  #     "subvol=@home"
+  #     "rw"
+  #     "noatime"
+  #     "nodiratime"
+  #     "ssd"
+  #     "nodatacow"
+  #     "compress-force=zstd:15"
+  #     "space_cache=v2"
+  #     "commit=120"
+  #     "discard=async"
+  #   ];
+  # };
 
-  fileSystems."/.snapshots" = {
-    device = "/dev/disk/by-partlabel/NIXOS";
-    fsType = "btrfs";
-    options = [
-      "subvol=@snapshots"
-      "rw"
-      "noatime"
-      "nodiratime"
-      "ssd"
-      "nodatacow"
-      "compress-force=zstd:15"
-      "space_cache=v2"
-      "commit=120"
-      "discard=async"
-    ];
-  };
+  # fileSystems."/.snapshots" = {
+  #   device = "/dev/disk/by-partlabel/NIXOS";
+  #   fsType = "btrfs";
+  #   options = [
+  #     "subvol=@snapshots"
+  #     "rw"
+  #     "noatime"
+  #     "nodiratime"
+  #     "ssd"
+  #     "nodatacow"
+  #     "compress-force=zstd:15"
+  #     "space_cache=v2"
+  #     "commit=120"
+  #     "discard=async"
+  #   ];
+  # };
 
-  fileSystems."/var/tmp" = {
-    device = "/dev/disk/by-partlabel/NIXOS";
-    fsType = "btrfs";
-    options = [
-      "subvol=@tmp"
-      "rw"
-      "noatime"
-      "nodiratime"
-      "ssd"
-      "nodatacow"
-      "compress-force=zstd:5"
-      "space_cache=v2"
-      "commit=120"
-      "discard=async"
-    ];
-  };
+  # fileSystems."/var/tmp" = {
+  #   device = "/dev/disk/by-partlabel/NIXOS";
+  #   fsType = "btrfs";
+  #   options = [
+  #     "subvol=@tmp"
+  #     "rw"
+  #     "noatime"
+  #     "nodiratime"
+  #     "ssd"
+  #     "nodatacow"
+  #     "compress-force=zstd:5"
+  #     "space_cache=v2"
+  #     "commit=120"
+  #     "discard=async"
+  #   ];
+  # };
 
-  fileSystems."/nix" = {
-    device = "/dev/disk/by-partlabel/NIXOS";
-    fsType = "btrfs";
-    options = [
-      "subvol=@nix"
-      "rw"
-      "noatime"
-      "nodiratime"
-      "ssd"
-      "nodatacow"
-      "compress-force=zstd:15"
-      "space_cache=v2"
-      "commit=120"
-      "discard=async"
-    ];
-  };
+  # fileSystems."/nix" = {
+  #   device = "/dev/disk/by-partlabel/NIXOS";
+  #   fsType = "btrfs";
+  #   options = [
+  #     "subvol=@nix"
+  #     "rw"
+  #     "noatime"
+  #     "nodiratime"
+  #     "ssd"
+  #     "nodatacow"
+  #     "compress-force=zstd:15"
+  #     "space_cache=v2"
+  #     "commit=120"
+  #     "discard=async"
+  #   ];
+  # };
 
   #fileSystems."/swap" = {
   #  device = "/dev/disk/by-partlabel/NIXOS";
@@ -134,16 +134,16 @@
   #  neededForBoot = true;
   #};
 
-  fileSystems."/boot/efi" = {
-    device = "/dev/disk/by-partlabel/EFI";
-    fsType = "vfat";
-    options = [ "defaults" "noatime" "nodiratime" ];
-    noCheck = true;
-  };
+  # fileSystems."/boot/efi" = {
+  #   device = "/dev/disk/by-partlabel/EFI";
+  #   fsType = "vfat";
+  #   options = [ "defaults" "noatime" "nodiratime" ];
+  #   noCheck = true;
+  # };
 
-  swapDevices = [{
-    device = "/dev/disk/by-partlabel/SWAP";
-    options = [ "defaults" "noatime" "nodiratime" ];
+  # swapDevices = [{
+  #   device = "/dev/disk/by-partlabel/SWAP";
+  #   options = [ "defaults" "noatime" "nodiratime" ];
     ### SWAPFILE
     #device = "/swap/swapfile";
     #size = 2 GiB;
@@ -153,7 +153,7 @@
   
     #device = "/.swap/swapfile";
     #size = 8192;
-  }];
+  # }];
 
   boot = {
     isContainer = false;
@@ -235,7 +235,7 @@
         [ "uhci_hcd" "ehci_pci" "ahci" "usbhid" "usb_storage" "sd_mod" ];
       verbose = false;
       compressor = "zstd";
-      supportedFilesystems = [ "vfat" "btrfs" "ntfs" ];
+      supportedFilesystems = [ "vfat" "ext4" "btrfs" "ntfs" ];
     };
 
     kernelModules = [
@@ -281,7 +281,7 @@
     kernelPackages = pkgs.linuxPackages_lqx;
     # kernelPackages = pkgs.linuxPackages_zen;
     #kernelPackages = pkgs.linuxPackages_xanmod_stable;
-    supportedFilesystems = [ "btrfs" ]; # fat 32 and btrfs
+    supportedFilesystems = [ "vfat" "ext4" "btrfs" ]; # fat 32 and btrfs
   };
   #hardware = {
   #  acpilight.enable = true;
