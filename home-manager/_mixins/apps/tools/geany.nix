@@ -1,4 +1,5 @@
 { pkgs, config, lib, ... }:
+with lib.hm.gvariant;
 {
 	home = {
 		packages = with pkgs; ([
