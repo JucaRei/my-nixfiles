@@ -45,7 +45,7 @@
       supportedFilesystems = [ "xfs" ]; 
       verbose = false;
     };
-    kernelPackages = pkgs.linuxPackages_lqx;
+    kernelPackages = pkgs.linuxPackages_6_1;
 
     ###################
     ### Sysctl.conf ###
