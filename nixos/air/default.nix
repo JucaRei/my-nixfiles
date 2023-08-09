@@ -321,12 +321,12 @@
     ### Btrfs ###
     #############
 
-    btrfs = {
-      autoScrub = {
-        enable = true;
-        interval = "weekly";
-      };
-    };
+    # btrfs = {
+    #   autoScrub = {
+    #     enable = true;
+    #     interval = "weekly";
+    #   };
+    # };
 
     ############
     ### GVFS ###
@@ -336,7 +336,7 @@
     # Thunderbolt
     hardware.bolt.enable = true;
     # # Allow usb controllers via HDMI
-    udev.extraRules = ''KERNEL=="hidraw*", ATTRS{idVendor}=="20d6", ATTRS{idProduct}=="a711", MODE="0660", TAG+="uaccess"'';
+    # udev.extraRules = ''KERNEL=="hidraw*", ATTRS{idVendor}=="20d6", ATTRS{idProduct}=="a711", MODE="0660", TAG+="uaccess"'';
 
     ################################
     ### Device specific services ###
@@ -384,9 +384,9 @@
 
   security.doas.enable = lib.mkDefault false;
 
-  virtualisation.docker = { 
-    storageDriver = lib.mkForce "btrfs"; 
-  };
+  # virtualisation.docker = { 
+  #   storageDriver = lib.mkForce "btrfs"; 
+  # };
 
   nixpkgs.hostPlatform = lib.mkDefault "x86_64-linux";
 
