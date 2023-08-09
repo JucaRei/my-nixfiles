@@ -1,46 +1,75 @@
-{disks ? ["/dev/sda"], ...}: let
-  defaultsBoot = ["defaults" "noatime" "nodiratime"];
-  defaultExtOpts = ["defaults" "data=writeback" "commit=60" "barrier=0" "discard" "noatime" "nodiratime"];
-in {
+_:
+let
+  # "subvol=@"
+  options = [ "rw" "noatime" "nodiratime" "ssd" "nodatacow" "compress-force=zstd:5" "space_cache=v2" "commit=120" "discard=async" ];
+in
+{
   disko.devices = {
     disk = {
       sda = {
-        type = "disk"
-        device = builtins.elemAt disks 0;
+        type = "disk";
+        device = "/dev/disk/by-id/ata-APPLE_SSD_TS064C_61UA30RXK6HK";
         content = {
           type = "gpt";
           partitions = {
             ESP = {
+              priority = 1;
+              name = "ESP";
+              start = 0;
+              end = "512MiB";
               type = "EF00";
-              size = "300MiB";
               content = {
                 type = "filesystem";
                 format = "vfat";
                 mountpoint = "/boot";
-                mountOptions = defaultsBoot;
+                mountOptions = [ "defaults" "noatime" "nodiratime" ]
+                  };
               };
-            };
-            swap = {
-              size = "6GiB";
-              content = {
-                type = "swap";
-                randomEncryption = true;
-                resumeDevice = true;
+              swap = {
+                start = "512MiB";
+                size = "6GiB";
+                content = {
+                  type = "swap";
+                  randomEncryption = true;
+                  resumeDevice = true;
+                };
               };
-            };
-            root = {
-              size = "100%";
-              content = {
-                type = "filesystem";
-                extraArgs = [ "-f" ];
-                format = "ext4";
-                mountpoint = "/";
-                mountOptions = defaultExtOpts;
+              root = {
+                size = "100%";
+                content = {
+                  type = "btrfs";
+                  extraArgs = [ "-f" ]; # Override existing partition
+                  # Subvolumes must set a mountpoint in order to be mounted,
+                  # unless their parent is mounted
+                  subvolumes = {
+                    # Subvolume name is different from mountpoint
+                    "/rootfs" = {
+                      mountpoint = "/";
+                      mountOptions = [ "subvol=@" options ];
+                    };
+                    # Subvolume name is the same as the mountpoint
+                    "/home" = {
+                      mountOptions = [ "subvol=@home" options ];
+                      mountpoint = "/home";
+                    };
+                    "/.snapshots" = {
+                      mountOptions = [ "subvol=@snapshots" options ];
+                      mountpoint = "/.snapshots";
+                    };
+                    "/tmp" = {
+                      mountOptions = [ "subvol=@tmp" options ];
+                      mountpoint = "/tmp";
+                    };
+                    "/nix" = {
+                      mountOptions = [ "subvol=@nix" options ];
+                      mountpoint = "/nix";
+                    };
+                  };
+                };
               };
             };
           };
         };
       };
     };
-  };
-}
+  }
