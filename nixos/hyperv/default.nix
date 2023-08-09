@@ -157,7 +157,7 @@
   };
 
   environment.systemPackages = with pkgs; [
-    linuxKernel.packages.linux_lqx.vm-tools
+    linuxKernel.packages.linux_6_1.vm-tools
     powershell
     python3Full
     python.pkgs.pip
