@@ -35,7 +35,7 @@
       supportedFilesystems = [ "xfs" ]; 
       verbose = false;
     };
-    kernelPackages = pkgs.linuxPackages_6_1;
+    kernelPackages = pkgs.linuxPackages_latest;
 
     kernel.sysctl = {
       "vm.vfs_cache_pressure" = 500;
