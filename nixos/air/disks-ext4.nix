@@ -1,4 +1,4 @@
-{disks ? ["/dev/sda"], ...}: let
+_: let
   defaultsBoot = ["defaults" "noatime" "nodiratime"];
   defaultExtOpts = ["defaults" "data=writeback" "commit=60" "barrier=0" "discard" "noatime" "nodiratime"];
 in {
@@ -6,7 +6,7 @@ in {
     disk = {
       sda = {
         type = "disk";
-        device = /dev/disk/by-id/ata-APPLE_SSD_TS064C_61UA30RXK6HK;
+        device = "/dev/disk/by-id/ata-APPLE_SSD_TS064C_61UA30RXK6HK";
         content = {
           type = "gpt";
           partitions = {
