@@ -1,7 +1,7 @@
 { lib, modulesPath, pkgs, ... }:
 {
   imports = [
-    (modulesPath + "/profiles/installation-device.nix")
+    (modulesPath + "/installer/scan/not-detected.nix")
     (import ./disks.nix { })
     # ../_mixins/hardware/systemd-boot.nix
     ../_mixins/hardware/boot/efi.nix
