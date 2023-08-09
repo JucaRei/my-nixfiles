@@ -11,8 +11,9 @@ in {
           type = "gpt";
           partitions = {
             ESP = {
+              start = 0;
+              end = "300MiB";
               type = "EF00";
-              size = "300MiB";
               content = {
                 type = "filesystem";
                 format = "vfat";
