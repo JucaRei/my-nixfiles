@@ -9,6 +9,7 @@
     inputs.nixos-hardware.nixosModules.framework
     inputs.nixos-hardware.nixosModules.common-cpu-intel-sandy-bridge
     # (import ./disks.nix { })
+    (import ./disks-ext4.nix { })
     (modulesPath + "/installer/scan/not-detected.nix")
     ../_mixins/hardware/boot/efi.nix
     ../_mixins/hardware/bluetooth

@@ -5,7 +5,7 @@
   default = pkgs.mkShell {
     # Enable experimental features without having to specify the argument
     NIX_CONFIG = "experimental-features = nix-command flakes repl-flake";
-    nativeBuildInputs = with pkgs; [ nix home-manager git duf nixpkgs-fmt nix-bash-completions nix-du speedtest-cli ];
+    nativeBuildInputs = with pkgs; [ nix home-manager git duf nixpkgs-fmt nix-bash-completions nix-du alejandra speedtest-cli ];
     shellHook = ''
       echo "
        ______   _           _
