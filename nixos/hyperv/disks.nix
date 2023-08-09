@@ -9,31 +9,21 @@ in
         type = "disk";
         device = builtins.elemAt disks 0;
         content = {
-          type = "table";
-          format = "gpt";
-          partitions = [{
-            name = "boot";
-            start = "0%";
-            end = "1M";
-            flags = [ "bios_grub" ];
-          }
-            {
-              name = "ESP";
-              start = "1M";
-              end = "550MiB";
-              bootable = true;
-              flags = [ "esp" ];
-              fs-type = "fat32";
-              content = {
-                type = "filesystem";
-                format = "vfat";
-                mountpoint = "/boot";
+          type = "gpt";
+          partitions = {
+            ESP =
+              {
+                type = "EF00";
+                size = "300M";
+                content = {
+                  type = "filesystem";
+                  format = "vfat";
+                  mountpoint = "/boot";
+                  mountOptions = [ "defaults" "noatime" "nodiratime" ];
+                };
               };
-            }
-            {
-              name = "root";
-              start = "550MiB";
-              end = "100%";
+            root = {
+              size = "100%";
               content = {
                 type = "filesystem";
                 # Overwirte the existing filesystem
@@ -42,7 +32,8 @@ in
                 mountpoint = "/";
                 mountOptions = defaultXfsOpts;
               };
-            }];
+            };
+          };
         };
       };
     };
