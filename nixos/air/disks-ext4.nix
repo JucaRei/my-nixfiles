@@ -5,8 +5,8 @@ in {
   disko.devices = {
     disk = {
       sda = {
-        type = "disk"
-        device = builtins.elemAt disks 0;
+        type = "disk";
+        device = /dev/disk/by-id/ata-APPLE_SSD_TS064C_61UA30RXK6HK;
         content = {
           type = "gpt";
           partitions = {
@@ -32,7 +32,7 @@ in {
               size = "100%";
               content = {
                 type = "filesystem";
-                extraArgs = [ "-f" ];
+                extraArgs = ["-f"];
                 format = "ext4";
                 mountpoint = "/";
                 mountOptions = defaultExtOpts;
