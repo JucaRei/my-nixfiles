@@ -5,10 +5,10 @@ with lib.hm.gvariant;
 		packages = with pkgs; ([
 			geany
 		]);
-		configFile = {
-			"geany/geany.conf".source = "../../../../assets/geany/geany.conf";
-			"geany/keybindings.conf".source = "../../../../assets/geany/keybindings.conf";
-			"geany/colorschemes" = {
+		file = {
+			"${config.xdg.configHome}/geany/geany.conf".source = "../../../../assets/geany/geany.conf";
+			"${config.xdg.configHome}/geany/keybindings.conf".source = "../../../../assets/geany/keybindings.conf";
+			"${config.xdg.configHome}/geany/colorschemes" = {
 			 	recursive = true;
 			    source = "../../../../assets/geany/colorschemes";
 			};
