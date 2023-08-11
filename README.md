@@ -29,6 +29,7 @@ The [nixos/_mixins] and [home-manager/_mixins] are a collection of generic confi
 [flake.nix]: ./flake.nix
 [scripts]: ./scripts
 [examples_helper]: ./examples_helper
+[assets]: ./assets
 
 ## Installing 💾
 

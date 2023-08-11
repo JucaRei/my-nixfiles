@@ -71,6 +71,7 @@
       rsync
     ];
     systemPackages = with pkgs; [
+      agenix
       pciutils
       psmisc
       unzip

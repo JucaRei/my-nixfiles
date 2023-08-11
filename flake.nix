@@ -24,6 +24,9 @@
     nixos-hardware.url = "github:NixOS/nixos-hardware/master";
     nix-software-center.url = "github:vlinkz/nix-software-center";
 
+    agenix.url = "github:ryantm/agenix";
+    agenix.inputs.nixpkgs.follows = "nixpkgs-unstable";
+
     #nix-index-database.url = "github:Mic92/nix-index-database";
     #nix-index-database.inputs.nixpkgs.follows = "nixpkgs";
 
@@ -106,6 +109,7 @@
         #"juca@oldmac" = libx.mkHome { hostname = "rocinante"; username = "juca"; desktop = "mate"; };
         #"juca@nitro" = libx.mkHome { hostname = "nitro"; username = "juca"; desktop = "pantheon"; };
         "juca@vm" = libx.mkHome { hostname = "vm"; username = "juca"; desktop = "budgie"; };
+        "juca@debianvm" = libx.mkHome { hostname = "vm"; username = "juca"; desktop = "kde"; };
         "juca@hyperv" = libx.mkHome { hostname = "hyperv"; username = "juca"; desktop = "budgie"; };
         #"juca@pi" = libx.mkHome { hostname = "pi"; username = "juca"; desktop = "pantheon"; };
         ### Servers
