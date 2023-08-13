@@ -28,6 +28,7 @@ in
       "network"
       "wireshark"
       "lxd"
+      "plugdev"
       #"git"
       "render"
       "libvirtd"

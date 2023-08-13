@@ -31,6 +31,10 @@
   environment.systemPackages = with pkgs; [
     virt-manager
     spice-gtk
+    spice
+    spice-protocol
+    win-spice
+    win-virtio
     swtpm
     virt-viewer
     qemu
@@ -63,4 +67,5 @@
         + "/share/qemu/edk2-x86_64-secure-code.fd";
     };
   };
+  services.spice-vdagentd.enable = true;
 }
