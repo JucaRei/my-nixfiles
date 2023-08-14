@@ -22,6 +22,7 @@ in {
                 type = "filesystem";
                 format = "vfat";
                 mountpoint = "/boot";
+                mountOptions = [ "defaults" "noatime" "nodiratime" ];
               };
             }
             {
