@@ -1,7 +1,9 @@
-{disks ? ["/dev/vda"], ...}: let
+{ disks ? [ "/dev/vda" ], ... }:
+let
   # "subvol=@"
-  options = ["rw" "noatime" "nodiratime" "ssd" "nodatacow" "compress-force=zstd:5" "space_cache=v2" "commit=120" "discard=async"];
-in {
+  options = [ "rw" "noatime" "nodiratime" "ssd" "nodatacow" "compress-force=zstd:5" "space_cache=v2" "commit=120" "discard=async" ];
+in
+{
   disko.devices = {
     disk = {
       vda = {
@@ -16,8 +18,9 @@ in {
               start = "0%";
               end = "550MiB";
               bootable = true;
-              flags = ["esp"];
+              flags = [ "esp" ];
               fs-type = "fat32";
+              part-type = "label";
               content = {
                 type = "filesystem";
                 format = "vfat";
@@ -40,32 +43,33 @@ in {
               name = "root";
               start = "6GiB";
               end = "100%";
+              part-type = "label";
               content = {
                 type = "btrfs";
-                extraArgs = ["-f"];
+                extraArgs = [ "-f" ];
                 subvolumes = {
                   "/rootfs" = {
                     mountpoint = "/";
-                    mountOptions = ["subvol=@" "rw" "noatime" "nodiratime" "ssd" "nodatacow" "compress-force=zstd:5" "space_cache=v2" "commit=120" "discard=async" ];
+                    mountOptions = [ "subvol=@" "rw" "noatime" "nodiratime" "ssd" "nodatacow" "compress-force=zstd:5" "space_cache=v2" "commit=120" "discard=async" ];
                   };
                   "/home" = {
-                    mountOptions = ["subvol=@home" "rw" "noatime" "nodiratime" "ssd" "nodatacow" "compress-force=zstd:5" "space_cache=v2" "commit=120" "discard=async"];
+                    mountOptions = [ "subvol=@home" "rw" "noatime" "nodiratime" "ssd" "nodatacow" "compress-force=zstd:5" "space_cache=v2" "commit=120" "discard=async" ];
                     mountpoint = "/home";
                   };
                   "/.snapshots" = {
-                    mountOptions = ["subvol=@snapshots" "rw" "noatime" "nodiratime" "ssd" "nodatacow" "compress-force=zstd:5" "space_cache=v2" "commit=120" "discard=async"];
+                    mountOptions = [ "subvol=@snapshots" "rw" "noatime" "nodiratime" "ssd" "nodatacow" "compress-force=zstd:5" "space_cache=v2" "commit=120" "discard=async" ];
                     mountpoint = "/.snapshots";
                   };
                   "/tmp" = {
-                    mountOptions = ["subvol=@tmp" "rw" "noatime" "nodiratime" "ssd" "nodatacow" "compress-force=zstd:5" "space_cache=v2" "commit=120" "discard=async"];
+                    mountOptions = [ "subvol=@tmp" "rw" "noatime" "nodiratime" "ssd" "nodatacow" "compress-force=zstd:5" "space_cache=v2" "commit=120" "discard=async" ];
                     mountpoint = "/tmp";
                   };
                   "/nix" = {
-                    mountOptions = ["subvol=@nix" "rw" "noatime" "nodiratime" "ssd" "nodatacow" "compress-force=zstd:5" "space_cache=v2" "commit=120" "discard=async"];
+                    mountOptions = [ "subvol=@nix" "rw" "noatime" "nodiratime" "ssd" "nodatacow" "compress-force=zstd:5" "space_cache=v2" "commit=120" "discard=async" ];
                     mountpoint = "/nix";
                   };
                   # This subvolume will be created but not mounted
-                  "/swap" = {};
+                  "/swap" = { };
                 };
               };
             }

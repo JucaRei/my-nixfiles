@@ -195,138 +195,139 @@
   ########################
 
   # TODO: Replace this with disko
-  fileSystems."/" = {
-    device = "/dev/disk/by-label/NIXOS";
-    fsType = "btrfs";
-    options = [
-      "subvol=@"
-      "rw"
-      "noatime"
-      "nodiratime"
-      "ssd"
-      "nodatacow"
-      "compress-force=zstd:5"
-      "space_cache=v2"
-      "commit=120"
-      "autodefrag"
-      "discard=async"
-    ];
-  };
+  # fileSystems."/" = {
+  #   #device = "/dev/disk/by-label/NIXOS";
+  #   device = "/dev/disk/by-label/root";
+  #   fsType = "btrfs";
+  #   options = [
+  #     "subvol=@"
+  #     "rw"
+  #     "noatime"
+  #     "nodiratime"
+  #     "ssd"
+  #     "nodatacow"
+  #     "compress-force=zstd:5"
+  #     "space_cache=v2"
+  #     "commit=120"
+  #     "autodefrag"
+  #     "discard=async"
+  #   ];
+  # };
 
-  fileSystems."/home" = {
-    device = "/dev/disk/by-label/NIXOS";
-    fsType = "btrfs";
-    options = [
-      "subvol=@home"
-      "rw"
-      "noatime"
-      "nodiratime"
-      "ssd"
-      "nodatacow"
-      "compress-force=zstd:5"
-      "space_cache=v2"
-      "commit=120"
-      "autodefrag"
-      "discard=async"
-    ];
-  };
+  # fileSystems."/home" = {
+  #   device = "/dev/disk/by-label/NIXOS";
+  #   fsType = "btrfs";
+  #   options = [
+  #     "subvol=@home"
+  #     "rw"
+  #     "noatime"
+  #     "nodiratime"
+  #     "ssd"
+  #     "nodatacow"
+  #     "compress-force=zstd:5"
+  #     "space_cache=v2"
+  #     "commit=120"
+  #     "autodefrag"
+  #     "discard=async"
+  #   ];
+  # };
 
-  fileSystems."/.snapshots" = {
-    device = "/dev/disk/by-label/NIXOS";
-    fsType = "btrfs";
-    options = [
-      "subvol=@snapshots"
-      "rw"
-      "noatime"
-      "nodiratime"
-      "ssd"
-      "nodatacow"
-      "compress-force=zstd:5"
-      "space_cache=v2"
-      "commit=120"
-      "autodefrag"
-      "discard=async"
-    ];
-  };
+  # fileSystems."/.snapshots" = {
+  #   device = "/dev/disk/by-label/NIXOS";
+  #   fsType = "btrfs";
+  #   options = [
+  #     "subvol=@snapshots"
+  #     "rw"
+  #     "noatime"
+  #     "nodiratime"
+  #     "ssd"
+  #     "nodatacow"
+  #     "compress-force=zstd:5"
+  #     "space_cache=v2"
+  #     "commit=120"
+  #     "autodefrag"
+  #     "discard=async"
+  #   ];
+  # };
 
-  fileSystems."/var/tmp" = {
-    device = "/dev/disk/by-label/NIXOS";
-    fsType = "btrfs";
-    options = [
-      "subvol=@tmp"
-      "rw"
-      "noatime"
-      "nodiratime"
-      "ssd"
-      "nodatacow"
-      "compress-force=zstd:5"
-      "space_cache=v2"
-      "commit=120"
-      "autodefrag"
-      "discard=async"
-    ];
-  };
+  # fileSystems."/var/tmp" = {
+  #   device = "/dev/disk/by-label/NIXOS";
+  #   fsType = "btrfs";
+  #   options = [
+  #     "subvol=@tmp"
+  #     "rw"
+  #     "noatime"
+  #     "nodiratime"
+  #     "ssd"
+  #     "nodatacow"
+  #     "compress-force=zstd:5"
+  #     "space_cache=v2"
+  #     "commit=120"
+  #     "autodefrag"
+  #     "discard=async"
+  #   ];
+  # };
 
-  fileSystems."/nix" = {
-    device = "/dev/disk/by-label/NIXOS";
-    fsType = "btrfs";
-    options = [
-      "subvol=@nix"
-      "rw"
-      "noatime"
-      "nodiratime"
-      "ssd"
-      "nodatacow"
-      "compress-force=zstd:5"
-      "space_cache=v2"
-      "commit=120"
-      "autodefrag"
-      "discard=async"
-    ];
-  };
+  # fileSystems."/nix" = {
+  #   device = "/dev/disk/by-label/NIXOS";
+  #   fsType = "btrfs";
+  #   options = [
+  #     "subvol=@nix"
+  #     "rw"
+  #     "noatime"
+  #     "nodiratime"
+  #     "ssd"
+  #     "nodatacow"
+  #     "compress-force=zstd:5"
+  #     "space_cache=v2"
+  #     "commit=120"
+  #     "autodefrag"
+  #     "discard=async"
+  #   ];
+  # };
 
-  #fileSystems."/swap" = {
-  #  device = "/dev/disk/by-label/NIXOS";
-  #  fsType = "btrfs";
-  #  options = [
-  #    "subvol=@swap"
-  #    #"compress=lz4"
-  #    "defaults"
-  #    "noatime"
-  #  ]; # Note these options effect the entire BTRFS filesystem and not just this volume, with the exception of `"subvol=swap"`, the other options are repeated in my other `fileSystem` mounts
-  #};
+  # #fileSystems."/swap" = {
+  # #  device = "/dev/disk/by-label/NIXOS";
+  # #  fsType = "btrfs";
+  # #  options = [
+  # #    "subvol=@swap"
+  # #    #"compress=lz4"
+  # #    "defaults"
+  # #    "noatime"
+  # #  ]; # Note these options effect the entire BTRFS filesystem and not just this volume, with the exception of `"subvol=swap"`, the other options are repeated in my other `fileSystem` mounts
+  # #};
 
-  fileSystems."/boot/efi" = {
-    device = "/dev/disk/by-label/EFI";
-    fsType = "vfat";
-    options = [ "defaults" "noatime" "nodiratime" ];
-    noCheck = true;
-  };
+  # fileSystems."/boot/efi" = {
+  #   device = "/dev/disk/by-label/EFI";
+  #   fsType = "vfat";
+  #   options = [ "defaults" "noatime" "nodiratime" ];
+  #   noCheck = true;
+  # };
 
-  swapDevices = [
-    {
-      device = "/dev/disk/by-label/SWAP";
-      ### SWAPFILE
-      #device = "/swap/swapfile";
-      #size = 2 GiB;
-      #device = "/swap/swapfile";
-      #size = (1024 * 2); # RAM size
-      #size = (1024 * 16) + (1024 * 2); # RAM size + 2 GB
-    }
-  ];
+  # swapDevices = [
+  #   {
+  #     device = "/dev/disk/by-label/SWAP";
+  #     ### SWAPFILE
+  #     #device = "/swap/swapfile";
+  #     #size = 2 GiB;
+  #     #device = "/swap/swapfile";
+  #     #size = (1024 * 2); # RAM size
+  #     #size = (1024 * 16) + (1024 * 2); # RAM size + 2 GB
+  #   }
+  # ];
 
-  ### Swapfile
-  #systemd.services = {
-  #  create-swapfile = {
-  #    serviceConfig.Type = "oneshot";
-  #    wantedBy = [ "swap-swapfile.swap" ];
-  #    script = ''
-  #      ${pkgs.coreutils}/bin/truncate -s 0 /swap/swapfile
-  #      ${pkgs.e2fsprogs}/bin/chattr +C /swap/swapfile
-  #      ${pkgs.btrfs-progs}/bin/btrfs property set /swap/swapfile compression none
-  #    '';
-  #  };
-  #};
+  # ### Swapfile
+  # #systemd.services = {
+  # #  create-swapfile = {
+  # #    serviceConfig.Type = "oneshot";
+  # #    wantedBy = [ "swap-swapfile.swap" ];
+  # #    script = ''
+  # #      ${pkgs.coreutils}/bin/truncate -s 0 /swap/swapfile
+  # #      ${pkgs.e2fsprogs}/bin/chattr +C /swap/swapfile
+  # #      ${pkgs.btrfs-progs}/bin/btrfs property set /swap/swapfile compression none
+  # #    '';
+  # #  };
+  # #};
 
   services.xserver = {
     layout = lib.mkForce "br";
