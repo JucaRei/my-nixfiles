@@ -14,7 +14,7 @@ in {
           type = "gpt";
           partitions = [
             {
-              name = "EFI";
+              name = "ESP";
               start = "0%";
               end = "512M";
               type = "EF00";
