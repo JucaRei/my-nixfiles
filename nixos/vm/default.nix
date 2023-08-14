@@ -80,10 +80,9 @@
 
       ### kernel modules to be loaded in the second stage, that are needed to mount the root file system ###
       kernelModules = [
-        "zswap.compressor=z3fold"
         "z3fold"
         "crc32c-intel"
-        "zswap.zpool=lz4hc"
+        "lz4hc"
         "lz4hc_compress"
         #"kvm-intel"
         #"v4l2loopback" # Virtual Camera
