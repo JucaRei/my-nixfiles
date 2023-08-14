@@ -64,6 +64,8 @@ in
                     mountOptions = [ "subvol=@nix" options ];
                     mountpoint = "/nix";
                   };
+                  # This subvolume will be created but not mounted
+                  "/swap" = { };
                 };
               };
             };
