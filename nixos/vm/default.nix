@@ -1,4 +1,4 @@
-{ lib, modulesPath, pkgs, config, ... }:
+{ lib, modulesPath, pkgs, config, inputs, ... }:
 {
   imports = [
     (modulesPath + "/profiles/qemu-guest.nix")
@@ -332,6 +332,8 @@
   # #};
 
   services.xserver = {
+    layout = lib.mkForce "br";
+    exportConfiguration = true;
     virtualScreen = {
       x = 1920;
       y = 1080;
