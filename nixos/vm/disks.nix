@@ -45,22 +45,22 @@ in {
                 subvolumes = {
                   "/rootfs" = {
                     mountpoint = "/";
-                    mountOptions = ["subvol=@" options];
+                    mountOptions = ["subvol=@" ${options} ];
                   };
                   "/home" = {
-                    mountOptions = ["subvol=@home" options];
+                    mountOptions = ["subvol=@home" ${options}];
                     mountpoint = "/home";
                   };
                   "/.snapshots" = {
-                    mountOptions = ["subvol=@snapshots" options];
+                    mountOptions = ["subvol=@snapshots" ${options}];
                     mountpoint = "/.snapshots";
                   };
                   "/tmp" = {
-                    mountOptions = ["subvol=@tmp" options];
+                    mountOptions = ["subvol=@tmp" ${options}];
                     mountpoint = "/tmp";
                   };
                   "/nix" = {
-                    mountOptions = ["subvol=@nix" options];
+                    mountOptions = ["subvol=@nix" ${options}];
                     mountpoint = "/nix";
                   };
                   # This subvolume will be created but not mounted
