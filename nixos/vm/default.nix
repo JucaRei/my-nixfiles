@@ -332,8 +332,6 @@
   # #};
 
   services.xserver = {
-    layout = lib.mkForce "br";
-    exportConfiguration = true;
     virtualScreen = {
       x = 1920;
       y = 1080;
@@ -377,6 +375,7 @@
   };
 
   nixpkgs.hostPlatform = lib.mkDefault "x86_64-linux";
+  hardware.cpu.intel.updateMicrocode = lib.mkDefault config.hardware.enableRedistributableFirmware;
 }
 
 #mwProCapture.enable = true;
