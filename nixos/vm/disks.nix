@@ -27,7 +27,8 @@ in {
             {
               name = "Swap";
               start = "550MiB";
-              size = "6GiB";
+              end = "6GiB";
+              #size = "6GiB";
               content = {
                 type = "swap";
                 randomEncryption = true;
