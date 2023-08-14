@@ -19,10 +19,10 @@ in
           partitions = [
             {
               name = "EFI";
-              #start = "0%";
-              #end = "550MiB";
+              start = "0%";
+              end = "550MiB";
               type = "EF00";
-              size = "550M";
+              #size = "550M";
               #bootable = true;
               #flags = [ "esp" ];
               #fs-type = "fat32";
