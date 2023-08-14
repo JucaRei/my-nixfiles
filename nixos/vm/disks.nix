@@ -64,9 +64,8 @@ in {
               size = "100%";
               content = {
                 type = "swap";
-                extraArgs = ["--allow-discards"]
                 randomEncryption = true;
-                resumeDevice = true;
+                resumeDevice = true; # resume from hiberation from this device
               };
             }
           ];
