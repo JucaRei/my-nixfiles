@@ -36,29 +36,32 @@ in {
                 type = "btrfs";
                 extraArgs = ["-f"];
                 subvolumes = {
-                  "/rootfs" = {
+                  "@" = {
                     mountpoint = "/";
                     mountOptions = ["subvol=@" "rw" "noatime" "nodiratime" "ssd" "nodatacow" "compress-force=zstd:5" "space_cache=v2" "commit=120" "discard=async"];
                   };
                   # Subvolume name is the same as the mountpoint
-                  "/home" = {
+                  "@home" = {
                     mountOptions = ["subvol=@home" "rw" "noatime" "nodiratime" "ssd" "nodatacow" "compress-force=zstd:15" "space_cache=v2" "commit=120" "discard=async"];
                     mountpoint = "/home";
                   };
-                  "/.snapshots" = {
+                  "@snapshots" = {
                     mountOptions = ["subvol=@snapshots" "rw" "noatime" "nodiratime" "ssd" "nodatacow" "compress-force=zstd:15" "space_cache=v2" "commit=120" "discard=async"];
                     mountpoint = "/.snapshots";
                   };
-                  "/tmp" = {
+                  "@tmp" = {
                     mountOptions = ["subvol=@tmp" "rw" "noatime" "nodiratime" "ssd" "nodatacow" "compress-force=zstd:5" "space_cache=v2" "commit=120" "discard=async"];
                     mountpoint = "/tmp";
                   };
-                  "/nix" = {
+                  "@nix" = {
                     mountOptions = ["subvol=@nix" "rw" "noatime" "nodiratime" "ssd" "nodatacow" "compress-force=zstd:15" "space_cache=v2" "commit=120" "discard=async"];
                     mountpoint = "/nix";
                   };
                   # This subvolume will be created but not mounted
-                  "/swap" = {};
+                  "@swap" = {
+                    mountpoint = "/.swap";
+                    mountOptions = [ "defaults" "x-mount.mkdir" "ssd" "noatime" "nodiratime" ];
+                  };
                 };
               };
             }

@@ -4,7 +4,7 @@
       serviceConfig.type = "oneshot";
       wantedBy = [ "swap-swapfile.swap" ];
       script = ''
-        swapdir="/swap"
+        swapdir="/.swap"
         swapfile="$swapdir/swapfile"
         if [[ -f "$swapfile" ]]; then
           echo "Swapfile $swapfile already exists"
