@@ -20,7 +20,6 @@ in
               bootable = true;
               flags = [ "esp" ];
               fs-type = "fat32";
-              part-type = "primary";
               content = {
                 type = "filesystem";
                 format = "vfat";
@@ -43,7 +42,6 @@ in
               name = "root";
               start = "6GiB";
               end = "100%";
-              part-type = "primary";
               content = {
                 type = "filesystem";
                 format = "btrfs";
