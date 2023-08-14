@@ -2,6 +2,7 @@ _: let
   disks = [
     "/dev/vda"
   ];
+  defaultsBoot = ["defaults" "noatime" "nodiratime"];
 in {
   disko.devices = {
     disk = {
@@ -15,14 +16,15 @@ in {
           partitions = [
             {
               name = "ESP";
-              start = "0%";
-              end = "512M";
+              # start = "0%";
+              # end = "512M";
+              size = "512M";
               type = "EF00";
               content = {
                 type = "filesystem";
                 format = "vfat";
                 mountpoint = "/boot/efi";
-                mountOptions = ["default" "noatime" "nodiratime"];
+                mountOptions = defaultsBoot;
               };
             }
             {
