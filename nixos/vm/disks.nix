@@ -15,11 +15,13 @@ in
           partitions = [
             {
               name = "ESP";
+              priority = 1;
               start = "0%";
               end = "550MiB";
               bootable = true;
               flags = [ "esp" ];
               fs-type = "fat32";
+              part-type = "primary";
               content = {
                 type = "filesystem";
                 format = "vfat";
@@ -42,9 +44,9 @@ in
               name = "root";
               start = "6GiB";
               end = "100%";
+              part-type = "primary";
               content = {
-                type = "filesystem";
-                format = "btrfs";
+                type = "btrfs";
                 extraArgs = [ "-f" ];
                 subvolumes = {
                   "/rootfs" = {
