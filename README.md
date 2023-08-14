@@ -46,7 +46,7 @@ The [nixos/_mixins] and [home-manager/_mixins] are a collection of generic confi
 If the target system is booted from something other than the .iso image created by this flake, you can still install the system using the following:
 
 ```bash
-curl -sL https://raw.githubusercontent.com/JucaRei/nixos-configs/main/scripts/install.sh | bash -s <hostname> <username>
+curl -sL https://raw.githubusercontent.com/JucaRei/my-nixfiles/main/scripts/install.sh | bash -s <hostname> <username>
 ```
 
 - Run the install script 📜
