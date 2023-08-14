@@ -29,7 +29,7 @@ in {
             }
             {
               name = "NIXOS";
-              start = "512M";
+              start = "512MiB";
               # end = "-6G";
               end = "100%";
               content = {
