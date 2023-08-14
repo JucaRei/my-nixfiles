@@ -1,4 +1,4 @@
-_:
+{ disks ? [ "/dev/sda" ], ... }:
 let
   # "subvol=@"
   options = [ "rw" "noatime" "nodiratime" "ssd" "nodatacow" "compress-force=zstd:5" "space_cache=v2" "commit=120" "discard=async" ];
@@ -8,25 +8,26 @@ in
     disk = {
       vda = {
         type = "disk";
-        device = /dev/disk/by-diskseq/1;
+        device = builtins.elemAt disks 0;
         content = {
-          type = "gpt";
-          partitions = {
-            ESP = {
-              #priority = 1;
-              name = "ESP";
-              start = 0;
-              end = "512MiB";
-              type = "EF00";
-              content = {
-                type = "filesystem";
-                format = "vfat";
-                mountpoint = "/boot";
-                mountOptions = [ "defaults" "noatime" "nodiratime" ];
-              };
+          type = "table";
+          format = "gpt";
+          partitions = [{
+            name = "ESP";
+            start = "0%";
+            end = "550MiB";
+            bootable = true;
+            flags = [ "esp" ];
+            fs-type = "fat32";
+            content = {
+              type = "filesystem";
+              format = "vfat";
+              mountpoint = "/boot";
             };
-            swap = {
-              start = "512MiB";
+          }
+            {
+              name = "Swap";
+              start = "550MiB";
               size = "6GiB";
               content = {
                 type = "swap";
@@ -34,8 +35,10 @@ in
                 resumeDevice = true;
               };
             };
-            root = {
-              size = "100%";
+            {
+              name = "root";
+              start = "6GiB";
+              end = "100%";
               content = {
                 type = "btrfs";
                 extraArgs = [ "-f" ]; # Override existing partition
@@ -68,10 +71,9 @@ in
                   "/swap" = { };
                 };
               };
-            };
-          };
+            };]};
         };
       };
     };
-  };
-}
+  }
+
