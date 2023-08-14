@@ -1,7 +1,10 @@
-{ disks ? [ "/dev/vda" ], ... }:
+_:
 let
-  # "subvol=@"
-  options = [ "rw" "noatime" "nodiratime" "ssd" "nodatacow" "compress-force=zstd:5" "space_cache=v2" "commit=120" "discard=async" ];
+disks = [
+  "/dev/vda"
+];
+# "subvol=@"
+options = [ "rw" "noatime" "nodiratime" "ssd" "nodatacow" "compress-force=zstd:5" "space_cache=v2" "commit=120" "discard=async" ];
 in
 {
   disko.devices = {
@@ -29,21 +32,9 @@ in
               };
             }
             {
-              name = "Swap";
-              start = "550MiB";
-              end = "6GiB";
-              #size = "6GiB";
-              content = {
-                type = "swap";
-                randomEncryption = true;
-                resumeDevice = true;
-              };
-            }
-            {
               name = "root";
-              start = "6GiB";
-              end = "100%";
-              part-type = "primary";
+              start = "550MiB";
+              end = "-6G";
               content = {
                 type = "btrfs";
                 extraArgs = [ "-f" ];
@@ -65,7 +56,7 @@ in
                     mountpoint = "/tmp";
                   };
                   "/nix" = {
-                    mountOptions = [ "subvol=@nix" "rw" "noatime" "nodiratime" "ssd" "nodatacow" "compress-force=zstd:5" "space_cache=v2" "commit=120" "discard=async" ];
+                    mountOptions = [ "subvol=@nix" "rw" "noatime" "nodiratime" "ssd" "nodatacow" "compress-force=zstd:5" "space_cache=v2" "commit=120" "discard=async" "noxattr" "noacl" ];
                     mountpoint = "/nix";
                   };
                   # This subvolume will be created but not mounted
@@ -73,8 +64,29 @@ in
                 };
               };
             }
+            {
+              name = "Swap";
+              start = "-6G";
+              end = "100%";
+              #size = "6GiB";
+              content = {
+                type = "swap";
+                extraOpenArgs = ["--allow-discards"];
+                randomEncryption = true;
+                resumeDevice = true;
+              };
+            }
           ];
         };
+      };
+    };
+    nodev = {
+      "/" = {
+        fsType = "tmpfs";
+        mountOptions = [
+          "defaults"
+          "mode=755"
+        ];
       };
     };
   };
