@@ -151,8 +151,7 @@ in
               };
             };
             SWAP = {
-              start = "-6GiB";
-              end = "100%";
+              size = "100%";
               content = {
                 type = "swap";
                 extraArgs = ["--allow-discards"]

@@ -61,8 +61,7 @@ in {
             }
             {
               name = "SWAP";
-              start = "-6G";
-              end = "100%";
+              size = "100%";
               content = {
                 type = "swap";
                 extraArgs = ["--allow-discards"]
