@@ -45,22 +45,22 @@ in {
                 subvolumes = {
                   "/rootfs" = {
                     mountpoint = "/";
-                    mountOptions = ["subvol=@" "${options}" ];
+                    mountOptions = ["subvol=@" "rw" "noatime" "nodiratime" "ssd" "nodatacow" "compress-force=zstd:5" "space_cache=v2" "commit=120" "discard=async" ];
                   };
                   "/home" = {
-                    mountOptions = ["subvol=@home" "${options}"];
+                    mountOptions = ["subvol=@home" "rw" "noatime" "nodiratime" "ssd" "nodatacow" "compress-force=zstd:5" "space_cache=v2" "commit=120" "discard=async"];
                     mountpoint = "/home";
                   };
                   "/.snapshots" = {
-                    mountOptions = ["subvol=@snapshots" "${options}"];
+                    mountOptions = ["subvol=@snapshots" "rw" "noatime" "nodiratime" "ssd" "nodatacow" "compress-force=zstd:5" "space_cache=v2" "commit=120" "discard=async"];
                     mountpoint = "/.snapshots";
                   };
                   "/tmp" = {
-                    mountOptions = ["subvol=@tmp" "${options}"];
+                    mountOptions = ["subvol=@tmp" "rw" "noatime" "nodiratime" "ssd" "nodatacow" "compress-force=zstd:5" "space_cache=v2" "commit=120" "discard=async"];
                     mountpoint = "/tmp";
                   };
                   "/nix" = {
-                    mountOptions = ["subvol=@nix" "${options}"];
+                    mountOptions = ["subvol=@nix" "rw" "noatime" "nodiratime" "ssd" "nodatacow" "compress-force=zstd:5" "space_cache=v2" "commit=120" "discard=async"];
                     mountpoint = "/nix";
                   };
                   # This subvolume will be created but not mounted
