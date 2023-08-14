@@ -7,6 +7,7 @@
     ../_mixins/hardware/boot/efi.nix
     ../_mixins/services/security/doas.nix
     ../_mixins/services/network/samba.nix
+    ../_mixins/services/configs/swapfile.nix
     ../_mixins/virt/docker.nix
   ];
 
@@ -329,6 +330,10 @@
   # #    '';
   # #  };
   # #};
+  swapDevices = [
+    device = "/swap/swapfile";
+    size = 4 GiB;
+  ];
 
   services.xserver = {
     layout = lib.mkForce "br";

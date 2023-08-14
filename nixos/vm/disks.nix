@@ -10,67 +10,66 @@ in {
         type = "disk";
         device = builtins.elemAt disks 0;
         content = {
-          # type = "table";
-          # format = "gpt";
-          type = "gpt";
+          type = "table";
+          format = "gpt";
+          # type = "gpt";
           partitions = [
             {
-              name = "ESP";
-              # start = "0%";
-              # end = "512M";
-              size = "512M";
-              type = "EF00";
+              name = "EFI";
+              size = "512MiB";
+              fs-type = "fat32";
+              bootable = true;
               content = {
                 type = "filesystem";
                 format = "vfat";
-                mountpoint = "/boot/efi";
+                mountpoint = "/boot";
                 mountOptions = defaultsBoot;
               };
             }
             {
               name = "NIXOS";
               start = "512M";
-              end = "-6G";
+              # end = "-6G";
+              end = "100%";
               content = {
                 type = "btrfs";
-                extraArgs = [ "-f" ];
+                extraArgs = ["-f"];
                 subvolumes = {
                   "/rootfs" = {
                     mountpoint = "/";
-                    mountOptions = [ "subvol=@" "rw" "noatime" "nodiratime" "ssd" "nodatacow" "compress-force=zstd:5" "space_cache=v2" "commit=120" "discard=async" ];
+                    mountOptions = ["subvol=@" "rw" "noatime" "nodiratime" "ssd" "nodatacow" "compress-force=zstd:5" "space_cache=v2" "commit=120" "discard=async"];
                   };
                   # Subvolume name is the same as the mountpoint
                   "/home" = {
-                    mountOptions = [ "subvol=@home" "rw" "noatime" "nodiratime" "ssd" "nodatacow" "compress-force=zstd:15" "space_cache=v2" "commit=120" "discard=async" ];
+                    mountOptions = ["subvol=@home" "rw" "noatime" "nodiratime" "ssd" "nodatacow" "compress-force=zstd:15" "space_cache=v2" "commit=120" "discard=async"];
                     mountpoint = "/home";
                   };
                   "/.snapshots" = {
-                    mountOptions = [ "subvol=@snapshots" "rw" "noatime" "nodiratime" "ssd" "nodatacow" "compress-force=zstd:15" "space_cache=v2" "commit=120" "discard=async" ];
+                    mountOptions = ["subvol=@snapshots" "rw" "noatime" "nodiratime" "ssd" "nodatacow" "compress-force=zstd:15" "space_cache=v2" "commit=120" "discard=async"];
                     mountpoint = "/.snapshots";
                   };
                   "/tmp" = {
-                    mountOptions = [ "subvol=@tmp" "rw" "noatime" "nodiratime" "ssd" "nodatacow" "compress-force=zstd:5" "space_cache=v2" "commit=120" "discard=async" ];
+                    mountOptions = ["subvol=@tmp" "rw" "noatime" "nodiratime" "ssd" "nodatacow" "compress-force=zstd:5" "space_cache=v2" "commit=120" "discard=async"];
                     mountpoint = "/tmp";
                   };
                   "/nix" = {
-                    mountOptions = [ "subvol=@nix" "rw" "noatime" "nodiratime" "ssd" "nodatacow" "compress-force=zstd:15" "space_cache=v2" "commit=120" "discard=async" ];
+                    mountOptions = ["subvol=@nix" "rw" "noatime" "nodiratime" "ssd" "nodatacow" "compress-force=zstd:15" "space_cache=v2" "commit=120" "discard=async"];
                     mountpoint = "/nix";
                   };
                   # This subvolume will be created but not mounted
-                  "/swap" = { };
+                  "/swap" = {};
                 };
               };
             }
-            {
-              name = "SWAP";
-              size = "100%";
-              content = {
-                type = "swap";
-                randomEncryption = true;
-                resumeDevice = true; # resume from hiberation from this device
-              };
-            }
           ];
+          # Swap = {
+          #   size = "100%";
+          #   content = {
+          #     type = "swap";
+          #     randomEncryption = true;
+          #     resumeDevice = true; # resume from hiberation from this device
+          #   };
+          # };
         };
       };
     };
