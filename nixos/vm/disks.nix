@@ -1,4 +1,4 @@
-{disks ? ["/dev/sda"], ...}: let
+{disks ? ["/dev/vda"], ...}: let
   # "subvol=@"
   options = ["rw" "noatime" "nodiratime" "ssd" "nodatacow" "compress-force=zstd:5" "space_cache=v2" "commit=120" "discard=async"];
 in {
