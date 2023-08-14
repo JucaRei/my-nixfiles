@@ -2,10 +2,12 @@
 {
   imports = [
     (modulesPath + "/profiles/qemu-guest.nix")
-    (import ./disks-btrfs.nix { })
+    (import ./disks.nix { })
     #../_mixins/hardware/systemd-boot.nix
     ../_mixins/hardware/boot/efi.nix
     ../_mixins/services/security/doas.nix
+    ../_mixins/services/network/samba.nix
+    ../_mixins/virt/docker.nix
   ];
 
   ####################
@@ -352,6 +354,28 @@
     #xrandrHeads = "" ;
   };
   nixpkgs.hostPlatform = lib.mkDefault "x86_64-linux";
+
+  services = {
+    gvfs.enable = true;
+  };
+
+  ### Load z3fold and lz4
+
+  systemd.services.zswap = {
+    description = "Enable ZSwap, set to LZ4 and Z3FOLD";
+    enable = true;
+    wantedBy = [ "basic.target" ];
+    path = [ pkgs.bash ];
+    serviceConfig = {
+      ExecStart = ''${pkgs.bash}/bin/bash -c 'cd /sys/module/zswap/parameters&& \
+      echo 1 > enabled&& \
+      echo 20 > max_pool_percent&& \
+      echo lz4hc > compressor&& \
+      echo z3fold > zpool'
+      '';
+      Type = "simple";
+    };
+  };
 }
 
 #mwProCapture.enable = true;

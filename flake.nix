@@ -108,7 +108,7 @@
         #"junior@rocinante" = libx.mkHome { hostname = "rocinante"; username = "junior"; };
         #"juca@oldmac" = libx.mkHome { hostname = "rocinante"; username = "juca"; desktop = "mate"; };
         #"juca@nitro" = libx.mkHome { hostname = "nitro"; username = "juca"; desktop = "pantheon"; };
-        "juca@vm" = libx.mkHome { hostname = "vm"; username = "juca"; desktop = "budgie"; };
+        "juca@vm" = libx.mkHome { hostname = "vm"; username = "juca"; desktop = "mate"; };
         "juca@debianvm" = libx.mkHome { hostname = "vm"; username = "juca"; desktop = "kde"; };
         "juca@hyperv" = libx.mkHome { hostname = "hyperv"; username = "juca"; desktop = "budgie"; };
         #"juca@pi" = libx.mkHome { hostname = "pi"; username = "juca"; desktop = "pantheon"; };
@@ -131,7 +131,7 @@
         air = libx.mkHost { hostname = "air"; username = "juca"; desktop = "mate"; };
         rocinante = libx.mkHost { hostname = "rocinante"; username = "juca"; desktop = "mate"; };
         #nitro = libx.mkHost { hostname = "nitro"; username = "juca"; desktop = "pantheon"; };
-        vm = libx.mkHost { hostname = "vm"; username = "juca"; desktop = "budgie"; };
+        vm = libx.mkHost { hostname = "vm"; username = "juca"; desktop = "mate"; };
         hyperv = libx.mkHost { hostname = "hyperv"; username = "juca"; desktop = "budgie"; };
         # Servers
         #pi = libx.mkHost { hostname = "pi"; username = "juca"; };
