@@ -353,7 +353,6 @@
     logFile = "/var/log/Xorg.0.log";
     #xrandrHeads = "" ;
   };
-  nixpkgs.hostPlatform = lib.mkDefault "x86_64-linux";
 
   services = {
     gvfs.enable = true;
@@ -376,6 +375,8 @@
       Type = "simple";
     };
   };
+
+  nixpkgs.hostPlatform = lib.mkDefault "x86_64-linux";
 }
 
 #mwProCapture.enable = true;
