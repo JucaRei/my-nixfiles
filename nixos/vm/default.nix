@@ -2,7 +2,7 @@
 {
   imports = [
     (modulesPath + "/profiles/qemu-guest.nix")
-    #(import ./disks.nix { })
+    (import ./disks-btrfs.nix { })
     #../_mixins/hardware/systemd-boot.nix
     ../_mixins/hardware/boot/efi.nix
     ../_mixins/services/security/doas.nix
