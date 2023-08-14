@@ -18,11 +18,11 @@ in
           type = "gpt";
           partitions = [
             {
-              name = "ESP";
+              name = "EFI";
               #start = "0%";
               #end = "550MiB";
-              size = "550MiB";
               type = "EF00";
+              size = "550M";
               #bootable = true;
               #flags = [ "esp" ];
               #fs-type = "fat32";
@@ -30,7 +30,7 @@ in
               content = {
                 type = "filesystem";
                 format = "vfat";
-                mountpoint = "/boot/efi";
+                mountpoint = "/boot";
                 mountOptions = [ "defaults" "noatime" "nodiratime" ];
               };
             }
