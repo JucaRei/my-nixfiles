@@ -138,7 +138,7 @@
       ######################
       efi = {
         canTouchEfiVariables = lib.mkForce false;
-        efiSysMountPoint = "/boot";
+        efiSysMountPoint = "/boot/efi";
       };
       timeout = 5;
 

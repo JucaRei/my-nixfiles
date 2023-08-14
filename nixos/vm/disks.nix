@@ -17,24 +17,25 @@ in
           format = "gpt";
           partitions = [
             {
-              name = "ESP";
-              start = "0%";
-              end = "550MiB";
-              bootable = true;
-              flags = [ "esp" ];
-              fs-type = "fat32";
-              part-type = "primary";
+              name = "EFI";
+              #start = "0%";
+              #end = "550MiB";
+              size = "550MiB";
+              #bootable = true;
+              #flags = [ "esp" ];
+              #fs-type = "fat32";
+              #part-type = "primary";
               content = {
                 type = "filesystem";
                 format = "vfat";
-                mountpoint = "/boot";
+                mountpoint = "/boot/efi";
                 mountOptions = [ "defaults" "noatime" "nodiratime" ];
               };
             }
             {
               name = "root";
               start = "550MiB";
-              end = "-6G";
+              end = "-6GiB";
               content = {
                 type = "btrfs";
                 extraArgs = [ "-f" ];
