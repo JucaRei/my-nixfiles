@@ -1,9 +1,7 @@
-{ disks ? [ "/dev/sda" ], ... }:
-let
+{disks ? ["/dev/sda"], ...}: let
   # "subvol=@"
-  options = [ "rw" "noatime" "nodiratime" "ssd" "nodatacow" "compress-force=zstd:5" "space_cache=v2" "commit=120" "discard=async" ];
-in
-{
+  options = ["rw" "noatime" "nodiratime" "ssd" "nodatacow" "compress-force=zstd:5" "space_cache=v2" "commit=120" "discard=async"];
+in {
   disko.devices = {
     disk = {
       vda = {
@@ -12,19 +10,20 @@ in
         content = {
           type = "table";
           format = "gpt";
-          partitions = [{
-            name = "ESP";
-            start = "0%";
-            end = "550MiB";
-            bootable = true;
-            flags = [ "esp" ];
-            fs-type = "fat32";
-            content = {
-              type = "filesystem";
-              format = "vfat";
-              mountpoint = "/boot";
-            };
-          }
+          partitions = [
+            {
+              name = "ESP";
+              start = "0%";
+              end = "550MiB";
+              bootable = true;
+              flags = ["esp"];
+              fs-type = "fat32";
+              content = {
+                type = "filesystem";
+                format = "vfat";
+                mountpoint = "/boot";
+              };
+            }
             {
               name = "Swap";
               start = "550MiB";
@@ -41,36 +40,36 @@ in
               end = "100%";
               content = {
                 type = "btrfs";
-                extraArgs = [ "-f" ];
+                extraArgs = ["-f"];
                 subvolumes = {
                   "/rootfs" = {
                     mountpoint = "/";
-                    mountOptions = [ "subvol=@" options ];
+                    mountOptions = ["subvol=@" options];
                   };
                   "/home" = {
-                    mountOptions = [ "subvol=@home" options ];
+                    mountOptions = ["subvol=@home" options];
                     mountpoint = "/home";
                   };
                   "/.snapshots" = {
-                    mountOptions = [ "subvol=@snapshots" options ];
+                    mountOptions = ["subvol=@snapshots" options];
                     mountpoint = "/.snapshots";
                   };
                   "/tmp" = {
-                    mountOptions = [ "subvol=@tmp" options ];
+                    mountOptions = ["subvol=@tmp" options];
                     mountpoint = "/tmp";
                   };
                   "/nix" = {
-                    mountOptions = [ "subvol=@nix" options ];
+                    mountOptions = ["subvol=@nix" options];
                     mountpoint = "/nix";
                   };
                   # This subvolume will be created but not mounted
-                  "/swap" = { };
+                  "/swap" = {};
                 };
               };
-            }];
+            }
+          ];
         };
       };
     };
   };
 }
-
