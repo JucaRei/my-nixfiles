@@ -14,8 +14,9 @@
     plymouth.enable = true;
   };
 
+  # AppImage support & X11 automation
   environment.systemPackages = with pkgs; [
-    # X11 automation
+    appimage-run
     wmctrl
     xdotool
     ydotool

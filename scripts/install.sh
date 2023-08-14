@@ -81,4 +81,5 @@ fi
 #    "nixos/rocinante/disks.nix"
 #
 #sudo nixos-install --no-root-password --flake ".#rocinante"
-#sudo nixos-install -v --impure --flake ".#rocinante"
+#sudo nixos-install -v --root /mnt --impure --flake ".#rocinante"
+#sudo nixos-install -v --root /mnt --impure --flake ".#vm"

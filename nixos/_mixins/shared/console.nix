@@ -5,7 +5,7 @@
 
   console = {
     keyMap = if (builtins.isString == "nitro") then "br-abnt2" else "us";
-    earlySetup = true;
+    #earlySetup = true;
     font = "${pkgs.tamzen}/share/consolefonts/TamzenForPowerline10x20.psf";
     colors = [
       "1b161f"
