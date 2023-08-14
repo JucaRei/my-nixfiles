@@ -16,7 +16,8 @@ in {
           partitions = [
             {
               name = "EFI";
-              size = "512MiB";
+              start = "0";
+              end = "512MiB";
               fs-type = "fat32";
               bootable = true;
               content = {
