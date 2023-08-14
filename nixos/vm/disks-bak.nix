@@ -34,19 +34,23 @@ in
                 randomEncryption = true;
                 resumeDevice = true;
               };
-            }
+            };
             {
               name = "root";
               start = "6GiB";
               end = "100%";
               content = {
                 type = "btrfs";
-                extraArgs = [ "-f" ];
+                extraArgs = [ "-f" ]; # Override existing partition
+                # Subvolumes must set a mountpoint in order to be mounted,
+                # unless their parent is mounted
                 subvolumes = {
+                  # Subvolume name is different from mountpoint
                   "/rootfs" = {
                     mountpoint = "/";
                     mountOptions = [ "subvol=@" options ];
                   };
+                  # Subvolume name is the same as the mountpoint
                   "/home" = {
                     mountOptions = [ "subvol=@home" options ];
                     mountpoint = "/home";
@@ -67,10 +71,9 @@ in
                   "/swap" = { };
                 };
               };
-            }];
+            };]};
         };
       };
     };
-  };
-}
+  }
 
