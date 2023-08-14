@@ -100,9 +100,9 @@
       compressorArgs = [ "-19" "-T0" ];
       verbose = false;
     };
-    #kernelPackages = pkgs.linuxPackages_latest;
+    kernelPackages = pkgs.linuxPackages_latest;
     #kernelPackages = pkgs.linuxPackages_6_3;
-    kernelPackages = pkgs.linuxPackages_lqx;
+    #kernelPackages = pkgs.linuxPackages_lqx;
 
     # Allow compilation of packages ARM/ARM64 architectures via QEMU
     # e.g. nix-build -A <pkg> --argstr system aarch64-linux
@@ -139,7 +139,7 @@
       ######################
       efi = {
         canTouchEfiVariables = lib.mkForce false;
-        efiSysMountPoint = "/boot/efi";
+        efiSysMountPoint = "/boot";
       };
       timeout = 5;
 
@@ -177,8 +177,8 @@
         # zfsSupport = true;                        # enable zfs
         # copyKernels = true;                       # https://nixos.wiki/wiki/NixOS_on_ZFS
 
-        gfxmodeEfi = lib.mkForce "1920x1080,auto";
-        fontSize = 20;
+        #gfxmodeEfi = lib.mkForce "1920x1080,auto";
+        #fontSize = 20;
 
         configurationName = lib.mkForce "NixOS VM test";
       };
