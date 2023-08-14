@@ -18,7 +18,7 @@ in
           type = "gpt";
           partitions = [
             {
-              name = "EFI";
+              name = "ESP";
               #start = "0%";
               #end = "550MiB";
               size = "550MiB";
