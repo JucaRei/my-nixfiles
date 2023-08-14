@@ -62,7 +62,7 @@ if [[ $REPLY =~ ^[Yy]$ ]]; then
   # Rsync nix-config to the target install and set the remote origin to SSH.
   rsync -a --delete "$HOME/Zero/" "/mnt/home/$TARGET_USER/Zero/"
   pushd "/mnt/home/$TARGET_USER/Zero/nix-config"
-  git remote set-url origin git@github.com:JucaRei/my-nixfiles.git
+  git remote set-url origin git@github.com:wimpysworld/nix-config.git
   popd
 
   # If there is a keyfile for a data disk, put copy it to the root partition and
