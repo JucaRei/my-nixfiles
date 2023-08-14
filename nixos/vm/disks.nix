@@ -71,7 +71,7 @@ in
               #size = "6GiB";
               content = {
                 type = "swap";
-                extraOpenArgs = ["--allow-discards"];
+                #extraOpenArgs = ["--allow-discards"];
                 randomEncryption = true;
                 resumeDevice = true;
               };
