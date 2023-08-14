@@ -13,14 +13,16 @@ in
         type = "disk";
         device = builtins.elemAt disks 0;
         content = {
-          type = "table";
-          format = "gpt";
+          #type = "table";
+          #format = "gpt";
+          type = "gpt";
           partitions = [
             {
               name = "EFI";
               #start = "0%";
               #end = "550MiB";
               size = "550MiB";
+              type = "EF00";
               #bootable = true;
               #flags = [ "esp" ];
               #fs-type = "fat32";
