@@ -330,10 +330,10 @@
   # #    '';
   # #  };
   # #};
-  swapDevices = [
+  swapDevices = [{
     device = "/swap/swapfile";
-    size = 4 GiB;
-  ];
+    size = 4096;
+  }];
 
   services.xserver = {
     layout = lib.mkForce "br";
