@@ -45,7 +45,8 @@ in
               end = "100%";
               part-type = "primary";
               content = {
-                type = "btrfs";
+                type = "filesystem";
+                format = "btrfs";
                 extraArgs = [ "-f" ];
                 subvolumes = {
                   "/rootfs" = {

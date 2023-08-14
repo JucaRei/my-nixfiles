@@ -45,6 +45,8 @@
       gnome.dconf-editor
       gnome.gnome-tweaks
       gnome.adwaita-icon-theme
+      gnomeExtensions.vitals
+      gnomeExtensions.forge
     ];
     gnome.excludePackages = (with pkgs; [
       # Gnome ignored packages
