@@ -12,15 +12,13 @@
           ${pkgs.coreutils}/bin/mkdir -p "$swapdir"
           ${pkgs.coreutils}/bin/truncate -s 0 "$swapfile"
           ${pkgs.coreutils}/bin/chmod 0600 "$swapfile"
+          
           if [[ "$(${pkgs.util-linux}/bin/findmnt -no FSTYPE /)" == "btrfs" ]]; then
             ${pkgs.e2fsprogs}/bin/chattr +C "$swapfile"
             ${pkgs.btrfs-progs}/bin/btrfs property set "$swapfile" compression none
-            
           fi
         fi
       '';
     };
   };
 }
-#${pkgs.btrfs-progs}/bin/btrfs property set /swap/swapfile noautodefrag
-            #${pkgs.btrfs-progs}/bin/btrfs property set /swap/swapfile nodiscard

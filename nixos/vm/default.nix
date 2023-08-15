@@ -1,6 +1,7 @@
 { lib, modulesPath, pkgs, config, inputs, ... }:
 {
   imports = [
+    inputs.disko.nixosModules.disko
     (modulesPath + "/profiles/qemu-guest.nix")
     (import ./disks.nix { })
     #../_mixins/hardware/systemd-boot.nix
@@ -331,8 +332,8 @@
   # #  };
   # #};
   swapDevices = [{
-    device = "/swap/swapfile";
-    size = 4096;
+    device = "/.swap/swapfile";
+    size = 2048;
   }];
 
   services.xserver = {
