@@ -7,6 +7,10 @@
       deadnix
       nix-index
       statix
+      nixpkgs-fmt
+      nurl
+      rnix-lsp
+      nil
     ];
 
     sessionVariables = {

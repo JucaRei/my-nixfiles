@@ -1,4 +1,11 @@
-{ pkgs, lib, config, ... }: {
+{ pkgs, lib, config, ... }:
+# let
+#   # Break these packages out so they can be imported elsewhere as a common set
+#   # of baseline packages. Useful for installations that are home-manager-only
+#   # on other OSs, rather than NixOS.
+#   inherit ((import ./packages.nix { inherit pkgs; })) basePackages;
+# in
+{
   imports = [
     ../services/configs
     ../services/utils

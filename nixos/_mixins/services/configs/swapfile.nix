@@ -9,7 +9,7 @@
         if [[ -f "$swapfile" ]]; then
           echo "Swapfile $swapfile already exists"
         else
-          ${pkgs.coreutils}/bin/mkdir -p "$swapdir"
+          #${pkgs.coreutils}/bin/mkdir -p "$swapdir"
           ${pkgs.coreutils}/bin/truncate -s 0 "$swapfile"
           ${pkgs.coreutils}/bin/chmod 0600 "$swapfile"
           
