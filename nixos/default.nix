@@ -1,19 +1,33 @@
 #hostid
-{ config, desktop, hostname, inputs, lib, modulesPath, outputs, pkgs, stateVersion, username, ... }: {
-  imports = [
-    inputs.disko.nixosModules.disko
-    (modulesPath + "/installer/scan/not-detected.nix")
-    ./${hostname}
-    #./_mixins/services/firewall.nix
-    #./_mixins/services/fwupd.nix
-    #./_mixins/services/kmscon.nix
-    #./_mixins/services/openssh.nix
-    #./_mixins/services/smartmon.nix
-    #../home-manager
-    ./_mixins/shared
-    ./_mixins/users/root
-    ./_mixins/users/${username}
-  ] ++ lib.optional (builtins.isString desktop) ./_mixins/desktop;
+{
+  config,
+  desktop,
+  hostname,
+  inputs,
+  lib,
+  modulesPath,
+  outputs,
+  pkgs,
+  stateVersion,
+  username,
+  ...
+}: {
+  imports =
+    [
+      inputs.disko.nixosModules.disko
+      (modulesPath + "/installer/scan/not-detected.nix")
+      ./${hostname}
+      #./_mixins/services/firewall.nix
+      #./_mixins/services/fwupd.nix
+      #./_mixins/services/kmscon.nix
+      #./_mixins/services/openssh.nix
+      #./_mixins/services/smartmon.nix
+      #../home-manager
+      ./_mixins/shared
+      ./_mixins/users/root
+      ./_mixins/users/${username}
+    ]
+    ++ lib.optional (builtins.isString desktop) ./_mixins/desktop;
 
   # Only install the docs I use
   documentation.enable = true;
@@ -21,7 +35,6 @@
   documentation.man.enable = true;
   documentation.info.enable = false;
   documentation.doc.enable = false;
-
 
   # Use passed hostname to configure basic networking
   networking = {
@@ -31,7 +44,7 @@
       192.168.1.76  rocinante
       192.168.1.228 rocinante
       192.168.1.230 air
-    
+
     '';
     hostName = hostname;
     useDHCP = lib.mkDefault true;
@@ -99,7 +112,7 @@
 
     # This will add each flake input as a registry
     # To make nix3 commands consistent with your flake
-    registry = lib.mapAttrs (_: value: { flake = value; }) inputs;
+    registry = lib.mapAttrs (_: value: {flake = value;}) inputs;
 
     # This will additionally add your inputs to the system's legacy channels
     # Making legacy nix commands consistent as well, awesome!
@@ -112,13 +125,13 @@
       #sandbox = relaxed;
       auto-optimise-store = true;
       warn-dirty = false;
-      experimental-features = [ "nix-command" "flakes" "repl-flake" ];
+      experimental-features = ["nix-command" "flakes" "repl-flake"];
 
       # https://nixos.org/manual/nix/unstable/command-ref/conf-file.html
       keep-going = false;
 
       # Allow to run nix
-      allowed-users = [ "${username}" "wheel" ];
+      allowed-users = ["${username}" "wheel"];
     };
   };
 
@@ -128,16 +141,30 @@
     "d /mnt/snapshot/${username} 0755 ${username} users"
   ];
 
-  system.activationScripts = {
-    diff = {
-      supportsDryActivation = true;
-      text = ''
-        ${pkgs.nvd}/bin/nvd --nix-bin-dir=${pkgs.nix}/bin diff /run/current-system "$systemConfig"
+  system = {
+    activationScripts = {
+      diff = {
+        supportsDryActivation = true;
+        text = ''
+          ${pkgs.nvd}/bin/nvd --nix-bin-dir=${pkgs.nix}/bin diff /run/current-system "$systemConfig"
+        '';
+      };
+      fixboot.text = ''
+        ln -sfn "$(readlink -f "$systemConfig")" /run/current-system
       '';
     };
-    fixboot.text = ''
-      ln -sfn "$(readlink -f "$systemConfig")" /run/current-system
-    '';
+    stateVersion = stateVersion;
+
+    autoUpgrade = {
+      enable = true;
+      flake = inputs.self.outPath;
+      flags = [
+        "--update-input"
+        "nixpkgs"
+        "-L" #print build logs
+      ];
+      dates = "monthly";
+      randomizedDelaySec = "45min";
+    };
   };
-  system.stateVersion = stateVersion;
 }
