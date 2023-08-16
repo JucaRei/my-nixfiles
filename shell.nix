@@ -18,3 +18,6 @@
     '';
   };
 }
+
+# echo $HOME/.nix-profile/bin/fish | sudo tee -a /etc/shells
+# chsh -s $HOME/.nix-profile/bin/fish
