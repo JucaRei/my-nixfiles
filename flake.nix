@@ -118,7 +118,8 @@
         #"juca@vm-mini" = libx.mkHome { hostname = "vm-mini"; username = "juca"; };
         #"juca@pi-mini" = libx.mkHome { hostname = "pi-mini"; username = "juca"; };
         ### Non-nixos
-        #"junior@archnitro" = libx.mkHome { hostname = "archnitro"; username = "junior"; };
+        "junior@archnitro" = libx.mkHome { hostname = "archnitro"; username = "junior"; };
+        "juca@archnitro" = libx.mkHome { hostname = "DietPi"; username = "juca"; };
         # WSL - Alpine
         "juca@nitrowin" = libx.mkHome { hostname = "nitrowin"; username = "juca"; };
       };
