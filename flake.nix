@@ -38,9 +38,11 @@
     #spicetify-nix.url = "github:the-argus/spicetify-nix";
     #nixpkgs-f2k.url = "github:fortuneteller2k/nixpkgs-f2k";
 
-    #nixgl.url = "github:guibou/nixGL";
-    #nixgl.inputs.nixpkgs.follows = "nixpkgs";
-
+    nixgl = {
+      url = "github:guibou/nixGL";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+    
     nixos-generators.url = "github:NixOS/nixos-hardware/master";
 
     robotnix.url = "github:danielfullmer/robotnix";

@@ -11,6 +11,8 @@ in
         "(fg:dark-blue)"
         "$username"
         "$hostname"
+        "$os"
+        "$nix_shell"
         "[]"
         "(fg:dark-blue bg:light-blue)"
         "$directory"
@@ -39,7 +41,7 @@ in
         "[]"
         "(fg:dark-blue)"
         "$line_break"
-        "$character"
+        "\n$character"
       ];
 
       aws.symbol = mkDefault " ";
@@ -121,6 +123,21 @@ in
         #yellow = "11";
         green = "#00FF00";
       };
+      os = {
+        disabled = false;
+        # format = "[](fg:blue)[$symbol](bg:blue fg:black)[](fg:blue)";
+        format = "$symbol";
+      };
+      os.symbols = {
+        Arch = "[ ](fg:bright-blue)";
+        Debian = "[ ](fg:red)";
+        EndeavourOS = "[ ](fg:purple)";
+        Fedora = "[ ](fg:blue)";
+        NixOS = "[ ](fg:bright-white)";
+        openSUSE = "[ ](fg:green)";
+        SUSE = "[ ](fg:green)";
+        Ubuntu = "[ ](fg:bright-purple)";
+      };
 
       # Upper left
       username = {
@@ -188,10 +205,15 @@ in
 
       # Upper right
       cmd_duration = {
-        min_time = 10000;
+        min_time = 1000;
         style = "bold fg:pink bg:dark-blue";
         format = "[ $duration  ]($style)";
         show_milliseconds = true;
+      };
+
+      nix_shell = {
+        disabled = false;
+        format = "[](fg:white)[ ](bg:white fg:black)[](fg:white) ";
       };
 
       jobs = {
